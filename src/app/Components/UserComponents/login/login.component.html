@@ -1,0 +1,32 @@
+<section class="wrapper" style="position: relative;">
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div class="card" style="background-color: #333333; color: #ffffff; border: none; z-index: 10;">
+      <div class="card-header text-center" style="font-family: 'Roboto', sans-serif;">
+        <h3>Login</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="getValue()" [formGroup] ="formValidation"  class="animate__animated animate__fadeInDown">
+          <div class="form-group  m-2">
+            <label for="email" style="font-family: 'Montserrat', sans-serif;">Email</label>
+            <input formControlName = "email" type="email" class="form-control" id="email" style="background-color: #444444; color: #ffffff; border: none;">
+          </div>
+          <div class="form-group  m-2">
+            <label for="password" style="font-family: 'Montserrat', sans-serif;">Password</label>
+            <input type="password" class="form-control" id="password"  style="background-color: #444444; color: #ffffff; border: none;">
+          </div>
+          <div class="text-center  m-2 ">
+            <button type="submit" class="btn btn-primary btn-block" style="background-color: #ff9900; border: none;">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-center" style="font-family: 'Montserrat', sans-serif;">
+        <p style="color: #aaaaaa;">Don't have an account? <a routerLink="/register" style="color: #ffffff;">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+</section>

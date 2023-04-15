@@ -1,0 +1,38 @@
+<section class="wrapper" style="position: relative;">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <div class="card" style="background-color: #333333; color: #ffffff; border: none; z-index: 10;">      
+                  <div class="card-header text-center">
+                    <h4>Register</h4>
+                  </div>
+                  <div class="card-body">
+                    <form (ngSubmit)="getValue()" [formGroup] ="formValidation" class="animate__animated animate__fadeInDown">
+                      <div class="form-group m-2">
+                        <label for="username">Username</label>
+                        <input formControlName = "username" type="text" class="form-control" id="username"style="background-color: #444444; color: #ffffff; border: none;">
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="email">Email address</label>
+                        <input formControlName = "email" type="email" class="form-control" id="email" style="background-color: #444444; color: #ffffff; border: none;">
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="password">Password</label>
+                        <input formControlName = "password"  type="password" class="form-control" id="password" style="background-color: #444444; color: #ffffff; border: none;">
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input formControlName = "confirm_password" type="password" class="form-control" id="confirm_password"  style="background-color: #444444; color: #ffffff; border: none;">
+                      </div>
+                      <div class="text-center m-2">
+                        <button type="submit" class="btn btn-primary" style="background-color: #ff9900; border: none;">Register</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="card-footer text-center" style="font-family: 'Montserrat', sans-serif;">
+                    <p style="color: #aaaaaa;">Have an account? <a routerLink="/login" style="color: #ffffff;">Login</a></p>
+                  </div>
+                </div>
+              </div>
+</section>
