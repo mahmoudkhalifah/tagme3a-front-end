@@ -36,27 +36,32 @@ export class UserAuthService {
   }
 
   isAdmin() : boolean {
-    if(this.isUserLoggedIn()) {
-      const jwtPayload:any = jwt_decode(localStorage.getItem("token")??"");
-      return jwtPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == "Admin";
-    }
+    if(this.isUserLoggedIn())
+      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.adminRole;
     return false;
   }
 
   isUser() : boolean {
-    if(this.isUserLoggedIn()) {
-      const jwtPayload:any = jwt_decode(localStorage.getItem("token")??"");
-      return jwtPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == "User";
-    }
+    if(this.isUserLoggedIn())
+      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.userRole;
     return false;
   }
 
   isAuthorized(role : string) : boolean {
-    if(this.isUserLoggedIn()) {
-      const jwtPayload:any = jwt_decode(localStorage.getItem("token")??"");
-      return jwtPayload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == role;
-    }
+    if(this.isUserLoggedIn())
+      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == role;
     return false;
+  }
+
+  getUserId() {
+    if(this.isUserLoggedIn()) {
+      return this.Payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"];
+    }
+  }
+
+  get Payload() {
+    const jwtPayload:any = jwt_decode(localStorage.getItem("token")??"");
+    return jwtPayload;
   }
 
 }
