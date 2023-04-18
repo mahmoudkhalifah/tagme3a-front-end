@@ -18,7 +18,7 @@ import { ViewProductsComponent } from './Components/AdminComponents/productManag
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
 import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/admin-navbar.component';
-import { TokenInterceptor } from './services/token.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({

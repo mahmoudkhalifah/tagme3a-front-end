@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/services/user.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
   constructor(private appComponent: AppComponent,
-    private userService:UserService,
+    private userAuthService:UserAuthService,
     private router:Router) {
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
@@ -43,9 +43,12 @@ export class RegisterComponent {
 
   })
 
+  error = false;
+  errorMsgs:string[] = [];
+
   onRegister(){
     console.log(this.formValidation);
-    this.userService.onSignup(new UserRegister(
+    this.userAuthService.signup(new UserRegister(
       this.formValidation.value.username??"",
       this.formValidation.value.fname??"",
       this.formValidation.value.lname??"",
@@ -59,7 +62,16 @@ export class RegisterComponent {
           this.router.navigateByUrl('/login');
         },
         error:(err)=>{
-
+          this.error=true;
+          this.errorMsgs = [];
+          if(err.status == 400) {
+            for(let e of err.error) {
+              this.errorMsgs.push(e.description);
+            }
+          }
+          else {
+            this.errorMsgs.push("Connection error.");
+          }
         }
       }
     )

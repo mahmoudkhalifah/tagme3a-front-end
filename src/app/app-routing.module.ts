@@ -10,30 +10,32 @@ import { ViewCategoriesComponent } from './Components/AdminComponents/categoryMa
 import { ViewProductsComponent } from './Components/AdminComponents/productManager/view-products/view-products.component';
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
+import { AdminGuard } from './guards/admin.guard';
+import { GuestGuard } from './guards/guest.guard';
 
 
 
 const routes: Routes = [
     //User
-    {path:"",component: LoginComponent},
-    {path:"login",component: LoginComponent},
-    {path:"register",component:RegisterComponent},
+    {path:"",component: LoginComponent,canActivate:[GuestGuard]},
+    {path:"login",component: LoginComponent,canActivate:[GuestGuard]},
+    {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
     {path:"home",component:HomeComponent},
 
     //Admin
 
 
-    {path:"admin/admin-home",component:AdminHomeComponent},
-    
+    {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
+
     //Admin Category
-    {path:"admin/categoryManager/add-category",component:AddCategoryComponent},
-    {path:"admin/categoryManager/edit-category",component:EditCategoryComponent},
-    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent},
+    {path:"admin/categoryManager/add-category",component:AddCategoryComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/edit-category",component:EditCategoryComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent,canActivate:[AdminGuard]},
 
     //Admin Product
-    {path:"admin/productManager/view-products",component:ViewProductsComponent},
-    {path:"admin/productManager/add-product",component:AddProductComponent},
-    {path:"admin/productManager/edit-product",component:EditProductComponent},
+    {path:"admin/productManager/view-products",component:ViewProductsComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/add-product",component:AddProductComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/edit-product",component:EditProductComponent,canActivate:[AdminGuard]},
 
     // {path:"**",component:ErrorComponent}
   ];

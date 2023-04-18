@@ -7,27 +7,32 @@
                   <div class="card-header text-center">
                     <h4>Register</h4>
                   </div>
-                  <div class="card-body p-4">
+                  <div class="card-body p-2">
+                    <div *ngIf="error" class="alert alert-danger p-2 m-2">
+                      <div *ngFor="let errorMsg of errorMsgs">
+                        {{errorMsg}}
+                      </div>
+                    </div>
                     <form (ngSubmit)="onRegister()" [formGroup] ="formValidation" class="animate__animated animate__fadeInDown">
-                      <div class="form-group my-2">
+                      <div class="form-group m-2">
                         <label for="username">Username</label>
                         <input formControlName = "username" type="text" class="form-control" id="username"style="background-color: #444444; color: #ffffff; border: none;">
                       </div>
-                      <div *ngIf="formValidation.get('username') && formValidation.get('username')?.invalid && (formValidation.get('username')?.dirty || formValidation.get('username')?.touched)" class="alert alert-danger p-2 my-2">
+                      <div *ngIf="formValidation.get('username') && formValidation.get('username')?.invalid && (formValidation.get('username')?.dirty || formValidation.get('username')?.touched)" class="alert alert-danger p-2 m-2">
                         <div *ngIf="formValidation.get('username')?.errors?.['required']">Username is required.</div>
                         <div *ngIf="formValidation.get('username')?.errors?.['minlength']">Username must be more than 2 characters.</div>
                         <div *ngIf="formValidation.get('username')?.errors?.['maxlength']">Username must be less than 16 characters.</div>
                       </div>
-                      <div class="form-group my-2">
+                      <div class="form-group m-2">
                         <label for="email">Email address</label>
                         <input formControlName = "email" type="email" class="form-control" id="email" style="background-color: #444444; color: #ffffff; border: none;">
                       </div>
-                      <div *ngIf="formValidation.get('email') && formValidation.get('email')?.invalid && (formValidation.get('email')?.dirty || formValidation.get('email')?.touched)" class="alert alert-danger p-2 my-2">
+                      <div *ngIf="formValidation.get('email') && formValidation.get('email')?.invalid && (formValidation.get('email')?.dirty || formValidation.get('email')?.touched)" class="alert alert-danger p-2 m-2">
                         <div *ngIf="formValidation.get('email')?.errors?.['required']">Email is required.</div>
                         <div *ngIf="formValidation.get('email')?.errors?.['email']">Invalid email format.</div>
                         <div *ngIf="formValidation.get('email')?.errors?.['minlength']">Email must be more than 3 characters.</div>
                       </div>
-                      <div class="form-group my-2 row">
+                      <div class="form-group my-2 p-2 row justify-content-center">
                         <div class="col-6">
                           <label for="fname">First name</label>
                           <input formControlName = "fname" type="text" class="form-control" id="fname" style="background-color: #444444; color: #ffffff; border: none;">
@@ -45,7 +50,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="form-group my-2">
+                      <div class="form-group m-2">
                         <label for="gender">Gender</label>
                         <div>
                           <select class="btn dropdown-toggle w-100" name="gender" formControlName="gender" style="background-color: #444444; color: #ffffff; border: none;">
@@ -54,27 +59,27 @@
                           </select>
                         </div>
                       </div>
-                      <div *ngIf="formValidation.get('gender') && formValidation.get('gender')?.invalid && (formValidation.get('gender')?.dirty || formValidation.get('lname')?.touched)" class="alert alert-danger p-2 my-2">
+                      <div *ngIf="formValidation.get('gender') && formValidation.get('gender')?.invalid && (formValidation.get('gender')?.dirty || formValidation.get('lname')?.touched)" class="alert alert-danger p-2 m-2">
                         <div *ngIf="formValidation.get('gender')?.errors?.['required']">Gender is required.</div>
                       </div>
-                      <div class="form-group my-2">
+                      <div class="form-group m-2">
                         <label for="password">Password</label>
                         <input formControlName = "password"  type="password" class="form-control" id="password" style="background-color: #444444; color: #ffffff; border: none;">
                       </div>
-                      <div *ngIf="formValidation.get('password') && formValidation.get('password')?.invalid && (formValidation.get('password')?.dirty || formValidation.get('password')?.touched)" class="alert alert-danger p-2 my-2">
+                      <div *ngIf="formValidation.get('password') && formValidation.get('password')?.invalid && (formValidation.get('password')?.dirty || formValidation.get('password')?.touched)" class="alert alert-danger p-2 m-2">
                         <div *ngIf="formValidation.get('password')?.errors?.['required']">Password is required.</div>
                         <div *ngIf="formValidation.get('password')?.errors?.['pattern']">Password must have at least a capital, a small character and a number.</div>
                         <div *ngIf="formValidation.get('password')?.errors?.['minlength']">Password must be more than 5 characters.</div>
                       </div>
-                      <div class="form-group my-2">
+                      <div class="form-group m-2">
                         <label for="confirm_password">Confirm Password</label>
                         <input formControlName = "confirm_password" type="password" class="form-control" id="confirm_password"  style="background-color: #444444; color: #ffffff; border: none;">
                       </div>
-                      <div *ngIf="formValidation.get('confirm_password') && formValidation.get('confirm_password')?.invalid && (formValidation.get('confirm_password')?.dirty || formValidation.get('confirm_password')?.touched)" class="alert alert-danger p-2 my-2">
+                      <div *ngIf="formValidation.get('confirm_password') && formValidation.get('confirm_password')?.invalid && (formValidation.get('confirm_password')?.dirty || formValidation.get('confirm_password')?.touched)" class="alert alert-danger p-2 m-2">
                         <div *ngIf="formValidation.get('confirm_password')?.errors?.['required']">Password is required.</div>
                         <div *ngIf="formValidation.get('confirm_password')?.errors?.['mismatch']">Passwords don't match.</div>
                       </div>
-                      <div class="text-center my-2">
+                      <div class="text-center m-2">
                         <input [disabled]="formValidation.invalid" value="Signup" type="submit" class="btn btn-primary" style="background-color: #ff9900; border: none;">
                       </div>
                     </form>
