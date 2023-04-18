@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,6 +22,7 @@ import { OrderManagerComponent } from './Components/AdminComponents/Order/order-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -53,7 +54,11 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
     HttpClientModule
   ],
   providers: [
-
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
     //Services
   ],
   bootstrap: [AppComponent]
