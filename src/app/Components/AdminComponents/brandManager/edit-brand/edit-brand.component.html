@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+        <div class="mb-3">
+          <label for="brandId" class="form-label">Brand ID</label>
+          <input disabled="true" type="text" class="form-control" id="brandId" name="categoryId"  [(ngModel)] = "brand.brandId"  [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input formControlName="name" type="text" class="form-control" id="name" name="name"  [(ngModel)] = "brand.name" >
+          <div *ngIf="!NameValid" style="color: red; text-align: center;">
+            Name Length should be greater than 3
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea formControlName="description" class="form-control" id="description" name="description"  [(ngModel)] = "brand.description"></textarea>
+          <div *ngIf="!DescriptionValid" style="color: red; text-align: center;">
+            Description Length should be greater than 3
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="logoPic" class="form-label">Brand Image</label>
+          <img width="200" height="200" id="LogoPic" alt="brandPic" class="profile-pictue" src="{{'data:image/jpg;base64,' + brand.logo}}" />
+        </div>
+        <div class="mb-3">
+          <label for="logo" class="form-label">Logo</label>
+          <input type="file" accept="image/*" class="form-control" id="image" name="image"  (change)="handleUpload($event)" >
+        </div>
+        <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
+
+        <!-- <button type="submit" (click)="Update()" class="btn btn-primary d-block mx-auto">Edit</button> -->
+      </form>
+    </div>
+  </div>
+</div>

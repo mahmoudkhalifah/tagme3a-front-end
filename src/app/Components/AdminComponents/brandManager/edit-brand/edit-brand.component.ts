@@ -1,36 +1,35 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BrandService } from 'src/app/Services/brand.service';
 import { AppComponent } from 'src/app/app.component';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { CategoryDTO } from '../../../../Models/CategoryDTO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
-import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
+import { BrandInsert } from 'src/app/Models/BrandInsertDTO';
 
 @Component({
-  selector: 'app-edit-category',
-  templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.css']
+  selector: 'app-edit-brand',
+  templateUrl: './edit-brand.component.html',
+  styleUrls: ['./edit-brand.component.css']
 })
-export class EditCategoryComponent {
+export class EditBrandComponent {
   Id:any
-  category:any;
-  image:any;
+  brand:any;
+  logo:any;
   formValidation = new FormGroup({
     name:new FormControl("",[Validators.required,Validators.minLength(2)]),
     description:new FormControl("",[Validators.minLength(3),Validators.required]),
-  });
-  constructor(private appComponent: AppComponent,private router:Router, myActivate:ActivatedRoute,private myService:CategoryServiceService) {
+  })
+  constructor(private appComponent: AppComponent,private router:Router, myActivate:ActivatedRoute,private myService:BrandService) {
     appComponent.showFooter = false;
     this.Id = myActivate.snapshot.params["id"];
-    this.category = myService.getCategoryById(this.Id).subscribe({
+    this.brand = myService.getBrandById(this.Id).subscribe({
       next:(data)=>{
-        this.category = data
-        console.log(this.category);
+        this.brand = data
+        console.log(this.brand);
       },
       error:(err)=>{console.log(err);}
     });
   }
+
   get NameValid(){
 
     //this.message1 = this.formValidation.controls["name"];
@@ -41,15 +40,15 @@ export class EditCategoryComponent {
       return this.formValidation.controls["description"].valid
     }
 
+
   handleUpload(event:any) {
     const file = event.target.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-    //  console.log("ELSORA ELGEDIDA");
-      var res = reader.result;
-      this.image = res;
-    };
+    var res = reader.result;
+    this.logo = res;
+  };
 }
 getValue(){
   //console.log("Form: ",this.formValidation.valid);
@@ -65,27 +64,18 @@ getValue(){
 }
   Update(){
     var BI;
-    if(this.image == undefined){
-      BI = new CategoryInsert(this.category.name,this.category.description);
-      console.log(BI);
+    if(this.logo == undefined){
+      BI = new BrandInsert(this.brand.name,this.brand.description);
     }
     else
-
     {
-      this.category.image = this.image.toString().split(",")[1];
-      BI = new CategoryInsert(this.category.name,this.category.description,this.category.image);
-      console.log(BI);
+      this.brand.logo = this.logo.toString().split(",")[1];
+      BI = new BrandInsert(this.brand.name,this.brand.description,this.brand.logo);
     }
-    console.log("FINAL BI")
-    console.log(BI);
-    //this.category.image = this.image.toString().split(",")[1];
-   // console.log("CAt AFTER UPDATe");
-     // console.log(this.category);
-      //console.log(this.image.toString().split(",")[1]);
-      this.myService.updateCategoryById(this.Id,this.category).subscribe(
+      this.myService.updateBrandById(this.Id,this.brand).subscribe(
         {
           next:()=>{
-            this.router.navigate(["admin/categoryManager/view-categories"])
+            this.router.navigate(["admin/brandManager/view-brands"])
           },
           error:(err)=>{console.log(err)}
         }
