@@ -1,0 +1,69 @@
+
+<!-- <table class="table table-sm" *ngIf="orders; else loadingBlock">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fname</th>
+      <th scope="col">Lname</th>
+      <th scope="col">cityName</th>
+      <th scope="col">orderDate</th>
+      <th scope="col">shippingDate</th>
+      <th scope="col">arrivalDate</th>
+      <th scope="col">orderState</th>
+      <th scope="col">payMethod</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <th scope="row">{{orders.id}}</th>
+      <td>{{orders.fname}}</td>
+      <td>{{orders.lname}}</td>
+      <td>{{orders.cityName}}</td>
+      <td>{{orders.orderDate}}</td>
+      <td>{{orders.shippingDate}}</td>
+      <td>{{orders.arrivalDate}}</td>
+      <td>{{orders.orderState}}</td>
+      <td>{{orders.payMethod}}</td>
+    </tr>
+    <tr *ngFor="let item of orders.productOrdersReadInOrder">
+      <td>{{item.productName}}</td>
+      <td>{{item.quantiy}}</td>
+    </tr>
+</tbody>
+</table> -->
+
+<div class="card" style="width:600px;text-align: center; margin: 10px auto;" *ngIf="orders; else loadingBlock">
+  <div class="card-body">
+    <h4 class="card-title" style="color: red;">{{orders.fname}}{{orders.lname}}</h4>
+    <p class="card-text">{{orders.cityName}} : {{orders.orderDate}} </p>
+    <p class="card-text"> <u style="color: red;">Shipping</u> {{orders.shippingDate}} <u style="color: red;">Arrival</u> {{orders.arrivalDate}} </p>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Product Name</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orders.productOrdersReadInOrder">
+          <td>{{item.productName}}</td>
+          <td>{{item.quantiy}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p ><b style="color: green;"> order State </b>{{orders.orderState}}  <b style="color: green;"> payment Method </b>   {{orders.payMethod}}</p>
+    <a routerLink="/admin/Order/manage-order/{{orders.id}}" class="btn btn-outline-dark">Manage Order</a>
+  </div>
+</div>
+
+
+<ng-template #loadingBlock>
+  <div class="text-center">
+    <div class="spinner-border"  style="width: 5rem; height: 5rem;"role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>

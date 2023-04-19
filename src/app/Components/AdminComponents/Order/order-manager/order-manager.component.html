@@ -1,0 +1,29 @@
+  <table class="table table-striped" style="text-align: center;" *ngIf="Orders; else loadingBlock">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">userName</th>
+        <th scope="col">Bill</th>
+        <th scope="col">OrderState</th>
+        <th scope="col">Show more Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of Orders">
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.userName}}</td>
+        <td>{{item.bill}}</td>
+        <td>{{item.orderState}}</td>
+        <td><a routerLink="/admin/Order/show-details/{{item.id}}" class="btn btn-outline-dark">ShowDetails</a></td>
+      </tr>
+</tbody>
+
+</table>
+
+<ng-template #loadingBlock>
+  <div class="text-center">
+    <div class="spinner-border"  style="width: 5rem; height: 5rem;"role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>

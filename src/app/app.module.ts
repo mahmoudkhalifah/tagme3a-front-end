@@ -18,6 +18,10 @@ import { ViewProductsComponent } from './Components/AdminComponents/productManag
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
 import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/admin-navbar.component';
+import { OrderManagerComponent } from './Components/AdminComponents/Order/order-manager/order-manager.component';
+import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
+import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
+import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
@@ -37,6 +41,10 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     EditProductComponent,
     AddProductComponent,
     AdminNavbarComponent,
+    OrderManagerComponent,
+    OrderComponent,
+    ShowDetailsComponent,
+    ManageOrderComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,
