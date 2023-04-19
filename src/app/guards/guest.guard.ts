@@ -13,8 +13,11 @@ export class GuestGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(!this.userAuthService.isUserLoggedIn())
         return true;
-      else {
-        this.router.navigate(["/home"])
+      else if(this.userAuthService.isAdmin()) {
+        this.router.navigate(["admin/admin-home"]);
+        return false;
+      } else {
+        this.router.navigate(["/home"]);
         return false;
       }
   }
