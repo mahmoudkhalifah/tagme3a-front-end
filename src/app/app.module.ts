@@ -18,6 +18,10 @@ import { ViewProductsComponent } from './Components/AdminComponents/productManag
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
 import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/admin-navbar.component';
+import { ProductsComponent } from './Components/UserComponents/products/products.component';
+
+import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
+import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
 
 
 @NgModule({
@@ -36,6 +40,8 @@ import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/
     EditProductComponent,
     AddProductComponent,
     AdminNavbarComponent,
+    ProductsComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -45,8 +51,7 @@ import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/
     HttpClientModule
   ],
   providers: [
-
-    //Services
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,8 @@ import { ViewCategoriesComponent } from './Components/AdminComponents/categoryMa
 import { ViewProductsComponent } from './Components/AdminComponents/productManager/view-products/view-products.component';
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
+import { ProductsComponent } from './Components/UserComponents/products/products.component';
+import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
 
 
 
@@ -19,6 +21,7 @@ const routes: Routes = [
     {path:"login",component: LoginComponent},
     {path:"register",component:RegisterComponent},
     {path:"home",component:HomeComponent},
+    {path: "products" , component:ProductsComponent},
 
     //Admin
 
@@ -33,7 +36,9 @@ const routes: Routes = [
     //Admin Product
     {path:"admin/productManager/view-products",component:ViewProductsComponent},
     {path:"admin/productManager/add-product",component:AddProductComponent},
-    {path:"admin/productManager/edit-product",component:EditProductComponent},
+    {path:"admin/productManager/edit-product/:id",component:EditProductComponent},
+    {path:"admin/productManager/product-details/:id",component:ProductDetailsComponent},
+
 
     // {path:"**",component:ErrorComponent}
   ];

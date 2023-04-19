@@ -1,33 +1,55 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6 ">
-        <form>
+        <form (ngSubmit)="AddProduct(productData)">
           <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="productData.name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" [(ngModel)]="productData.description" name="description"></textarea>
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price">
+            <input type="number" class="form-control" id="price" [(ngModel)]="productData.price" name="price">
           </div>
           <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-select" id="category">
-              <option selected>Choose category</option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
-            </select>
+            <label for="discount" class="form-label">Discount</label>
+            <input type="number" class="form-control" id="discount" [(ngModel)]="productData.discount" name="discount">
           </div>
           <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" class="form-control" id="image">
+            <label for="unitInStocks" class="form-label">Unit in Stocks</label>
+            <input type="number" class="form-control" id="unitInStocks" [(ngModel)]="productData.unitInStocks" name="unitInStocks">
           </div>
-          <div class="text-center">
-            <button class="btn btn-primary">Add</button>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <input class="form-control" type="number"  id="category" [(ngModel)]="productData.categoryID" name="categoryID" required>
+              <option value="">Select a category</option>
+              <!-- <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option> -->
+   
+          </div>
+        
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <!-- <select class="form-control" id="brand" [(ngModel)]="productData.brandID" name="brandID"> -->
+              <!-- <option value="">Select a brand</option> -->
+              <!-- <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option> -->
+            <!-- </select> -->
+            <input class="form-control" id="brand" type="number" [(ngModel)]="productData.brandID" name="brandID">
+
+          </div>
+
+          
+          <div class="mb-3 mt-2">
+            <label for="productImages" class="form-label">Product Images</label>
+            <input type="file" id="productImages" name="productImages" (change)="handleUpload($event)">
           </div>
           
+
+          <button type="submit" class="btn btn-primary">Add product</button>
         </form>
+        
       </div>
     </div>
   </div>

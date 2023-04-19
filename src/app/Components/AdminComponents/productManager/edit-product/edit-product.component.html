@@ -1,33 +1,38 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6 ">
-        <form>
-          <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title">
+        <form #editProductForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="product">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
           </div>
-          <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price">
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="product.description"></textarea>
           </div>
-          <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-select" id="category">
-              <option selected>Choose category</option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
-            </select>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
           </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" class="form-control" id="image">
+          <div class="form-group">
+            <label for="discount">Discount:</label>
+            <input type="number" class="form-control" id="discount" name="discount" [(ngModel)]="product.discount">
           </div>
-          <div class="text-center">
-            <button class="btn btn-primary">Edit</button>
+          <div class="form-group">
+            <label for="unitInStocks">Units in Stock:</label>
+            <input type="number" class="form-control" id="unitInStocks" name="unitInStocks" [(ngModel)]="product.unitInStocks" required>
           </div>
-          
+          <div class="form-group">
+            <label for="categoryID">Category ID:</label>
+            <input type="number" class="form-control" id="categoryID" name="categoryID" [(ngModel)]="product.categoryID" required>
+          </div>
+          <div class="form-group">
+            <label for="brandID">Brand ID:</label>
+            <input type="number" class="form-control" id="brandID" name="brandID" [(ngModel)]="product.brandID">
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
+        
       </div>
     </div>
   </div>
