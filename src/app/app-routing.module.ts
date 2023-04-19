@@ -10,21 +10,17 @@ import { ViewCategoriesComponent } from './Components/AdminComponents/categoryMa
 import { ViewProductsComponent } from './Components/AdminComponents/productManager/view-products/view-products.component';
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
-<<<<<<< HEAD
 import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
 import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
 import { EditBrandComponent } from './Components/AdminComponents/brandManager/edit-brand/edit-brand.component';
 import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
 import { DeleteBrandComponent } from './Components/AdminComponents/brandManager/delete-brand/delete-brand.component';
-||||||| 4998478
-=======
 import { OrderManagerComponent } from './Components/AdminComponents/Order/order-manager/order-manager.component';
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
->>>>>>> master
 
 
 
@@ -38,18 +34,9 @@ const routes: Routes = [
     //Admin
 
 
-<<<<<<< HEAD
-    {path:"admin/admin-home",component:AdminHomeComponent},
-
-||||||| 4998478
-    {path:"admin/admin-home",component:AdminHomeComponent},
-    
-=======
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
->>>>>>> master
     //Admin Category
-<<<<<<< HEAD
     {path:"admin/categoryManager/add-category",component:AddCategoryComponent},
     {path:"admin/categoryManager/edit-category/:id",component:EditCategoryComponent},
     {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent},
@@ -61,15 +48,6 @@ const routes: Routes = [
     {path:"admin/brandManager/view-brands",component:ViewBrandsComponent},
     {path:"admin/brandManager/delete-brand/:id",component:DeleteBrandComponent},
 
-||||||| 4998478
-    {path:"admin/categoryManager/add-category",component:AddCategoryComponent},
-    {path:"admin/categoryManager/edit-category",component:EditCategoryComponent},
-    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent},
-=======
-    {path:"admin/categoryManager/add-category",component:AddCategoryComponent,canActivate:[AdminGuard]},
-    {path:"admin/categoryManager/edit-category",component:EditCategoryComponent,canActivate:[AdminGuard]},
-    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent,canActivate:[AdminGuard]},
->>>>>>> master
 
     //Admin Product
     {path:"admin/productManager/view-products",component:ViewProductsComponent,canActivate:[AdminGuard]},
