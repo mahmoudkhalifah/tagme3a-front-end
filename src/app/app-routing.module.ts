@@ -10,6 +10,11 @@ import { ViewCategoriesComponent } from './Components/AdminComponents/categoryMa
 import { ViewProductsComponent } from './Components/AdminComponents/productManager/view-products/view-products.component';
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
+import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
+import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
+import { EditBrandComponent } from './Components/AdminComponents/brandManager/edit-brand/edit-brand.component';
+import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
+import { DeleteBrandComponent } from './Components/AdminComponents/brandManager/delete-brand/delete-brand.component';
 import { OrderManagerComponent } from './Components/AdminComponents/Order/order-manager/order-manager.component';
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
@@ -32,9 +37,17 @@ const routes: Routes = [
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
     //Admin Category
-    {path:"admin/categoryManager/add-category",component:AddCategoryComponent,canActivate:[AdminGuard]},
-    {path:"admin/categoryManager/edit-category",component:EditCategoryComponent,canActivate:[AdminGuard]},
-    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/add-category",component:AddCategoryComponent},
+    {path:"admin/categoryManager/edit-category/:id",component:EditCategoryComponent},
+    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent},
+    {path:"admin/categoryManager/delete-category/:id",component:DeleteCategoryComponent},
+
+    //Admin Brand
+    {path:"admin/brandManager/add-brand",component:AddBrandComponent},
+    {path:"admin/brandManager/edit-brand/:id",component:EditBrandComponent},
+    {path:"admin/brandManager/view-brands",component:ViewBrandsComponent},
+    {path:"admin/brandManager/delete-brand/:id",component:DeleteBrandComponent},
+
 
     //Admin Product
     {path:"admin/productManager/view-products",component:ViewProductsComponent,canActivate:[AdminGuard]},

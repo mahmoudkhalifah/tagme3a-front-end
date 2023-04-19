@@ -18,6 +18,12 @@ import { ViewProductsComponent } from './Components/AdminComponents/productManag
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
 import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/admin-navbar.component';
+import { CategoryServiceService } from './Services/category-service.service';
+import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
+import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
+import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
+import { DeleteBrandComponent } from './Components/AdminComponents/brandManager/delete-brand/delete-brand.component';
+import { EditBrandComponent } from './Components/AdminComponents/brandManager/edit-brand/edit-brand.component';
 import { OrderManagerComponent } from './Components/AdminComponents/Order/order-manager/order-manager.component';
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
@@ -41,6 +47,11 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     EditProductComponent,
     AddProductComponent,
     AdminNavbarComponent,
+    DeleteCategoryComponent,
+    ViewBrandsComponent,
+    AddBrandComponent,
+    DeleteBrandComponent,
+    EditBrandComponent,
     OrderManagerComponent,
     OrderComponent,
     ShowDetailsComponent,

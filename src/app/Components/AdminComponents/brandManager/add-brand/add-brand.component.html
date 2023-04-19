@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input formControlName="name" #name type="text" class="form-control" id="name" name="name">
+          <div *ngIf="!NameValid" style="color: red; text-align: center;">
+            Name Length should be greater than 3
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea formControlName="description" #description class="form-control" id="description" name="description"></textarea>
+          <div *ngIf="!DescriptionValid" style="color: red; text-align: center;">
+            Description Length should be greater than 3
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="logo" class="form-label">Logo</label>
+          <input formControlName="logo" #logo (change)="handleUpload($event)" type="file" class="form-control" id="logo" name="logo">
+          <div *ngIf="!LogoValid" style="color: red; text-align: center;">
+            You Didn't Enter a Logo
+          </div>
+        </div>
+        <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
+        <!-- <button type="submit" (click)="Add(name.value, description.value, logo.value)" class="btn btn-primary d-block mx-auto">Add</button> -->
+      </form>
+    </div>
+  </div>
+</div>
