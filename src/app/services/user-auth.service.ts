@@ -37,19 +37,19 @@ export class UserAuthService {
 
   isAdmin() : boolean {
     if(this.isUserLoggedIn())
-      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.adminRole;
+      return this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.adminRole;
     return false;
   }
 
   isUser() : boolean {
     if(this.isUserLoggedIn())
-      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.userRole;
+      return this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == Constants.userRole;
     return false;
   }
 
   isAuthorized(role : string) : boolean {
     if(this.isUserLoggedIn())
-      this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == role;
+      return this.Payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] == role;
     return false;
   }
 
