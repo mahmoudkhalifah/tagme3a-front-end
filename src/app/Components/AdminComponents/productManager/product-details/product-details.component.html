@@ -1,0 +1,17 @@
+<div *ngIf="product;" class="container">
+<div class="card text-center">
+    <div  class="card-header">
+      {{product.name}}
+    </div>
+    <div class="card-body">
+      <p class="card-text">Name : {{product.name}}</p>
+      <p class="card-text"> Description : {{product.description}}</p>
+      <p class="card-text">Price : {{product.price}}</p>
+      <p class="card-text"> Discount :  {{product.discount}}</p>
+      <p class="card-text"> UnitInStocks : {{product.unitInStocks}}</p>
+      <p class="card-text">Catgory : {{product.categoryID}}</p>
+      <p class="card-text"> Brand: {{product.brandID}}</p>
+      <a routerLink="../../../productManager/view-products" class="btn btn-primary">Back</a>
+    </div>
+  </div>
+</div>
