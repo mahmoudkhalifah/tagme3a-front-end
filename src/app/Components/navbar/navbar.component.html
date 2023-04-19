@@ -17,6 +17,9 @@
             <a class="nav-link" routerLink="./register">Register</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="User/Order-mange/order/:ID">Order</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" routerLink="admin/admin-home">Admin</a>
           </li>
         </ul>
@@ -24,10 +27,10 @@
           <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <button class="btn btn-success" (click)="onLogout()" type="submit">Logout</button>
       </div>
     </div>
   </nav>
 
-  
 
-  
+

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form   class="form" *ngIf="order ; else loadingBlock"  >
+
+          <input #userId value="{{order.userId}}" hidden/>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+              <label class="col-3">Order Number</label>
+              <input  #id  value="{{order.id}}"  type="number" readonly class="form-control" >
+          </div>
+
+          <input #addressID value="{{order.addressID}}" hidden/>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">bill</label>
+            <input #bill value="{{order.bill}}"   type="number"   min="100"   class="form-control" >
+          </div>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">orderDate</label>
+            <input #orderDate value="{{order.orderDate}}"  readonly   type="datetime"  class="form-control" >
+          </div>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">shippingDate</label>
+            <input #shippingDate value="{{order.shippingDate}}"     type="datetime-local"  class="form-control" >
+          </div>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">arrivalDate</label>
+            <input #arrivalDate value="{{order.arrivalDate}}"    type="datetime-local" class="form-control" >
+          </div>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">orderState</label>
+            <select class="col-3" name="orderState" id="orderState" #orderState style="width:200px;"  >
+              <option  [selected]="order.orderState =='Processing'" value="1">Processing</option>
+              <option  [selected]="order.orderState =='Delivered'"value="2">Delivered</option>
+            </select>
+          </div>
+
+          <div class="form-group d-flex m-auto mb-2 mt-5" style="width:500px;" >
+            <label class="col-3">payMethod</label>
+            <input #payMethod value="{{order.payMethod}}"  readonly  type="text"  class="form-control" >
+          </div>
+
+          <div class="form-group text-center  m-auto mb-2" >
+            <input type="submit" value="submit" class="btn btn-outline-success" (click)="Upadte(id.value,userId.value,addressID.value
+            ,shippingDate.value,orderDate.value,payMethod.value,arrivalDate.value,bill.value,orderState.value)" >
+            </div>
+
+        </form>
+</div>
+</div>
+</div>
+<ng-template #loadingBlock>
+  <div class="text-center">
+    <div class="spinner-border"  style="width: 5rem; height: 5rem;"role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+
+

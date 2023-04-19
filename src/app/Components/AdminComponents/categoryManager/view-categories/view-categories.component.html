@@ -1,42 +1,42 @@
 <div class="container">
     <!-- Add category -->
-        
+
         <div class="card text-center mt-3 mb-3">
           <div class="card-header bg-dark " style="color: white;">
-            <h3> Add New category</h3> 
-        
+            <h3> Add New category</h3>
+
           </div>
           <div class="card-body">
             <a routerLink="../add-category" class="btn btn-primary">Add</a>
           </div>
         </div>
-    
+
     <!-- End Add category -->
-        
-        
+
+
             <!-- All categorys -->
             <div class="card text-center mt-3 mb-3">
               <div class="card-header bg-dark " style="color: white;">
-               <h3> All Categories </h3> 
+               <h3> All Categories </h3>
               </div>
-              <div class="card-body">
-          <div class="row justify-content-center">
+              <div  class="card-body">
+          <div  class="row d-flex flex-row  justify-content-center">
                 <!-- Card1 -->
-              <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/Cpu.jpg" alt="Card image cap">
+              <div *ngFor="let c of categories" class="col-sm-4 col-lg-4">
+                <div class=" card mb-4">
+                  <img class="card-img-top" src="{{'data:image/jpg;base64,' + c.image}}" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title">CPU</h5>
-                    <p class="card-text">Descroption : Category oh no oh no </p>
-                    <a routerLink="../edit-category"  class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
+                    <h5 class="card-title">{{c.name}}</h5>
+                    <p class="card-text">Description : {{c.description}}</p>
+                    <a routerLink="../edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
+                    <a routerLink="../delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
                   </div>
                 </div>
               </div>
-        
+
                 <!-- Card2 -->
-        
-              <div class="col-md-4">
+
+              <!-- <div class="col-md-4">
                 <div class="card mb-4">
                   <img class="card-img-top" src="assets/Images/GPU.jpg" alt="Card image cap">
                   <div class="card-body">
@@ -46,11 +46,11 @@
                     <a href="#" class="btn btn-primary m-2">Delete</a>
                   </div>
                 </div>
-              </div>
-        
+              </div> -->
+
                 <!-- Card3 -->
-        
-              <div class="col-md-4">
+
+              <!-- <div class="col-md-4">
                 <div class="card mb-4">
                   <img class="card-img-top" src="assets/Images/Ram.png" alt="Card image cap">
                   <div class="card-body">
@@ -62,10 +62,9 @@
                   </div>
                 </div>
               </div>
-        
-              </div>
+
+              </div> -->
             </div>
           </div>
     </div>
-        
-        
+

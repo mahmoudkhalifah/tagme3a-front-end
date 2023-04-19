@@ -2,25 +2,35 @@
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-  <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="w-25" style="min-width:250px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
     <div class="card" style="background-color: #333333; color: #ffffff; border: none; z-index: 10;">
       <div class="card-header text-center" style="font-family: 'Roboto', sans-serif;">
         <h3>Login</h3>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="getValue()" [formGroup] ="formValidation"  class="animate__animated animate__fadeInDown">
-          <div class="form-group  m-2">
+        <form (ngSubmit)="onLogin()" [formGroup] ="formValidation"  class="animate__animated animate__fadeInDown">
+          <div *ngIf="error" class="alert alert-danger p-2 m-2">
+            {{errorMsg}}
+          </div>
+          <div class="form-group m-2">
             <label for="email" style="font-family: 'Montserrat', sans-serif;">Email</label>
             <input formControlName = "email" type="email" class="form-control" id="email" style="background-color: #444444; color: #ffffff; border: none;">
           </div>
-          <div class="form-group  m-2">
+          <div *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert alert-danger p-2 m-2">
+            <div *ngIf="email.errors?.['required']">Email is required.</div>
+            <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+            <div *ngIf="email.errors?.['minlength']">Email must be more than 2 characters.</div>
+          </div>
+          <div class="form-group m-2">
             <label for="password" style="font-family: 'Montserrat', sans-serif;">Password</label>
-            <input type="password" class="form-control" id="password"  style="background-color: #444444; color: #ffffff; border: none;">
+            <input formControlName = "password" type="password" class="form-control" id="password"  style="background-color: #444444; color: #ffffff; border: none;">
+          </div>
+          <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="alert alert-danger p-2 m-2">
+            <div *ngIf="password.errors?.['required']">Password is required.</div>
+            <div *ngIf="password.errors?.['minlength']">Password must be more than 5 characters.</div>
           </div>
           <div class="text-center  m-2 ">
-            <button type="submit" class="btn btn-primary btn-block" style="background-color: #ff9900; border: none;">
-              Login
-            </button>
+            <input type="submit" value="Login" [disabled]="formValidation.invalid" class="btn btn-primary btn-block" style="background-color: #ff9900; border: none;">
           </div>
         </form>
       </div>

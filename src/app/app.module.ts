@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,6 +22,17 @@ import { ProductsComponent } from './Components/UserComponents/products/products
 
 import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
 import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
+import { CategoryServiceService } from './Services/category-service.service';
+import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
+import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
+import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
+import { DeleteBrandComponent } from './Components/AdminComponents/brandManager/delete-brand/delete-brand.component';
+import { EditBrandComponent } from './Components/AdminComponents/brandManager/edit-brand/edit-brand.component';
+import { OrderManagerComponent } from './Components/AdminComponents/Order/order-manager/order-manager.component';
+import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
+import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
+import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -42,6 +53,15 @@ import { ProductService } from './Components/AdminComponents/productManager/serv
     AdminNavbarComponent,
     ProductsComponent,
     ProductDetailsComponent,
+    DeleteCategoryComponent,
+    ViewBrandsComponent,
+    AddBrandComponent,
+    DeleteBrandComponent,
+    EditBrandComponent,
+    OrderManagerComponent,
+    OrderComponent,
+    ShowDetailsComponent,
+    ManageOrderComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -51,7 +71,12 @@ import { ProductService } from './Components/AdminComponents/productManager/serv
     HttpClientModule
   ],
   providers: [
-    ProductService
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
+    //Services
   ],
   bootstrap: [AppComponent]
 })

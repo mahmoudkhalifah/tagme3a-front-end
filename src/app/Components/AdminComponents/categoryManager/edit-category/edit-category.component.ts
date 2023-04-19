@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { CategoryDTO } from '../../../../Models/CategoryDTO';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
 
 @Component({
   selector: 'app-edit-category',
@@ -7,8 +13,82 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./edit-category.component.css']
 })
 export class EditCategoryComponent {
-  constructor(private appComponent: AppComponent) {
+  Id:any
+  category:any;
+  image:any;
+  formValidation = new FormGroup({
+    name:new FormControl("",[Validators.required,Validators.minLength(2)]),
+    description:new FormControl("",[Validators.minLength(3),Validators.required]),
+  });
+  constructor(private appComponent: AppComponent,private router:Router, myActivate:ActivatedRoute,private myService:CategoryServiceService) {
     appComponent.showFooter = false;
-    
+    this.Id = myActivate.snapshot.params["id"];
+    this.category = myService.getCategoryById(this.Id).subscribe({
+      next:(data)=>{
+        this.category = data
+        console.log(this.category);
+      },
+      error:(err)=>{console.log(err);}
+    });
   }
+  get NameValid(){
+
+    //this.message1 = this.formValidation.controls["name"];
+    //console.log(this.message1);
+      return this.formValidation.controls["name"].valid
+    }
+    get DescriptionValid(){
+      return this.formValidation.controls["description"].valid
+    }
+
+  handleUpload(event:any) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+    //  console.log("ELSORA ELGEDIDA");
+      var res = reader.result;
+      this.image = res;
+    };
+}
+getValue(){
+  //console.log("Form: ",this.formValidation.valid);
+  console.log("Name: ",this.formValidation.controls["name"].valid);
+  console.log("Description: ",this.formValidation.controls["description"].valid);
+  //console.log("Logo: ",this.formValidation.controls["logo"].valid);
+  if(this.formValidation.controls["name"].valid && this.formValidation.controls["description"].valid)
+  {
+    console.log("E3ml UPDATE");
+    //alert("Data Entered Succesfully");
+    this.Update();
+  }
+}
+  Update(){
+    var BI;
+    if(this.image == undefined){
+      BI = new CategoryInsert(this.category.name,this.category.description);
+      console.log(BI);
+    }
+    else
+
+    {
+      this.category.image = this.image.toString().split(",")[1];
+      BI = new CategoryInsert(this.category.name,this.category.description,this.category.image);
+      console.log(BI);
+    }
+    console.log("FINAL BI")
+    console.log(BI);
+    //this.category.image = this.image.toString().split(",")[1];
+   // console.log("CAt AFTER UPDATe");
+     // console.log(this.category);
+      //console.log(this.image.toString().split(",")[1]);
+      this.myService.updateCategoryById(this.Id,this.category).subscribe(
+        {
+          next:()=>{
+            this.router.navigate(["admin/categoryManager/view-categories"])
+          },
+          error:(err)=>{console.log(err)}
+        }
+      );
+    }
 }
