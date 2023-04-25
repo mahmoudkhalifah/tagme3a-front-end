@@ -20,6 +20,10 @@ export class CategoryServiceService {
   {
     return this.client.get<CategoryDTO[]>(this.URL);
   }
+  getProductsWithCategories(id:any)
+  {
+    return this.client.get(this.URL+'/CategoriesWithPrds/'+id);
+  }
   getCategoryById(id:any)
   {
     return this.client.get(this.URL+'/'+id);
