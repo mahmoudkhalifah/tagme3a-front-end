@@ -51,10 +51,8 @@ export class LoginComponent {
         },
         error: (error)=> {
           this.error = true;
-          if (error.status == 404)
-            this.errorMsg = "Incorrect email.";
-          else if(error.status == 401)
-            this.errorMsg = "Incorrect password.";
+          if (error.status == 404 || error.status == 401)
+            this.errorMsg = "Incorrect email or password.";
           else
             this.errorMsg = "Connection error.";
         }

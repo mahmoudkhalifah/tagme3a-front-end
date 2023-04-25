@@ -7,7 +7,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private userAuthService:UserAuthService) {
+  constructor(public userAuthService:UserAuthService) {
 
   }
   onLogout() {
