@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/product';
 import { catchError, throwError } from 'rxjs';
@@ -8,7 +8,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ProductService {
 
-  
+
   private apiUrl = "https://localhost:7004/api/Product" //Api URL
   constructor(private readonly http : HttpClient ) { }
 
@@ -17,7 +17,14 @@ export class ProductService {
       catchError(this.handleError))
     }
 
-    
+   getAllProductsWithBrandAndCat(brandId?:number,categoryId?:number)
+   {
+    let params = new HttpParams();
+    if(brandId)params=params.append("brandId",brandId);
+    if(categoryId)params=params.append("categoryId",categoryId);
+    return this.http.get<Product[]>(this.apiUrl+'/catbrandprds',{params:params}).pipe(
+      catchError(this.handleError))
+   }
   AddProduct(product : Product){
     return this.http.post<Product[]>(this.apiUrl , product).pipe(
       catchError(this.handleError))
@@ -49,5 +56,5 @@ export class ProductService {
       'Something went wrong; please try again later.');
   }
 
-  
+
 }

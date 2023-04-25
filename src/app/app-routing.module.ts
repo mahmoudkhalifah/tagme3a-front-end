@@ -35,8 +35,6 @@ const routes: Routes = [
     {path: "products" , component:ProductsComponent},
 
     //Admin
-
-
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
     //Admin Category

@@ -14,13 +14,13 @@ export class ViewProductsComponent implements OnInit {
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
 
-    
+
   }
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe(
       {
         next:(data)=>{
-          //console.log(data)
+          console.log(data)
           this.products = data;
         },
         error:(err)=>{console.log(err)}
