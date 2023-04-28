@@ -11,5 +11,6 @@ export class AdminHomeComponent {
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
     appComponent.adminNavbar = true;
+    
   }
 }

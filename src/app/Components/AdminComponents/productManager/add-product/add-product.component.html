@@ -1,34 +1,76 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6 ">
-        <form>
+        <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
           <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title">
+            <label for="name" class="form-label">Name</label>
+            <input formControlName="name" #name type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea formControlName="description" #description class="form-control" id="description" name="description"></textarea>
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price">
+            <input formControlName="price" #price type="number" class="form-control" id="price" name="price">
           </div>
           <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-select" id="category">
-              <option selected>Choose category</option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
+            <label for="discount" class="form-label">Discount</label>
+            <input formControlName="discount" type="number" class="form-control" id="discount"  name="discount">
+          </div>
+          <div class="mb-3">
+            <label for="unitInStocks" class="form-label">Unit in Stocks</label>
+            <input formControlName="unitInStocks" type="number" class="form-control" id="unitInStocks" name="unitInStocks">
+          </div>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select formControlName="category" class="form-control mb-3"  name ="catgeory">
+              <!-- <option value="0">--Select Category--</option> -->
+              <option *ngFor="let cat of categories"
+                      value={{cat.categoryId}}>
+                  {{cat.name}}
+              </option>
             </select>
+            <!-- <input class="form-control" type="number"  id="category"  name="categoryID" required> -->
+              <!-- <option value="">Select a category</option> -->
+              <!-- <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option> -->
+
           </div>
-          <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" class="form-control" id="image">
+
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <select formControlName="brand" class="form-control mb-3" name="brand" >
+              <!-- <option value="0">--Select Brand--</option> -->
+              <option *ngFor="let brand of brands"
+                      value={{brand.brandId}}>
+                  {{brand.name}}
+              </option>
+            </select>
+            <!-- <select class="form-control" id="brand" [(ngModel)]="productData.brandID" name="brandID"> -->
+              <!-- <option value="">Select a brand</option> -->
+              <!-- <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option> -->
+            <!-- </select> -->
+            <!-- <input class="form-control" id="brand" type="number" [(ngModel)]="productData.brandID" name="brandID"> -->
+
           </div>
-          <div class="text-center">
-            <button class="btn btn-primary">Add</button>
+          <div class="mb-3 mt-2">
+            <label for="productImage 1" class="form-label">Product Image 1 </label>
+            <input class="form-control mb-3" formControlName="productImage1" #image1 type="file" id="productImage1" name="productImage1" (change)="handleUpload1($event)" >
           </div>
-          
+          <div class="mb-3 mt-2">
+            <label for="productImage 2" class="form-label">Product Image 2 </label>
+            <input class="form-control mb-3" formControlName="productImage2" #image2 type="file" id="productImage2" name="productImage2" (change)="handleUpload2($event)" >
+          </div>
+          <div class="mb-3 mt-2">
+            <label for="productImage 2" class="form-label">Product Image 3 </label>
+            <input class="form-control mb-3" formControlName="productImage3" #image3 type="file" id="productImage3" name="productImage3" (change)="handleUpload3($event)" >
+          </div>
+
+          <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
+
+          <!-- <button type="submit" class="btn btn-primary">Add product</button> -->
         </form>
+
       </div>
     </div>
   </div>
-  
