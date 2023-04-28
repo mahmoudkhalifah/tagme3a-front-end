@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+          <div class="mb-3">
+            <label for="PCId" class="form-label">PCID</label>
+            <input disabled="true" type="text" class="form-control" id="PCId" name="PCId"  [(ngModel)] = "pc.id" [ngModelOptions]="{standalone: true}">
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">BundleName</label>
+            <input formControlName="name" type="text" class="form-control" id="name" name="name"  [(ngModel)] = "pc.bundleName">
+            <div *ngIf="!NameValid" style="color: red; text-align: center;">
+              Name Length should be greater than 3
+            </div>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="Price" class="form-label">TotalPrice</label>
+            <input type="number" formControlName="price" class="form-control" id="Price" name="price"  [(ngModel)] = "pc.totalPrice"/>
+            <div *ngIf="!PriceValid" style="color: red; text-align: center;">
+              Price should be greater than 0
+            </div>
+          </div> -->
+          <div class="mb-3">
+            <label for="imagePic" class="form-label">PC Image</label>
+            <img width="200" height="200" id="imagePic" alt="catPic" class="profile-pictue"  data-src="{{'data:image/jpg;base64,' + pc.image}}" loading="lazy" />
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" accept="image/*" class="form-control" id="image" name="image"  (change)="handleUpload($event)" >
+          </div>
+          <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
+
+        </form>
+      </div>
+    </div>
+  </div>
+

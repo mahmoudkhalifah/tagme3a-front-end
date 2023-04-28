@@ -23,6 +23,14 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
+import { EditPCComponent } from './Components/AdminComponents/PCManager/edit-pc/edit-pc.component';
+import { AddPCComponent } from './Components/AdminComponents/PCManager/add-pc/add-pc.component';
+import { AddprdpcComponent } from './Components/AdminComponents/PCManager/addprdpc/addprdpc.component';
+import { DisplayPCComponent } from './Components/UserComponents/PC/display-pc/display-pc.component';
+import { DetailsPCComponent } from './Components/UserComponents/PC/details-pc/details-pc.component';
+import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete-pc/delete-pc.component';
+import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 
@@ -35,6 +43,9 @@ const routes: Routes = [
     {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
     {path:"home",component:HomeComponent},
     {path: "products" , component:ProductsComponent},
+    {path: "pcs" , component:DisplayPCComponent},
+    {path: "details-pc/:id" , component:DetailsPCComponent},
+
     {path: "products/:id" , component:ProductsComponent},
     {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
     //Admin
@@ -80,7 +91,17 @@ const routes: Routes = [
 
 
     //userOrders
-    {path:"User/Order-mange/order/:ID",component:OrderComponent}
+    {path:"User/Order-mange/order/:ID",component:OrderComponent},
+
+
+    //Admin PC
+    {path:"admin/PCManager/view-pc",component:ViewPCComponent},
+    {path:"admin/PCManager/add-pc",component:AddPCComponent},
+    {path:"admin/PCManager/edit-pc/:id",component:EditPCComponent},
+    {path:"admin/PCManager/addprdpc",component:AddprdpcComponent},
+    // {path:"home",component:AddprdpcComponent}
+    {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
+    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent}
   ];
 
 @NgModule({
