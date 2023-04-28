@@ -23,6 +23,7 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 
 
 
@@ -33,7 +34,8 @@ const routes: Routes = [
     {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
     {path:"home",component:HomeComponent},
     {path: "products" , component:ProductsComponent},
-
+    {path: "products/:id" , component:ProductsComponent},
+    {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
     //Admin
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 

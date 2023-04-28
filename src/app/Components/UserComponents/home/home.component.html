@@ -82,7 +82,8 @@
         <div class="card-body">
           <h5 class="card-title">{{c.name}}</h5>
           <p class="card-text"> {{c.description}}</p>
-          <a routerLink="../products" class="btn btn-primary">Details</a>
+          <!-- <a routerLink="../edit-product/{{product.id}}" class="btn btn-primary m-2">Edit</a> -->
+          <a routerLink="../products/{{c.categoryId}}" class="btn btn-primary">Details</a>
         </div>
       </div>
     </div>
