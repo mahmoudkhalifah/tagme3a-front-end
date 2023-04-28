@@ -35,6 +35,9 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 
+import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -64,13 +67,19 @@ import { HomeProductDetailsComponent } from './Components/UserComponents/product
     ShowDetailsComponent,
     ManageOrderComponent,
     HomeProductDetailsComponent,
+    AdminDashboardComponent,
+    AdminDashboardMainComponent,
+
+
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule,
   ],
   providers: [
     {
