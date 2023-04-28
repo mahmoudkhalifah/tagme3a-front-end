@@ -34,7 +34,19 @@ import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-de
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
+import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
+import { EditPCComponent } from './Components/AdminComponents/PCManager/edit-pc/edit-pc.component';
+import { AddPCComponent } from './Components/AdminComponents/PCManager/add-pc/add-pc.component';
+import { AddprdpcComponent } from './Components/AdminComponents/PCManager/addprdpc/addprdpc.component';
+import { DisplayPCComponent } from './Components/UserComponents/PC/display-pc/display-pc.component';
+import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete-pc/delete-pc.component';
+import { DetailsPCComponent } from './Components/UserComponents/PC/details-pc/details-pc.component';
+import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
+import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 
+import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -64,13 +76,28 @@ import { JourneyModeComponent } from './Components/UserComponents/journey-mode/j
     ShowDetailsComponent,
     ManageOrderComponent,
     JourneyModeComponent,
+    ViewPCComponent,
+    EditPCComponent,
+    AddPCComponent,
+    AddprdpcComponent,
+    DisplayPCComponent,
+    DetailsPCComponent,
+    DeletePCComponent,
+    EditPrdpcComponent,
+    HomeProductDetailsComponent,
+    AdminDashboardComponent,
+    AdminDashboardMainComponent,
+
+
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule,
   ],
   providers: [
     {

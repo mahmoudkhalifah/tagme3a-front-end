@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input formControlName="name" #name type="text" class="form-control" id="name" name="name">
+            <div *ngIf="!NameValid" style="color: red; text-align: center;">
+              Name Length should be greater than 3
+            </div>
+          </div>
+          <!-- <div class="mb-3">
+            <label for="price" class="form-label">TotalPrice</label>
+            <input type="number"  formControlName="price" #price class="form-control" id="price" name="price"/>
+            <div *ngIf="!PriceValid" style="color: red; text-align: center;">
+              TotalPrice should be greater than 0
+            </div> -->
+          <!-- </div> -->
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input formControlName="image" #image (change)="handleUpload($event)" type="file" class="form-control" id="image" name="image">
+            <div *ngIf="!ImageValid" style="color: red; text-align: center;">
+              You Didn't Enter an Image
+            </div>
+          </div>
+          <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
