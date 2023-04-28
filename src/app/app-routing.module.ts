@@ -21,6 +21,7 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 
 
 
@@ -59,11 +60,22 @@ const routes: Routes = [
     //Admin Orders
     {path:"admin/Order/order-manager",component:OrderManagerComponent},
     {path:"admin/Order/show-details/:id",component:ShowDetailsComponent},
-    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent}
+    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent},
+
+    //Admin Dashboard
+
+    {path:"admin/dashboard" , component:AdminDashboardComponent},
+
+
+
+
+
+
+
 
 
     //userOrders
-    ,{path:"User/Order-mange/order/:ID",component:OrderComponent}
+    {path:"User/Order-mange/order/:ID",component:OrderComponent}
   ];
 
 @NgModule({
