@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Admin panel</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{numOfOrders}}</div>
+                        <div class="card-name">Orders</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{numOfProducts}}</div>
+                        <div class="card-name">Products</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{numOfCategories}}</div>
+                        <div class="card-name">Categories</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">{{totalEarnings}}$</div>
+                        <div class="card-name">Earnings</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </div>
+
+			<div class="charts">
+				<div class="chart">
+					<h2>Users</h2>
+					<div>
+					  <canvas id="lineChart"></canvas>
+					</div>
+				  </div>
+				  
+				  <div class="chart doughnut-chart">
+					<h2>Orders</h2>
+					<div>
+					  <canvas id="doughnut"></canvas>
+					</div>
+				  </div>
+				  
+			  </div>
+			  
+        </div>
+    </div>
+</body>
+
+</html>
