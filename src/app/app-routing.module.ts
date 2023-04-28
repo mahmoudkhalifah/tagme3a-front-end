@@ -31,22 +31,24 @@ import { DisplayPCComponent } from './Components/UserComponents/PC/display-pc/di
 import { DetailsPCComponent } from './Components/UserComponents/PC/details-pc/details-pc.component';
 import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete-pc/delete-pc.component';
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
+import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
+import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 
 
 
 const routes: Routes = [
     //User
-    {path:"",component: LoginComponent,canActivate:[GuestGuard]},
-    {path:"login",component: LoginComponent,canActivate:[GuestGuard]},
-    {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
-    {path:"home",component:HomeComponent},
-    {path: "products" , component:ProductsComponent},
-    {path: "pcs" , component:DisplayPCComponent},
-    {path: "details-pc/:id" , component:DetailsPCComponent},
+    // {path:"",component: LoginComponent,canActivate:[GuestGuard]},
+    // {path:"login",component: LoginComponent,canActivate:[GuestGuard]},
+    // {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
+    // {path:"home",component:HomeComponent},
+    // {path: "products" , component:ProductsComponent},
+    // {path: "pcs" , component:DisplayPCComponent},
+    // {path: "details-pc/:id" , component:DetailsPCComponent},
 
+    {path: "products/:id" , component:ProductsComponent},
+    {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
     //Admin
-
-
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
     //Admin Category
@@ -74,7 +76,18 @@ const routes: Routes = [
     //Admin Orders
     {path:"admin/Order/order-manager",component:OrderManagerComponent},
     {path:"admin/Order/show-details/:id",component:ShowDetailsComponent},
-    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent}
+    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent},
+
+    //Admin Dashboard
+
+    {path:"admin/dashboard" , component:AdminDashboardComponent},
+
+
+
+
+
+
+
 
 
     //userOrders

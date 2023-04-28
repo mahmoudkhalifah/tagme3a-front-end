@@ -16,6 +16,10 @@ export class BrandService {
   {
     return this.client.get<BrandDTO[]>(this.URL);
   }
+  getProductsWithBrands(id:any)
+  {
+    return this.client.get(this.URL+'/BrandsWithPrds/'+id);
+  }
   getBrandById(id:any)
   {
     return this.client.get(this.URL+'/'+id);
