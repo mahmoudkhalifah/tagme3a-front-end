@@ -28,7 +28,7 @@
           <div  class="card-body">
             <div class="row">
               <div class="col-md-4" *ngFor="let product of products">
-                <div class="card mb-4">
+                <div  (click)="getDetails(product.id)" class="card mb-4">
                   <!-- data-bs-ride="true" -->
                   <div [attr.id]="'carouselExampleIndicators' + product.id" class="carousel slide" >
                     <div class="carousel-indicators">

@@ -33,6 +33,8 @@ import { OrderComponent } from './Components/UserComponents/Order-mange/order/or
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
+
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -64,11 +66,12 @@ import { NgChartsModule } from 'ng2-charts';
     OrderComponent,
     ShowDetailsComponent,
     ManageOrderComponent,
+    HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
 
 
-    
+
   ],
   imports: [
     BrowserModule, HttpClientModule,
