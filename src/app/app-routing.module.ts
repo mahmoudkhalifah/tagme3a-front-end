@@ -24,6 +24,7 @@ import { OrderComponent } from './Components/UserComponents/Order-mange/order/or
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
 import { UserGuard } from './guards/user.guard';
+import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
 
 
 
@@ -63,11 +64,16 @@ const routes: Routes = [
     //Admin Orders
     {path:"admin/Order/order-manager",component:OrderManagerComponent, canActivate:[AdminGuard]},
     {path:"admin/Order/show-details/:id",component:ShowDetailsComponent, canActivate:[AdminGuard]},
-    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent, canActivate:[AdminGuard]}
+    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent, canActivate:[AdminGuard]},
 
-
+    //users
     //userOrders
-    ,{path:"User/Order-mange/order/:ID",component:OrderComponent, canActivate:[UserGuard]}
+    {path:"User/Order-mange/order/:ID",component:OrderComponent, canActivate:[UserGuard]},
+
+    //any type of user
+    //journey mode
+    {path:"User/journeyMode",component:JourneyModeComponent}
+
   ];
 
 @NgModule({

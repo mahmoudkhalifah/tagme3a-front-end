@@ -33,6 +33,7 @@ import { OrderComponent } from './Components/UserComponents/Order-mange/order/or
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     OrderComponent,
     ShowDetailsComponent,
     ManageOrderComponent,
+    JourneyModeComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

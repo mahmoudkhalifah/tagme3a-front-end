@@ -1,0 +1,15 @@
+<div id="steps">
+  <span *ngFor="let step of steps;let i = index" class="m-2" [ngClass]="i===selectedCategory?'fw-bold':''">
+    <div class="bg-primary rounded-circle text-white text-center p-1 d-inline" [ngClass]="!step.visited?'bg-dark':''" >
+      {{i+1}}
+    </div>
+    <a role="button" (click)="changeStepInfo(i)" class="nav-link d-inline" [class.disabled]="!step.visited" [ngClass]="step.visited?'active text-primary':''">
+      {{step.name}}
+    </a>
+  </span>
+</div>
+<div>
+  <div>
+    {{steps[selectedCategory].name}}
+  </div>
+</div>
