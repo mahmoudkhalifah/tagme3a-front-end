@@ -38,13 +38,13 @@ import { AdminDashboardComponent } from './Components/AdminComponents/admin-dash
 
 const routes: Routes = [
     //User
-    // {path:"",component: LoginComponent,canActivate:[GuestGuard]},
-    // {path:"login",component: LoginComponent,canActivate:[GuestGuard]},
-    // {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
-    // {path:"home",component:HomeComponent},
-    // {path: "products" , component:ProductsComponent},
-    // {path: "pcs" , component:DisplayPCComponent},
-    // {path: "details-pc/:id" , component:DetailsPCComponent},
+    {path:"",component: LoginComponent,canActivate:[GuestGuard]},
+    {path:"login",component: LoginComponent,canActivate:[GuestGuard]},
+    {path:"register",component:RegisterComponent,canActivate:[GuestGuard]},
+    {path:"home",component:HomeComponent},
+    {path: "products" , component:ProductsComponent},
+    {path: "pcs" , component:DisplayPCComponent},
+    {path: "details-pc/:id" , component:DetailsPCComponent},
 
     {path: "products/:id" , component:ProductsComponent},
     {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
@@ -91,7 +91,7 @@ const routes: Routes = [
 
 
     //userOrders
-    ,{path:"User/Order-mange/order/:ID",component:OrderComponent},
+    {path:"User/Order-mange/order/:ID",component:OrderComponent},
 
 
     //Admin PC
