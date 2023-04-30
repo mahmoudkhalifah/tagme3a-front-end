@@ -8,8 +8,42 @@
     </a>
   </span>
 </div>
-<div>
-  <div>
-    {{steps[selectedCategory].name}}
+<div class="row">
+  <div *ngIf="selectedCategory>0 && steps[selectedCategory]; else budget" class="col-10">
+    {{steps[selectedCategory].description}}
+    <label>price</label>
+    <input #price type="number" class="form-control w-25">
+    <label>quantity</label>
+    <input #quantity type="number" class="form-control w-25" min="1">
+    <button class="btn btn-success" (click)="getProducts(+price.value)">filter</button>
+    <div *ngFor="let prd of products" (click)="selectProduct(prd,+quantity.value)">
+      {{prd.name}} : {{prd.price}}$ : {{prd.discount}}$
+    </div>
+  </div>
+
+<!--
+  //Add quantity
+  //check returning to the same category and change product
+  check filter price with more than remaining money
+  check buying with more than remaining money
+  check make user choose to proceed if he exceeded money and increase total
+  handle last step
+
+-->
+  <ng-template #budget class="col-10">
+    <input class="form-control w-25" type="number" [(ngModel)]="totalPrice">
+    <button class="btn btn-success w-25" (click)="nextStep()">Let's go!</button>
+  </ng-template>
+
+  <div class="col-2">
+    <div>
+      Budget:{{totalPrice}}
+    </div>
+    <div>
+      Remaining:{{remainingPrice}}
+    </div>
+    <div *ngFor="let prd of selectedProducts">
+      {{prd.product.name}} x {{prd.quantity}}
+    </div>
   </div>
 </div>
