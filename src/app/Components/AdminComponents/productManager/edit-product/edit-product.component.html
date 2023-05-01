@@ -1,39 +1,91 @@
-<div class="container mt-5">
+ <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6 ">
-        <form #editProductForm="ngForm" (ngSubmit)="onSubmit()" *ngIf="product">
+        <!-- *ngIf="product" -->
+        <form [formGroup] = "formValidation"  (ngSubmit)="getValue()" *ngIf="product" >
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
+            <input formControlName="name" type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
           </div>
           <div class="form-group">
             <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description" [(ngModel)]="product.description"></textarea>
+            <textarea formControlName="description" class="form-control" id="description" name="description" [(ngModel)]="product.description"></textarea>
           </div>
           <div class="form-group">
             <label for="price">Price:</label>
-            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
+            <input formControlName="price" type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
           </div>
           <div class="form-group">
             <label for="discount">Discount:</label>
-            <input type="number" class="form-control" id="discount" name="discount" [(ngModel)]="product.discount">
+            <input formControlName="discount" type="number" class="form-control" id="discount" name="discount" [(ngModel)]="product.discount">
           </div>
           <div class="form-group">
             <label for="unitInStocks">Units in Stock:</label>
-            <input type="number" class="form-control" id="unitInStocks" name="unitInStocks" [(ngModel)]="product.unitInStocks" required>
+            <input formControlName="unitInStocks" type="number" class="form-control" id="unitInStocks" name="unitInStocks" [(ngModel)]="product.unitInStocks" required>
           </div>
+
           <div class="form-group">
+            <label for="category">Category:</label>
+            <select [(ngModel)]="catSelectedValue"  formControlName="category" class="form-control mb-3"  name ="catgeory">
+              <option *ngFor="let cat of categories"
+                      [value]="cat.categoryId"
+                      >
+                  {{cat.name}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <select [(ngModel)]="brandSelectedValue" formControlName="brand" class="form-control mb-3" name="brand" >
+              <option *ngFor="let brand of brands"
+                      [value]="brand.brandId"
+                      >
+                      {{brand.name}}
+              </option>
+            </select>
+          </div>
+
+          <!-- <div class="form-group">
             <label for="categoryID">Category ID:</label>
-            <input type="number" class="form-control" id="categoryID" name="categoryID" [(ngModel)]="product.categoryID" required>
+            <input formControlName="name" type="number" class="form-control" id="categoryID" name="categoryID" [(ngModel)]="product.categoryID" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-3">
             <label for="brandID">Brand ID:</label>
-            <input type="number" class="form-control" id="brandID" name="brandID" [(ngModel)]="product.brandID">
+            <input formControlName="name" type="number" class="form-control" id="brandID" name="brandID" [(ngModel)]="product.brandID">
+          </div> -->
+
+          <div class="mb-3">
+            <label for="imagePic1" class="form-label">Product Image 1</label>
+            <img width="200" height="200" id="ImagePic1" alt="prdPic1" class="profile-pictue" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" />
           </div>
+          <div class="mb-3">
+            <label for="imagePic2" class="form-label">Product Image 2</label>
+            <img width="200" height="200" id="ImagePic2" alt="prdPic2" class="profile-pictue" src="{{'data:image/jpg;base64,' + product.productImages[1]}}" />
+          </div>
+          <div class="mb-3">
+            <label for="imagePic3" class="form-label">Product Image 3</label>
+            <img width="200" height="200" id="ImagePic3" alt="prdPic3" class="profile-pictue" src="{{'data:image/jpg;base64,' + product.productImages[2]}}" />
+          </div>
+
+
+          <div class="mb-3">
+            <label for="image1" class="form-label">Product Image 1</label>
+            <input type="file" accept="image/*" class="form-control" id="image1" name="image1"  (change)="handleUpload1($event)" >
+          </div>
+          <div class="mb-3">
+            <label for="image2" class="form-label">Product Image 2</label>
+            <input type="file" accept="image/*" class="form-control" id="image2" name="image2"  (change)="handleUpload2($event)" >
+          </div>
+          <div class="mb-3">
+            <label for="image3" class="form-label">Product Image 3</label>
+            <input type="file" accept="image/*" class="form-control" id="image3" name="image3"  (change)="handleUpload3($event)" >
+          </div>
+
           <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
-        
+
       </div>
     </div>
   </div>
-  
+
