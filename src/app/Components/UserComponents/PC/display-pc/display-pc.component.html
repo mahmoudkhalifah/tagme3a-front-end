@@ -17,7 +17,9 @@
                   <p class="card-text">Name : {{prd.name}}</p>
                   <p class="card-text">quantity : {{prd.quantitiy}}</p>
               </div>
-                  <a routerLink="../details-pc/{{p.id}}" class="btn btn-primary">Details</a>
+                  <a routerLink="../details-pc/{{p.id}}" class="btn btn-primary" style="margin: 5px;">Details</a>
+                  <a routerLink="../addtocart-pc/{{p.id}}" class="btn btn-primary">Add To Cart</a>
+                  <button  class="btn btn-primary" (click)="addToCart(p.id)">Add To Cart</button>
                 </div>
               </div>
             </div>

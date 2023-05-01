@@ -11,6 +11,8 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class DisplayPCComponent implements OnInit{
   PCs:PCReadDTO[]=[];
+  pc:any;
+
   constructor(private appComponent:AppComponent , myactivate:ActivatedRoute , private myService :PCServiceService){
     appComponent.showFooter = false;
   }
@@ -23,7 +25,29 @@ ngOnInit(): void {
     error:(err)=>{
       console.log(err);
     }
-  })
+  });
+
+  
 }
 
+MyDictionary : Record<number, number> = {};
+
+
+ addToCart(id:any){
+  this.myService.getPCById(id).subscribe({
+    next: (data) => {
+      this.pc = data;
+    },
+    error: (err) => {
+      console.log(err);
+    }
+  });
+  for (let product of this.pc.products) {
+    this.MyDictionary[product.productId]=product.quantitiy;
+
+  }
+
+  
+  console.log(this.MyDictionary);
+}
 }

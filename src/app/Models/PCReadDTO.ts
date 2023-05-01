@@ -7,6 +7,7 @@ export class PCReadDTO{
  }
 
  export class ProductReadInPC{
+   productId?:number;
    quantitiy?:number;
     name?:string;
     description?:string;

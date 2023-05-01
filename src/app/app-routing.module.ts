@@ -33,6 +33,7 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
     {path: "products" , component:ProductsComponent},
     {path: "pcs" , component:DisplayPCComponent},
     {path: "details-pc/:id" , component:DetailsPCComponent},
+    {path: "addtocart-pc/:id" , component:AddtocartPcComponent},
 
     {path: "products/:id" , component:ProductsComponent},
     {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
