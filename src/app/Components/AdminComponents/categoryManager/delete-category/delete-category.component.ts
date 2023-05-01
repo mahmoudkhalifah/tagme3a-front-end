@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-delete-category',

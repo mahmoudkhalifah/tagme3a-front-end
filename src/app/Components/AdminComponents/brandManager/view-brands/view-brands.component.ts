@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BrandDTO } from '../../../../Models/BrandDTO';
 import { AppComponent } from 'src/app/app.component';
 import { ActivatedRoute } from '@angular/router';
-import { BrandService } from 'src/app/Services/brand.service';
+import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
   selector: 'app-view-brands',

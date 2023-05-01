@@ -23,6 +23,8 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
+import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
 import { EditPCComponent } from './Components/AdminComponents/PCManager/edit-pc/edit-pc.component';
 import { AddPCComponent } from './Components/AdminComponents/PCManager/add-pc/add-pc.component';
@@ -91,6 +93,9 @@ const routes: Routes = [
 
 
     //userOrders
+     {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+    //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent},
     {path:"User/Order-mange/order/:ID",component:OrderComponent},
 
 
@@ -103,6 +108,8 @@ const routes: Routes = [
     {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
     {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent}
   ];
+
+
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

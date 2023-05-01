@@ -3,7 +3,7 @@ import { AppComponent } from 'src/app/app.component';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryDTO } from '../../../../Models/CategoryDTO';
 import { Router } from '@angular/router';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-view-categories',
