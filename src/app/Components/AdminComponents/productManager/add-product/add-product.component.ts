@@ -3,8 +3,8 @@ import { AppComponent } from 'src/app/app.component';
 
 import { Product} from '../../models/product';
 import { ProductService } from '../services/product.service';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
-import { BrandService } from 'src/app/Services/brand.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
+import { BrandService } from 'src/app/services/brand.service';
 import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
