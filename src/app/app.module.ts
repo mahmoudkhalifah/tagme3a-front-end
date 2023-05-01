@@ -94,6 +94,7 @@ import { NgChartsModule } from 'ng2-charts';
 
   ],
   imports: [
+
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     FormsModule,

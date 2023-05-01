@@ -95,7 +95,7 @@ const routes: Routes = [
     //userOrders
      {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
     //basket
-    {path:"User/ManageBasket/basket",component:BasketComponent}
+    {path:"User/ManageBasket/basket",component:BasketComponent},
     {path:"User/Order-mange/order/:ID",component:OrderComponent},
 
 
