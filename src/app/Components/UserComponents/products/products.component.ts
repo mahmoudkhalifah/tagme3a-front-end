@@ -24,13 +24,17 @@ export class ProductsComponent {
   brandIdSelected=0;
   categoryIdSelected=0;
   userID:any;
+  id:any
   constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
-    appComponent.showFooter = true;
-    appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
+  // constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
+  //   appComponent.showFooter = true;
+  //   appComponent.showNavbar = true;
+  //   appComponent.adminNavbar = false;
+  // }
   }
   ngOnInit(): void {
-    this.getProducts();
+    this.getInitialPrds();
+    //this.getProducts();
     this.getBrands();
     this.getCategories();
     this.userID= this.auth.getUserId()
@@ -72,6 +76,7 @@ export class ProductsComponent {
     this.getProducts();
    }
    getProducts(){
+
     console.log(this.brandIdSelected);
     console.log(this.categoryIdSelected);
     if(this.brandIdSelected == 0 && this.categoryIdSelected == 0)
@@ -110,15 +115,34 @@ export class ProductsComponent {
       });
     }
     else {
-this.productServcie.getAllProductsWithBrandAndCat(this.brandIdSelected,this.categoryIdSelected).subscribe
-({
-  next:(data)=>{
-    this.products = data;
-    console.log(this.products);
-  },
-  error:(err)=>{console.log(err)}
-});
-    }
+        this.productServcie.getAllProductsWithBrandAndCat(this.brandIdSelected,this.categoryIdSelected).subscribe
+        ({
+          next:(data)=>{
+            this.products = data;
+            console.log(this.products);
+          },
+          error:(err)=>{console.log(err)}
+        });
+            }
+   }
+   getInitialPrds()
+   {
+    this.id = this.route.snapshot.params['id'];
+    this.catgeoryService.getProductsWithCategories(this.id).subscribe
+      ({
+        next:(data)=>{
+          this.products = data;
+          this.products = this.products.products;
+          console.log(this.products);
+        },
+        error:(err)=>{console.log(err)}
+      });
+   }
+   getDetails(id:any)
+   {
+    console.log(id);
+    //src\app\Components\UserComponents\products\product-details\product-details.component.html
+    this.router.navigate(["home-product-details/"+id])
    }
 
    Insert(id:any)

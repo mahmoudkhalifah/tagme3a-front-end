@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+<nav class="sidebar bg-dark">
+  <ul class="sidebar-nav">
+    <li class="sidebar-item" routerLinkActive="active">
+      <a class="sidebar-link" routerLink="/admin/dashboard">
+        <i class="fa fa-Main"></i>
+        <span class="sidebar-text">Main</span>
+      </a>
+    </li>
+    <li class="sidebar-item" routerLinkActive="active">
+      <a class="sidebar-link" routerLink="/admin/admin-home">
+        <i class="fa fa-cogs"></i>
+        <span class="sidebar-text">Settings</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+    </div>
+    <div class="col-md-9">
+      <app-admin-dashboard-main></app-admin-dashboard-main>
+    </div>
+  </div>
+</div>
