@@ -23,6 +23,8 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
+import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 
 
 
@@ -66,8 +68,13 @@ const routes: Routes = [
 
 
     //userOrders
-    ,{path:"User/Order-mange/order/:ID",component:OrderComponent}
+    ,{path:"User/Order-mange/order/:ID/",component:OrderComponent},
+     {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+    //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent}
   ];
+
+
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

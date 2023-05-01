@@ -22,7 +22,7 @@ import { ProductsComponent } from './Components/UserComponents/products/products
 
 import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
 import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
-import { CategoryServiceService } from './Services/category-service.service';
+import { CategoryServiceService } from './services/category-service.service';
 import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
 import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
 import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
@@ -33,6 +33,8 @@ import { OrderComponent } from './Components/UserComponents/Order-mange/order/or
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
+import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     OrderComponent,
     ShowDetailsComponent,
     ManageOrderComponent,
+    BasketComponent,
+    ConfirmOrderComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,

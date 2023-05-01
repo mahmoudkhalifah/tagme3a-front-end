@@ -6,14 +6,14 @@ export interface UserProductsInCart {
 
 interface ProductReadDto
 {
-
-  Id :number
-  Name :string
-  Description:string
-  Price:number
-  Discount?:number
-  UnitInStocks?:number
-  BrandID:number
-  CategoryID?:number
-  ProductImages:string[]
+  userId:string
+  id :number
+  name :string
+  description:string
+  price:number
+  discount?:number
+  unitInStocks?:number
+  brandID:number
+  categoryID?:number
+  productImages:string[]
 }

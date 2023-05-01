@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
 
 @Component({

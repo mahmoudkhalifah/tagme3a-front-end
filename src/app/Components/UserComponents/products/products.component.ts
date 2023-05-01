@@ -1,12 +1,16 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
-import { BrandService } from 'src/app/Services/brand.service';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { BrandService } from 'src/app/services/brand.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { AppComponent } from 'src/app/app.component';
 import { ProductService } from '../../AdminComponents/productManager/services/product.service';
+import { BasketService } from 'src/app/services/basket.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+import {UserProductInCartInsert } from 'src/app/Models/UserProductInCartInsertDTO';
+
 
 @Component({
   selector: 'app-products',
@@ -19,7 +23,8 @@ export class ProductsComponent {
   products:any;
   brandIdSelected=0;
   categoryIdSelected=0;
-  constructor(private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
+  userID:any;
+  constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
     appComponent.showFooter = true;
     appComponent.showNavbar = true;
     appComponent.adminNavbar = false;
@@ -28,8 +33,7 @@ export class ProductsComponent {
     this.getProducts();
     this.getBrands();
     this.getCategories();
-   // console.log(this.brands);
-    //console.log(this.categories);
+    this.userID= this.auth.getUserId()
    }
   public ShowPrds(Id:any)
    {
@@ -115,5 +119,17 @@ this.productServcie.getAllProductsWithBrandAndCat(this.brandIdSelected,this.cate
   error:(err)=>{console.log(err)}
 });
     }
+   }
+
+   Insert(id:any)
+   {
+    let User="1ed81e79-9a3b-4910-9167-5e80e3b7f613";
+    let prd = new UserProductInCartInsert(+id,this.userID,1);
+    this.basketService.AddProductInCart(prd).subscribe(
+      {
+        error:(err)=>{console.log(err)}
+      }
+    );
+    console.log(id)
    }
 }
