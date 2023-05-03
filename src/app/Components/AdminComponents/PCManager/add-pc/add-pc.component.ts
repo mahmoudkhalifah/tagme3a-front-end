@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PCInsertDTO } from 'src/app/Models/PCInsertDTO';
-import { PCServiceService } from 'src/app/Services/pcservice.service';
+import { PCServiceService } from 'src/app/services/pcservice.service';
 import { AppComponent } from 'src/app/app.component';
 import { ProductService } from '../../productManager/services/product.service';
 
