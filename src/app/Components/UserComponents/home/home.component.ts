@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { AppComponent } from 'src/app/app.component';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-home',

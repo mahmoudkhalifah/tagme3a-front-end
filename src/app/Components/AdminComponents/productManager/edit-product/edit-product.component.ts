@@ -3,12 +3,12 @@ import { AppComponent } from 'src/app/app.component';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Product } from '../../models/product';
-import { BrandService } from 'src/app/services/brand.service';
+//import { Product } from '../../models/product';
 import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BrandService } from 'src/app/services/brand.service';
 
 
 @Component({
