@@ -1,5 +1,9 @@
+import { AppComponent } from 'src/app/app.component';
 import { JourneyModeService } from './../../../../services/journey-mode.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Modal } from 'bootstrap';
+
+// import { MdbModalRef } from 'mdb-angular-ui-kit/MdbModalRef';
 
 @Component({
   selector: 'app-journey-mode',
@@ -8,8 +12,20 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class JourneyModeComponent implements OnInit {
 
-  constructor(private journeyModeService:JourneyModeService) {
+  constructor(appcomponent:AppComponent,private journeyModeService:JourneyModeService ) {
+    appcomponent.showFooter = false;
+    
 
+  }
+  myModal:any;
+  proceedAfterExceeded:boolean = false;
+
+  showDialog(){
+    this.myModal.show();
+
+  }
+  exceedBudget(){
+    this.proceedAfterExceeded = true;
   }
   catsLoaded = false;
   ngOnInit(): void {
@@ -28,13 +44,15 @@ export class JourneyModeComponent implements OnInit {
         console.log(err);
       }
     })
+
+    this.myModal = new Modal(document.getElementById('exampleModal')!);
   }
   totalPrice:number=10000;
   //remainingPrice:number=0;
   steps:any[] = [];
   selectedProducts:any[]=[];
   products:any[]=[]
-
+  
 
   selectedCategory = 0;
 
@@ -56,6 +74,7 @@ export class JourneyModeComponent implements OnInit {
   changeStepInfo(index:number) {
     if(this.istTotalPriceLow()) return;
     if(this.selectedCategory!=0)this.resetAfterStep();
+    this.isSearched = false;
     this.filterPriceHigh=false;
     this.selectedCategory = index;
     this.products = [];
@@ -71,9 +90,15 @@ export class JourneyModeComponent implements OnInit {
     .subscribe({
       next:(data)=>{
         this.products=data;
+        console.log(data);
+        this.isSearched=true;
+
       },
       error:(err)=>{
         console.log(err);
+        this.isSearched=true;
+        
+    
       }
     });
   }
@@ -100,8 +125,11 @@ export class JourneyModeComponent implements OnInit {
     this.price.nativeElement.value=1000;
     this.quantity.nativeElement.value=1;
   }
+
+  isSearched:boolean = false;
   nextStep() {
     if(this.istTotalPriceLow()) return;
+    this.isSearched = false;
     if(this.selectedCategory==this.steps.length-1)
     {
       this.finish=true;
