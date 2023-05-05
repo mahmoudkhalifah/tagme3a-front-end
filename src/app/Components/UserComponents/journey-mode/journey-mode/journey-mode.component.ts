@@ -20,10 +20,6 @@ export class JourneyModeComponent implements OnInit {
   myModal:any;
   proceedAfterExceeded:boolean = false;
 
-  showDialog(){
-    this.myModal.show();
-
-  }
   exceedBudget(){
     this.proceedAfterExceeded = true;
   }
@@ -101,7 +97,7 @@ export class JourneyModeComponent implements OnInit {
       if(this.selectedCategory-1<this.selectedProducts.length) {
         if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice + this.selectedProducts[this.selectedCategory-1].product.price*this.selectedProducts[this.selectedCategory-1].quantity)
         {
-          this.proceedAfterExceeded = confirm("no money you want to continue?");
+          this.myModal.show();    
           if(this.proceedAfterExceeded) {
             this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
             this.nextStep();
@@ -113,7 +109,7 @@ export class JourneyModeComponent implements OnInit {
         }
       }
       else if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice){
-        this.proceedAfterExceeded = confirm("no money you want to continue?");
+        this.myModal.show();
         if(this.proceedAfterExceeded) {
           this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
           this.nextStep();
