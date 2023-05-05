@@ -16,10 +16,10 @@ export class EditPrdpcComponent implements OnInit {
   constructor(private appComponent:AppComponent , private myService:PCServiceService , private router:Router , private activate:ActivatedRoute){
     appComponent.showFooter = false;
     this.getPcById();
-    
+
   }
   ngOnInit(): void {
-    
+
   }
 
   getPcById(){
@@ -45,7 +45,7 @@ export class EditPrdpcComponent implements OnInit {
 
     this.myService.updateprdpc(this.pc.id , prd).subscribe({
       next:()=>{
-        this.router.navigate(["admin/PCManager/view-pc"]);
+        //this.router.navigate(["admin/PCManager/view-pc"]);
 
       },
       error:(err)=>{
@@ -55,13 +55,13 @@ export class EditPrdpcComponent implements OnInit {
   }
 
 
-  DeleteProduct(id:any){
+  DeleteProduct(id:any,i:number){
     let prdPc = new PrdPcDeleteDTO(id);
     console.log(prdPc);
     console.log(this.pc.id);
     this.myService.deletePrdPC(this.pc.id , prdPc).subscribe({
       next:()=>{
-        this.getPcById();
+        this.pc.products.splice(i,1);
       },
       error:(err)=>{
         console.log(err);

@@ -1,4 +1,4 @@
-<div id="steps">
+<div *ngIf="catsLoaded" id="steps">
   <span *ngFor="let step of steps;let i = index" class="m-2" [ngClass]="i===selectedCategory?'fw-bold':''">
     <div class="bg-primary rounded-circle text-white text-center p-1 d-inline" [ngClass]="!step.visited?'bg-dark':''" >
       {{i+1}}
@@ -8,14 +8,18 @@
     </a>
   </span>
 </div>
-<div class="row">
+<div *ngIf="finish">
+  <button class="btn btn-success" (click)="finishBuy()">finish</button>
+</div>
+<div class="row" *ngIf="catsLoaded">
   <div *ngIf="selectedCategory>0 && steps[selectedCategory]; else budget" class="col-10">
     {{steps[selectedCategory].description}}
     <label>price</label>
-    <input #price type="number" class="form-control w-25">
+    <input #price type="number" class="form-control w-25" min="1" value="1000">
     <label>quantity</label>
-    <input #quantity type="number" class="form-control w-25" min="1">
+    <input #quantity type="number" class="form-control w-25" min="1" value="1">
     <button class="btn btn-success" (click)="getProducts(+price.value)">filter</button>
+    <div *ngIf="filterPriceHigh" class="alert alert-warning w-25">entered price are higher than remaining money</div>
     <div *ngFor="let prd of products" (click)="selectProduct(prd,+quantity.value)">
       {{prd.name}} : {{prd.price}}$ : {{prd.discount}}$
     </div>
@@ -24,16 +28,18 @@
 <!--
   //Add quantity
   //check returning to the same category and change product
-  check filter price with more than remaining money
-  check buying with more than remaining money
+  //check filter price with more than remaining money
+  //check buying with more than remaining money
   check make user choose to proceed if he exceeded money and increase total
-  handle last step
-
+  check changed total money after buying some products
+  handle last step make it a new step
 -->
   <ng-template #budget class="col-10">
-    <input class="form-control w-25" type="number" [(ngModel)]="totalPrice">
+    <input class="form-control w-25" type="number" [(ngModel)]="totalPrice" min="1000">
+    <div *ngIf="lowPrice" class="alert alert-danger w-25">not avaliable for less than 10,000$</div>
     <button class="btn btn-success w-25" (click)="nextStep()">Let's go!</button>
   </ng-template>
+
 
   <div class="col-2">
     <div>

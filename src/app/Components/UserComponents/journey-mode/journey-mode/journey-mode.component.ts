@@ -1,5 +1,5 @@
 import { JourneyModeService } from './../../../../services/journey-mode.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-journey-mode',
@@ -11,6 +11,7 @@ export class JourneyModeComponent implements OnInit {
   constructor(private journeyModeService:JourneyModeService) {
 
   }
+  catsLoaded = false;
   ngOnInit(): void {
     this.journeyModeService.getCategories().subscribe({
       next: (data)=>{
@@ -20,6 +21,7 @@ export class JourneyModeComponent implements OnInit {
           name:"Budget",
           visited:true,
         });
+        this.catsLoaded = true;
         console.log(this.steps);
       },
       error: (err)=>{
@@ -27,7 +29,7 @@ export class JourneyModeComponent implements OnInit {
       }
     })
   }
-  totalPrice:number=0;
+  totalPrice:number=10000;
   //remainingPrice:number=0;
   steps:any[] = [];
   selectedProducts:any[]=[];
@@ -36,10 +38,35 @@ export class JourneyModeComponent implements OnInit {
 
   selectedCategory = 0;
 
-  changeStepInfo(index:number) {
-    this.selectedCategory = index;
+  istTotalPriceLow() {
+    if(this.selectedCategory==0)
+    {
+      if(this.totalPrice<10000) {
+        this.totalPrice=10000;
+        this.lowPrice=true;
+      } else if(this.remainingPrice<0) {
+        this.totalPrice=this.remainingPrice;
+        this.lowPrice=true;
+      }
+      else { this.lowPrice=false; }
+    }
+    return this.lowPrice;
   }
+
+  changeStepInfo(index:number) {
+    if(this.istTotalPriceLow()) return;
+    if(this.selectedCategory!=0)this.resetAfterStep();
+    this.filterPriceHigh=false;
+    this.selectedCategory = index;
+    this.products = [];
+  }
+  filterPriceHigh=false;
   getProducts(maxPrice:number) {
+    if(maxPrice>this.remainingPrice) {
+      this.filterPriceHigh = true;
+    } else {
+      this.filterPriceHigh=false;
+    }
     this.journeyModeService.getProducts(this.steps[this.selectedCategory].categoryId,maxPrice)
     .subscribe({
       next:(data)=>{
@@ -52,18 +79,42 @@ export class JourneyModeComponent implements OnInit {
   }
 
   selectProduct(prd:any,quantity:number) {
-    // this.remainingPrice-=prd.price;
-    // this.remainingPrice+=prd.discount;
+    if((prd.price-prd.discount)*quantity > this.remainingPrice)
+    {
+      alert("your don't have money to buy this please edit your total money in first step or choose cheaper product");
+      return;
+    }
     if(this.selectedCategory-1<this.selectProduct.length)
       this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
     else this.selectedProducts.push({product:prd,quantity});
     this.nextStep();
   }
 
+  @ViewChild('price') price!: ElementRef;
+  @ViewChild('quantity') quantity!: ElementRef;
+  lowPrice=false;
+  finish=false;
+
+  resetAfterStep(){
+    this.products = [];
+    this.price.nativeElement.value=1000;
+    this.quantity.nativeElement.value=1;
+  }
   nextStep() {
+    if(this.istTotalPriceLow()) return;
+    if(this.selectedCategory==this.steps.length-1)
+    {
+      this.finish=true;
+      return;
+    }
+    this.filterPriceHigh=false;
     this.selectedCategory++;
     this.steps[this.selectedCategory].visited = true;
-    this.products = [];
+    this.resetAfterStep();
+  }
+
+  finishBuy() {
+
   }
 
   get remainingPrice() {
