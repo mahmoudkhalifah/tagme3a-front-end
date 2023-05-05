@@ -19,14 +19,13 @@
     <label>quantity</label>
     <input #quantity type="number" class="form-control w-25" min="1" value="1">
     <button class="btn btn-success" (click)="getProducts(+price.value)">filter</button>
-    <div *ngIf="!proceedAfterInsufficientMoney && filterPriceHigh" class="alert alert-warning w-25">entered price are higher than remaining money</div>
+    <div *ngIf="!proceedAfterExceeded && filterPriceHigh" class="alert alert-warning w-25">entered price are higher than remaining money</div>
     <div *ngFor="let prd of products" (click)="selectProduct(prd,+quantity.value)">
       {{prd.name}} : {{prd.price}}$ : {{prd.discount}}$
     </div>
   </div>
 
-<!--                                                                            7000       6000      10000
-  check make user choose to proceed if he exceeded money and increase total (prdprice - remaining + total)
+<!--
   handle last step make it a new step
 -->
   <ng-template #budget class="col-10">
@@ -42,13 +41,13 @@
 
   <div class="col-2">
     <!-- beign edited -->
-    <div *ngIf="!proceedAfterInsufficientMoney;else totalAfterProceed">
+    <div *ngIf="!proceedAfterExceeded;else totalAfterProceed">
       Budget:{{totalPrice}}
     </div>
     <ng-template #totalAfterProceed>
       Budget2:{{totalCost}}
     </ng-template>
-    <div *ngIf="!proceedAfterInsufficientMoney">
+    <div *ngIf="!proceedAfterExceeded">
       <div *ngIf="remainingPrice>0;else insufficient">
         Remaining:{{remainingPrice}}
       </div>

@@ -39,7 +39,7 @@ export class JourneyModeComponent implements OnInit {
   lowPrice=false;
   lowPRiceBcRemaining=false;
   finish=false;
-  proceedAfterInsufficientMoney=false;
+  proceedAfterExceeded=false;
 
   selectedCategory = 0;
 
@@ -67,10 +67,10 @@ export class JourneyModeComponent implements OnInit {
   selectProduct(prd:any,quantity:number) {
     if(prd.unitInStocks >= quantity ) {
       if(this.selectedCategory-1<this.selectedProducts.length) {
-        if(!this.proceedAfterInsufficientMoney && (prd.price-prd.discount)*quantity > this.remainingPrice + this.selectedProducts[this.selectedCategory-1].product.price*this.selectedProducts[this.selectedCategory-1].quantity)
+        if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice + this.selectedProducts[this.selectedCategory-1].product.price*this.selectedProducts[this.selectedCategory-1].quantity)
         {
-          this.proceedAfterInsufficientMoney = confirm("no money you want to continue?");
-          if(this.proceedAfterInsufficientMoney) {
+          this.proceedAfterExceeded = confirm("no money you want to continue?");
+          if(this.proceedAfterExceeded) {
             this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
             this.nextStep();
           }
@@ -80,9 +80,9 @@ export class JourneyModeComponent implements OnInit {
           this.nextStep();
         }
       }
-      else if(!this.proceedAfterInsufficientMoney && (prd.price-prd.discount)*quantity > this.remainingPrice){
-        this.proceedAfterInsufficientMoney = confirm("no money you want to continue?");
-        if(this.proceedAfterInsufficientMoney) {
+      else if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice){
+        this.proceedAfterExceeded = confirm("no money you want to continue?");
+        if(this.proceedAfterExceeded) {
           this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
           this.nextStep();
         }
@@ -92,7 +92,7 @@ export class JourneyModeComponent implements OnInit {
         this.nextStep();
       }
     } else alert("no units");
-    console.log(this.proceedAfterInsufficientMoney);
+    console.log(this.proceedAfterExceeded);
   }
 
 
