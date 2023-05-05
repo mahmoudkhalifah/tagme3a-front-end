@@ -2,6 +2,10 @@ import { AppComponent } from 'src/app/app.component';
 import { JourneyModeService } from './../../../../services/journey-mode.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { BasketService } from 'src/app/services/basket.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+import { UserPCInCartInsertDTO } from 'src/app/Models/UserPCInCartInsertDTO';
+import { Router } from '@angular/router';
 
 // import { MdbModalRef } from 'mdb-angular-ui-kit/MdbModalRef';
 
@@ -12,16 +16,17 @@ import { Modal } from 'bootstrap';
 })
 export class JourneyModeComponent implements OnInit {
 
-  constructor(appcomponent:AppComponent,private journeyModeService:JourneyModeService ) {
+  constructor(appcomponent:AppComponent,private route:Router ,private journeyModeService:JourneyModeService ,  private auth:UserAuthService, private cartService:BasketService) {
     appcomponent.showFooter = false;
     
 
   }
-  myModal:any;
+  myModal?:Modal;
   proceedAfterExceeded:boolean = false;
 
   exceedBudget(){
     this.proceedAfterExceeded = true;
+    this.myModal?.hide();
   }
   catsLoaded = false;
   ngOnInit(): void {
@@ -61,6 +66,7 @@ export class JourneyModeComponent implements OnInit {
   changeStepInfo(index:number) {
     if(this.istTotalPriceLow()) return;
     if(this.selectedCategory!=0)this.resetAfterStep();
+    this.noUnits = false;
     this.isSearched = false;
     this.filterPriceHigh=false;
     this.selectedCategory = index;
@@ -91,13 +97,15 @@ export class JourneyModeComponent implements OnInit {
       }
     });
   }
-
+noUnits:boolean = false; 
   selectProduct(prd:any,quantity:number) {
+    this.noUnits = false;
     if(prd.unitInStocks >= quantity ) {
       if(this.selectedCategory-1<this.selectedProducts.length) {
         if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice + this.selectedProducts[this.selectedCategory-1].product.price*this.selectedProducts[this.selectedCategory-1].quantity)
         {
-          this.myModal.show();    
+          this.myModal?.show(); 
+          //this.myModal?.   
           if(this.proceedAfterExceeded) {
             this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
             this.nextStep();
@@ -109,7 +117,7 @@ export class JourneyModeComponent implements OnInit {
         }
       }
       else if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice){
-        this.myModal.show();
+        this.myModal?.show();
         if(this.proceedAfterExceeded) {
           this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
           this.nextStep();
@@ -119,7 +127,7 @@ export class JourneyModeComponent implements OnInit {
         this.selectedProducts.push({product:prd,quantity});
         this.nextStep();
       }
-    } else alert("no units");
+    } else this.noUnits = true;
     console.log(this.proceedAfterExceeded);
   }
 
@@ -160,6 +168,7 @@ export class JourneyModeComponent implements OnInit {
 
 
   nextStep() {
+    this.noUnits = false;
     if(this.istTotalPriceLow()) return;
     this.isSearched = false;
     if(this.selectedCategory==this.steps.length-1)
@@ -174,9 +183,22 @@ export class JourneyModeComponent implements OnInit {
   }
 
 
+  id:any = this.auth.getUserId()
 
   finishBuy() {
+    const ids = this.selectedProducts.map(item => new  UserPCInCartInsertDTO(item.product.id,item.quantity));
+    console.log(ids);
+      this.cartService.AddLstProductInCart( ids, this.id).subscribe({
+        next:()=>{
 
+          console.log("added");
+          this.route.navigate(['/User/ManageBasket/basket']);
+
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
   }
 
   get remainingPrice() {

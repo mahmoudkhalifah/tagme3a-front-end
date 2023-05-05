@@ -19,51 +19,41 @@
     <label>quantity</label>
     <input #quantity type="number" class="form-control w-25" min="1" value="1">
     <button class="btn btn-success" (click)="getProducts(+price.value)">filter</button>
-    <div *ngIf="!proceedAfterExceeded && filterPriceHigh" class="alert alert-warning w-25">entered price are higher than remaining money</div>
+    <div *ngIf="filterPriceHigh" class="alert alert-warning w-25">entered price are higher than remaining money</div>
     <div *ngFor="let prd of products" (click)="selectProduct(prd,+quantity.value)">
       {{prd.name}} : {{prd.price}}$ : {{prd.discount}}$
     </div>
   </div> -->
 
 <!--
+  //Add quantity
+  //check returning to the same category and change product
+  //check filter price with more than remaining money
+  //check buying with more than remaining money
+  check make user choose to proceed if he exceeded money and increase total
+  check changed total money after buying some products
   handle last step make it a new step
   //enhance Ui
 -->
   <!-- <ng-template #budget class="col-10">
     <input class="form-control w-25" type="number" [(ngModel)]="totalPrice" min="1000">
-  <ng-template #budget class="col-10">
-     <input class="form-control w-25" type="number" [(ngModel)]="totalPrice" min="1000"> -->
-    <!-- <input #total class="form-control w-25" [value]="totalPrice" type="number" min="1000">
-     #region new 
-    <div *ngIf="lowPRiceBcRemaining" class="alert alert-danger w-25">you can't make total price less than total cost ({{totalCost}})</div>
-     #endregion 
     <div *ngIf="lowPrice" class="alert alert-danger w-25">not avaliable for less than 10,000$</div>
-    <button class="btn btn-success w-25" (click)="setTotalPrice(+total.value)">Let's go!</button>
-  </ng-template> -->
+    <button class="btn btn-success w-25" (click)="nextStep()">Let's go!</button>
+  </ng-template>
 
 
   <div class="col-2">
-    <!-- beign edited -->
-    <div *ngIf="!proceedAfterExceeded;else totalAfterProceed">
+    <div>
       Budget:{{totalPrice}}
     </div>
-    <ng-template #totalAfterProceed>
-      Budget2:{{totalCost}}
-    </ng-template>
-    <div *ngIf="!proceedAfterExceeded">
-      <div *ngIf="remainingPrice>0;else insufficient">
-        Remaining:{{remainingPrice}}
-      </div>
-      <ng-template #insufficient>
-        Remaining: insufficient money
-      </ng-template>
+    <div>
+      Remaining:{{remainingPrice}}
     </div>
-    <!--end edited -->
     <div *ngFor="let prd of selectedProducts">
       {{prd.product.name}} x {{prd.quantity}}
     </div>
   </div>
-</div> 
+</div> -->
 
 
 <div class="container">
@@ -78,25 +68,23 @@
                 <h5 class="card-title">Steps</h5>
               </div>
               <div>
-                 <div class="d-flex align-items-center" *ngIf="!proceedAfterExceeded;else totalAfterProceed">
-                  <span class="me-2">Remaining:</span>
+                 <div class="d-flex align-items-center" *ngIf="!proceedAfterExceeded">
+                  <span class="me-2"  *ngIf="remainingPrice>0;else insufficient">Remaining:</span>
                   <span>{{remainingPrice}}</span>
                 </div>
-
-                <ng-template #totalAfterProceed>
-                  Budget:{{totalCost}}
-                </ng-template>
-
-                <div class="d-flex align-items-center" *ngIf="!proceedAfterExceeded">
-                  <span class="me-2" *ngIf="remainingPrice>0;else insufficient">Budget:</span>
-                  <span>{{totalPrice}}</span>
-                </div> 
 
                 <ng-template #insufficient>
                   Remaining: insufficient money
                 </ng-template>
-              </div>
-
+          
+                <div class="d-flex align-items-center" *ngIf="!proceedAfterExceeded;else totalAfterProceed">
+                  <span class="me-2">Budget:</span>
+                  <span>{{totalPrice}}</span>
+                </div> 
+                <ng-template #totalAfterProceed>
+                  Total cost:{{totalCost}}
+                </ng-template>
+            
               </div>
             </div>
             <hr> 
@@ -137,8 +125,10 @@
                         <label for="quantity" class="form-label">Quantity</label>
                         <input #quantity type="number" class="form-control" min="1" value="1" id="quantity">
                       </div>
+                      <div *ngIf="noUnits" class="alert alert-danger mt-2">we don't have enough unit for this product</div>
+
                     </form>
-                    <div *ngIf="filterPriceHigh" class="alert alert-warning mt-2">Entered price is higher
+                    <div *ngIf="!proceedAfterExceeded && filterPriceHigh" class="alert alert-warning mt-2">Entered price is higher than remaining budget
                     </div>
                     <div class="container">
                       <div class="row" *ngIf=" products.length>0 ;else produtless">
@@ -149,8 +139,8 @@
                               <h5 class="card-title">{{prd.name}}</h5>
                               <p class="card-text" *ngIf="prd.discount == 0 else sale">{{prd.price}}$ </p>
                               <ng-template #sale>
-                                <p class="card-text" style="text-decoration: line-through ; display: inline-block; color: red;margin-right: 10px;">{{prd.price}}$</p>
-                                <p class="card-text" style="display: inline-block;">    {{prd.price - prd.discount}}$</p>
+                                <p class="card-text" style="display: inline-block;font-size: x-large;margin-right: 20px;">    {{prd.price - prd.discount}}$</p>
+                                <p class="card-text" style="text-decoration: line-through ; display: inline-block;  color: red;">{{prd.price}}$</p>
                               </ng-template>
                             </div>
                           </div>
@@ -171,8 +161,9 @@
                 <div class="mb-3">
                   <label for="totalPrice" class="form-label">Total Price</label>
                   <input class="form-control" type="number" [(ngModel)]="totalPrice" min="1000" id="totalPrice">
-                  <div *ngIf="lowPRiceBcRemaining" class="alert alert-danger w-25">you can't make total price less than total cost ({{totalCost}})</div>
                   <div *ngIf="lowPrice" class="alert alert-danger mt-2">Minimum budget is 10,000$</div>
+                  <div *ngIf="lowPRiceBcRemaining" class="alert alert-danger w-25">you can't make total price less than total cost ({{totalCost}})</div>
+
                 </div>
                 <button class="btn btn-success w-100" (click)="nextStep()">Start Shopping</button>
               </ng-template>
@@ -186,17 +177,16 @@
         <div class="card-body">
           <h5 class="card-title">Products</h5>
           <div class="row">
-            <!-- <div class="col-6"> -->
-              <div *ngFor="let prd of selectedProducts">
-                <div class="card mb-3">
+            <div *ngFor="let prd of selectedProducts">
+              <div class="card mb-3">
                 <div class="card-body">
                   <h5 class="card-title">{{prd.product.name}}</h5>
                   <p class="card-text">Quantity: {{prd.quantity}}</p>
                   <!-- <img class="card-img-top" src="{{'data:image/jpg;base64,' + prd.productImages[0]}}" alt="{{prd.name}}"> -->
                 </div>
               </div>
-              </div>
-            <button class="btn btn-success w-100" *ngIf="selectedProducts.length == steps.length-1">Finish shopping</button>
+            </div>
+            <button class="btn btn-success w-100 "  (click)="finishBuy()">Finish shopping</button>
 
             <!-- </div> -->
           </div>
@@ -209,8 +199,6 @@
 
   </div>
 </div>
-<button type="button" class="btn btn-primary" (click)="showDialog()">
-</button>
           
 <div class="modal" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
