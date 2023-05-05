@@ -52,24 +52,15 @@ export class JourneyModeComponent implements OnInit {
   steps:any[] = [];
   selectedProducts:any[]=[];
   products:any[]=[]
-  
+  @ViewChild('price') price!: ElementRef;
+  @ViewChild('quantity') quantity!: ElementRef;
+  lowPrice=false;
+  lowPRiceBcRemaining=false;
+  finish=false;
+  //proceedAfterExceeded=false;
 
   selectedCategory = 0;
 
-  istTotalPriceLow() {
-    if(this.selectedCategory==0)
-    {
-      if(this.totalPrice<10000) {
-        this.totalPrice=10000;
-        this.lowPrice=true;
-      } else if(this.remainingPrice<0) {
-        this.totalPrice=this.remainingPrice;
-        this.lowPrice=true;
-      }
-      else { this.lowPrice=false; }
-    }
-    return this.lowPrice;
-  }
 
   changeStepInfo(index:number) {
     if(this.istTotalPriceLow()) return;
@@ -79,6 +70,8 @@ export class JourneyModeComponent implements OnInit {
     this.selectedCategory = index;
     this.products = [];
   }
+
+
   filterPriceHigh=false;
   getProducts(maxPrice:number) {
     if(maxPrice>this.remainingPrice) {
@@ -104,21 +97,37 @@ export class JourneyModeComponent implements OnInit {
   }
 
   selectProduct(prd:any,quantity:number) {
-    if((prd.price-prd.discount)*quantity > this.remainingPrice)
-    {
-      alert("your don't have money to buy this please edit your total money in first step or choose cheaper product");
-      return;
-    }
-    if(this.selectedCategory-1<this.selectProduct.length)
-      this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
-    else this.selectedProducts.push({product:prd,quantity});
-    this.nextStep();
+    if(prd.unitInStocks >= quantity ) {
+      if(this.selectedCategory-1<this.selectedProducts.length) {
+        if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice + this.selectedProducts[this.selectedCategory-1].product.price*this.selectedProducts[this.selectedCategory-1].quantity)
+        {
+          this.proceedAfterExceeded = confirm("no money you want to continue?");
+          if(this.proceedAfterExceeded) {
+            this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
+            this.nextStep();
+          }
+        }
+        else {
+          this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
+          this.nextStep();
+        }
+      }
+      else if(!this.proceedAfterExceeded && (prd.price-prd.discount)*quantity > this.remainingPrice){
+        this.proceedAfterExceeded = confirm("no money you want to continue?");
+        if(this.proceedAfterExceeded) {
+          this.selectedProducts[this.selectedCategory-1]={product:prd,quantity};
+          this.nextStep();
+        }
+      }
+      else {
+        this.selectedProducts.push({product:prd,quantity});
+        this.nextStep();
+      }
+    } else alert("no units");
+    console.log(this.proceedAfterExceeded);
   }
 
-  @ViewChild('price') price!: ElementRef;
-  @ViewChild('quantity') quantity!: ElementRef;
-  lowPrice=false;
-  finish=false;
+
 
   resetAfterStep(){
     this.products = [];
@@ -127,6 +136,33 @@ export class JourneyModeComponent implements OnInit {
   }
 
   isSearched:boolean = false;
+  setTotalPrice(total:number) {
+    if(total>=this.totalCost && total >= 10000) {
+    }
+    this.totalPrice = total;
+    this.nextStep();
+  }
+
+  istTotalPriceLow() {
+    if(this.selectedCategory==0)
+    {
+      if(this.totalPrice<10000) {
+        this.lowPrice=true;
+        return true;
+      } else if(this.remainingPrice<0) {
+        this.lowPRiceBcRemaining=true;
+        return true;
+      }
+
+      else {
+        this.lowPrice=false;
+        this.lowPRiceBcRemaining=false;
+      }
+    }
+    return false;
+  }
+
+
   nextStep() {
     if(this.istTotalPriceLow()) return;
     this.isSearched = false;
@@ -141,6 +177,8 @@ export class JourneyModeComponent implements OnInit {
     this.resetAfterStep();
   }
 
+
+
   finishBuy() {
 
   }
@@ -150,5 +188,12 @@ export class JourneyModeComponent implements OnInit {
     let remaining = this.totalPrice;
     this.selectedProducts.forEach((prd:any)=>remaining-=(prd.product.price-prd.product.discount)*prd.quantity);
     return remaining;
+  }
+
+  get totalCost() {
+    //could decrease it after every time purchanse
+    let total = 0;
+    this.selectedProducts.forEach((prd:any)=>total+=(prd.product.price-prd.product.discount)*prd.quantity);
+    return total;
   }
 }
