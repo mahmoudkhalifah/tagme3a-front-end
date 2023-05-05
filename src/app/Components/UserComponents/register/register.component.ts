@@ -2,7 +2,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppComponent } from 'src/app/app.component';
-import { UserRegister } from 'src/app/models/user-register';
+import { UserRegister } from 'src/app/Models/user-register';
 import { Router } from '@angular/router';
 
 @Component({

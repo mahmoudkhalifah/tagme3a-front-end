@@ -1,3 +1,7 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="./home">Tagme3a</a>
@@ -22,6 +26,15 @@
           <li *ngIf="userAuthService.isAdmin()" class="nav-item">
             <a class="nav-link" routerLink="admin/admin-home">Admin</a>
           </li>
+          <li class="nav-item">
+            <div class="d-flex align-items-center">
+              <a class="position-relative" routerLink="User/ManageBasket/basket">
+                <div class="cart-no">{{data.length}}</div>
+                <li class="bi bi-cart-fill yellow-color"></li>
+              </a>
+            </div>
+          </li>
+
         </ul>
         <form class="d-flex ms-auto">
           <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">

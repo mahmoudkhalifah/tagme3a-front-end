@@ -21,8 +21,7 @@ import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/
 import { ProductsComponent } from './Components/UserComponents/products/products.component';
 
 import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
-import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
-import { CategoryServiceService } from './Services/category-service.service';
+
 import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
 import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
 import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
@@ -34,6 +33,8 @@ import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-de
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
+import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
+import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
 import { EditPCComponent } from './Components/AdminComponents/PCManager/edit-pc/edit-pc.component';
 import { AddPCComponent } from './Components/AdminComponents/PCManager/add-pc/add-pc.component';
@@ -47,6 +48,7 @@ import { HomeProductDetailsComponent } from './Components/UserComponents/product
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
+import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { NgChartsModule } from 'ng2-charts';
     ShowDetailsComponent,
     ManageOrderComponent,
     JourneyModeComponent,
+    BasketComponent,
+    ConfirmOrderComponent,
     ViewPCComponent,
     EditPCComponent,
     AddPCComponent,
@@ -87,11 +91,13 @@ import { NgChartsModule } from 'ng2-charts';
     HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
+    AddtocartPcComponent,
 
 
 
   ],
   imports: [
+
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     FormsModule,

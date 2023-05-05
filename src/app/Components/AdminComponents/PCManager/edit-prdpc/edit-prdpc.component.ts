@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrdPCUpdateDTO } from 'src/app/Models/PrdPCUpdateDTO';
 import { PrdPcDeleteDTO } from 'src/app/Models/PrdPcDeleteDTO';
-import { PCServiceService } from 'src/app/Services/pcservice.service';
+import { PCServiceService } from 'src/app/services/pcservice.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -54,14 +54,13 @@ export class EditPrdpcComponent implements OnInit {
     });
   }
 
-
-  DeleteProduct(id:any,i:number){
+  DeleteProduct(id:any , i :number){
     let prdPc = new PrdPcDeleteDTO(id);
     console.log(prdPc);
     console.log(this.pc.id);
     this.myService.deletePrdPC(this.pc.id , prdPc).subscribe({
       next:()=>{
-        this.pc.products.splice(i,1);
+        this.pc.products.splice(i , 1);
       },
       error:(err)=>{
         console.log(err);

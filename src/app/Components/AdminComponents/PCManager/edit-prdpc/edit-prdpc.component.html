@@ -3,11 +3,11 @@
 
 <div class="card text-center mt-3 mb-3">
               <div class="card-header bg-dark " style="color: white;">
-               <h3> Product for {{pc.bundleName}} </h3>
+              <h3> Product for {{pc.bundleName}} </h3>
               </div>
               <div  class="card-body">
           <div  class="row d-flex flex-row  justify-content-center">
-            <div *ngFor="let prd of pc.products;let i=index">
+            <div *ngFor="let prd of pc.products;let i = index;">
                 <div class=" card mb-4">
                     <img class="card-img-top" src="{{'data:image/jpg;base64,' + prd.image}}" alt="Card image cap">
                   <div class="card-body">
@@ -18,7 +18,7 @@
                     <input id="qty-{{prd.productId}}" class="card-text" value="{{prd.quantitiy}}"/>
                     <p class="card-text">Price : {{prd.price}}</p>
                     <button class="btn btn-primary m-2" (click)="EditProduct(prd.productId)">Edit Product</button>
-                    <button class="btn btn-primary m-2" (click)="DeleteProduct(prd.productId,i)">Delete Product</button>
+                    <button class="btn btn-primary m-2" (click)="DeleteProduct(prd.productId , i)">Delete Product</button>
 
                     <a routerLink="../delete-pc/{{prd.productId}}" class="btn btn-primary m-2">Delete</a>
 

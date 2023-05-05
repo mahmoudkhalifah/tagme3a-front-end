@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryDTO } from '../../../../Models/CategoryDTO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
 
 @Component({
