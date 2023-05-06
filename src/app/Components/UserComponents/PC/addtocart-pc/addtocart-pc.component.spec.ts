@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterComponent } from './register.component';
+import { AddtocartPcComponent } from './addtocart-pc.component';
 
-describe('RegisterComponent', () => {
-  let component: RegisterComponent;
-  let fixture: ComponentFixture<RegisterComponent>;
+describe('AddtocartPcComponent', () => {
+  let component: AddtocartPcComponent;
+  let fixture: ComponentFixture<AddtocartPcComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ AddtocartPcComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterComponent);
+    fixture = TestBed.createComponent(AddtocartPcComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

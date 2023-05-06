@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PCServiceService } from 'src/app/Services/pcservice.service';
+import { PCServiceService } from 'src/app/services/pcservice.service';
 import { AppComponent } from 'src/app/app.component';
 import { ProductService } from '../../productManager/services/product.service';
 import { PrdPCDTO } from 'src/app/Models/PrdPcDTO';
@@ -12,11 +12,11 @@ import { PrdPCDTO } from 'src/app/Models/PrdPcDTO';
 })
 export class AddprdpcComponent implements OnInit {
 
-  
+
   selectedPC:any;
   pcs:any;
   products:any;
-  constructor(appcomponent:AppComponent , private route :Router , private myService:PCServiceService 
+  constructor(appcomponent:AppComponent , private route :Router , private myService:PCServiceService
     , private prdService:ProductService){
     appcomponent.showFooter = false;
   }
@@ -30,7 +30,7 @@ export class AddprdpcComponent implements OnInit {
         console.log(err);
       }
     });
-    
+
     this.prdService.getAllProducts().subscribe({
       next:(data)=>{
         this.products = data;
@@ -41,8 +41,7 @@ export class AddprdpcComponent implements OnInit {
       }
     })
   }
-  
-  AddProduct(id:any){
+ AddProduct(id:any){
     let quantity = document.getElementById(`qty-${id}`) as HTMLInputElement;
     console.log(quantity.value);
     let newprd = new PrdPCDTO(id

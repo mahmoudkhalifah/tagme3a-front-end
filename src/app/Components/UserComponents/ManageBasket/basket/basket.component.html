@@ -1,0 +1,50 @@
+<script>
+  var sum=0
+</script>
+<table class="table table-striped" style="height: 200px;">
+<thead>
+  <tr>
+      <th colspan="3">Product</th>
+      <th>Price</th>
+      <th colspan="3">Quantity</th>
+      <th>Total</th>
+    </tr>
+</thead>
+<tbody *ngIf="data ; else loadingBlock">
+  <tr *ngFor="let item of data;let i in index" >
+    <input value="{{item.pid}}" hidden #pid/>
+    <td colspan="3">{{item.prdName}} </td>
+    <td>{{item.price |currency:"EGP":"symbol"}}</td>
+    <td colspan="3">
+      <input   [(ngModel)]="item.quantity" style="text-align: center;" type="number" value="{{item.quantity}}" #quantity/>
+   </td>
+    <td >   {{ item.price*item.quantity |currency:"EGP":"symbol"}}</td>
+    <td>
+      <button type="button" (click)="Save(+quantity.value,+pid.value,+item.unitInStocks,item.prdName)"
+       class="btn btn-success">Edit </button>
+    </td>
+
+    <td>
+      <button type="button" (click)="Remove(+item.pid,+i)" class="btn btn-danger"> Remove </button>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+<hr>
+<div style="text-align: center;margin: auto;width: 200px;" class="border border-warning">
+  <p style="color: red; font-size: 20px;display: inline;">  Total Price:{{TotalPrice}}</p>
+</div>
+
+
+<div style="text-align: center; margin: auto;margin-top: 20px;" >
+  <button class="btn btn-danger" routerLink="/User/Order-mange/confirm-order"  >Fill Order Details</button>
+</div>
+
+<ng-template #loadingBlock>
+  <div class="text-center">
+    <div class="spinner-border"  style="width: 5rem; height: 5rem;"role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>

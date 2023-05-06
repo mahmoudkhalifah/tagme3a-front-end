@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserLogin } from '../models/user-login';
-import { UserRegister } from '../models/user-register';
+import { UserRegister } from '../Models/user-register';
 import jwt_decode from 'jwt-decode';
 import { Constants } from '../constants/constants';
+import { UserLogin } from '../Models/user-login';
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { ActivatedRoute } from '@angular/router';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-delete-category',
@@ -34,7 +34,7 @@ export class DeleteCategoryComponent {
         this.service.deleteCategoryById(this.Id).subscribe(
           {
             next:()=>{
-              this.router.navigate(["admin/categoryManager/view-categories"])
+              this.router.navigate(["admin/dashboard"])
             },
             error:(err)=>{console.log(err)}
           }

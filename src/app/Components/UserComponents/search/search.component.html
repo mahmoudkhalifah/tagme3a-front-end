@@ -1,0 +1,60 @@
+<div class="container">
+<!-- Search Results -->
+<div class="card text-center mt-3 mb-3">
+    <h5 class="text-center  display-1 mb-2">Search Results for "<span class="text-success">{{ searchQuery }}</span>"</h5>
+    <div class="card-body">
+      <div class="row products-row">
+        <div class="col-md-4" *ngFor="let product of searchResults">
+          <div class="card mb-4">
+            <div [attr.id]="'carouselExampleIndicators' + product.id" class="carousel slide" >
+                <div class="carousel-indicators">
+                  <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+              <div style="width:200px; height: 191px; " class="carousel-inner">
+                <div class="carousel-item active">
+                  <div style="  justify-content: center; align-items: center;" class="mt-5 ms-4 ">
+                    <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div style="  justify-content: center; align-items: center;" class="mt-5 ms-5 ">
+                    <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[1]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div style="  justify-content: center; align-items: center;" class="mt-5 ms-5 ">
+                    <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[2]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                  </div>
+                </div>
+              </div>
+                <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide="prev">
+                  <span style="background-color: black;" class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide="next">
+                  <span style="background-color: black;" class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            <!-- carousel code -->
+            <div class="card-body">
+              <h5 class="card-title">{{product.name}}</h5>
+              <p class="card-text">Price: {{product.price}} $</p>
+              <p class="card-text">Description: {{product.description}}</p>
+              <div class="row pb-3">
+                <div class="col-5 d-grid">
+                  <a class="btn btn-success text-white mt-2" (click)="getDetails(product.id)"><i class="far fa-eye"></i></a>
+                </div>
+                <div class="col-5 d-grid">
+                  <a class="btn btn-success text-white mt-2" href=""><i class="fas fa-heart"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

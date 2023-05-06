@@ -1,99 +1,95 @@
 <div class="container">
-<!-- Joureny Mode -->
 
-<div class="card text-center mt-3 mb-3">
-  <div class="card-header bg-dark " style="color: white;">
-    <h3> Journey Mode</h3>
+<!-- Search Modal -->
 
+    <!-- Start Journey Mode -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide m-2" data-bs-ride="carousel">
+      <ol class="carousel-indicators">
+          <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+          <div class="carousel-item active">
+              <div class="container">
+                  <div class="row p-5">
+                      <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                          <img class="img-fluid" src="assets/Images/1.jpg" alt="">
+                      </div>
+                      <div class="col-lg-6 mb-0 d-flex align-items-center">
+                          <div class="text-align-left align-self-center">
+                              <h1 class="h1 text-success"><b>Build</b> Your PC</h1>
+                              <h3 class="h2">Choose Your Favourite Parts</h3>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+              <div class="container">
+                  <div class="row p-5">
+                      <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                          <img class="img-fluid" src="assets/Images/3.jpg" alt="">
+                      </div>
+                      <div class="col-lg-6 mb-0 d-flex align-items-center">
+                          <div class="text-align-left">
+                              <h1 class="h1 text-success">This is Our <b>Journey Mode</b></h1>
+                              <h3 class="h2"></h3>
+                              <p>
+                                  Give us your budget and start the Journey to
+                                    <strong>Bulid your PC</strong> Easily
+                              </p>
+                                  <a rel="sponsored" class="text-success " routerLink="/User/journeyMode" target="_blank"> <b>Here We Go</b></a>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+          <i class="fas fa-chevron-left"></i>
+      </a>
+      <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+          <i class="fas fa-chevron-right"></i>
+      </a>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">Make your custom PC</h5>
-    <p class="card-text">Want to choose your favourite parts , here we go </p>
-    <a href="#" class="btn btn-primary">Go</a>
-  </div>
-</div>
-<!--End Joureny Mode -->
 
+   <!-- End Journey Mode -->
 
-    <!-- Ready Tagme3a -->
-    <!-- <div class="card text-center mt-3 mb-3">
-      <div class="card-header bg-dark " style="color: white;">
-       <h3> Ready Tagme3a </h3>
-      </div>
-      <div class="card-body">
-  <div class="row justify-content-center">
-        <!-- Card1 -->
-      <!-- <div class="col-md-4">
-        <div class="card mb-4">
-          <img class="card-img-top" src="assets/Images/1.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Gaming PC</h5>
-            <p class="card-text">Play your favorite games with the best graphics and performance on our gaming PCs.</p>
-            <a href="#" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
- -->
-        <!-- Card2 -->
+   <!-- PCs -->
 
-      <!-- <div class="col-md-4">
-        <div class="card mb-4">
-          <img class="card-img-top" src="assets/Images/2.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Gaming PC</h5>
-            <p class="card-text">Get the edge you need to dominate your opponents with our custom-built gaming PCs.</p>
-            <a href="#" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
- -->
-        <!-- Card3 -->
-
-      <!-- <div class="col-md-4">
-        <div class="card mb-4">
-          <img class="card-img-top" src="assets/Images/3.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Gaming PC</h5>
-            <p class="card-text">Discover the ultimate gaming experience with our advanced gaming computers. Game like a pro </p>
-            <a href="#" class="btn btn-primary">Details</a>
-          </div>
-        </div>
-      </div>
-
-      </div>
-    </div>
-  </div> -->
-    <!-- <display-pc></display-pc> -->
 <app-display-pc></app-display-pc>
+
+
+   <!-- End PCs -->
   <!-- Categories -->
 
-
-  <div class="card text-center mt-3 mb-3">
-    <div class="card-header bg-dark " style="color: white;">
-     <h3> Categories </h3>
-    </div>
-    <div class="card-body">
-<div class="row d-flex flex-row  justify-content-center">
-      <!-- Card1 -->
-    <div *ngFor="let c of categories" class="col-md-4">
-      <div class="card mb-4">
-        <img class="card-img-top" src="{{'data:image/jpg;base64,' + c.image}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{c.name}}</h5>
-          <p class="card-text"> {{c.description}}</p>
-          <!-- <a routerLink="../edit-product/{{product.id}}" class="btn btn-primary m-2">Edit</a> -->
-          <a routerLink="../products/{{c.categoryId}}" class="btn btn-primary">Details</a>
-        </div>
+ <div class="container-fluid my-5">
+    <h3 class="text-center fw-bold display-1 mb-5">Our <span class="text-success">Categories</span></h3>
+    <div class="row">
+      <div class="col-12 m-auto">
+        <owl-carousel-o [options]="carouselOptions">
+          <ng-template carouselSlide  *ngFor="let category of categories">
+            <div class="item mb-4">
+              <div class="card border-0 shadow">
+                <img src="{{'data:image/jpg;base64,' + category.image}}" alt="" class="card-img-top">
+                <div class="card-body">
+                  <div class="card-title text-center">
+                    <a routerLink="../products/{{category.categoryId}}" class="h2 text-decoration-none text-green" >{{category.name}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
       </div>
     </div>
-
-    </div>
   </div>
+  <!--End Categories -->
+
+
+
 </div>
 
-
-
-
-
-</div>
+<app-footer></app-footer>
 

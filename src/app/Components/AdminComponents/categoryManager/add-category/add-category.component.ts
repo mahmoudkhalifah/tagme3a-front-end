@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
 import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-add-category',
@@ -79,17 +79,38 @@ getValue(){
   Add(Name:any, Description:any, Image:any,InJourneyMode:any,OrderInJourneyModeValid:any){
     Image = this.imagePic.toString().split(",")[1];
     //console.log(Image);
+
     if(InJourneyMode == 1) {this.in = true}
     else{
       this.in=false;
     }
     let newCat = new CategoryInsert(Name,Description,Image,this.in,OrderInJourneyModeValid);
     console.log(newCat);
+    this.myService.addCategory(newCat).subscribe({
+      next:()=>{
+
+   this.router.navigate(["admin/dashboard"])
+      },
+      error:(err:any)=>{console.log(err)}
+    });
+
+    // let newCat = new CategoryInsert(Name,Description,Image);
+    // //console.log(newCat);
     // this.myService.addCategory(newCat).subscribe({
     //   next:()=>{
     //     this.router.navigate(["admin/categoryManager/view-categories"])
     //   },
     //   error:(err)=>{console.log(err)}
     // });
+
+    // let newCat = new CategoryInsert(Name,Description,Image);
+    // //console.log(newCat);
+    // this.myService.addCategory(newCat).subscribe({
+    //   next:()=>{
+    //     this.router.navigate(["admin/dashboard"])
+    //   },
+    //   error:(err)=>{console.log(err)}
+    // });
+
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { BrandService } from 'src/app/Services/brand.service';
+import { BrandService } from 'src/app/services/brand.service';
 import { AppComponent } from 'src/app/app.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BrandInsert } from 'src/app/Models/BrandInsertDTO';
@@ -68,7 +68,7 @@ getValue(){
     this.myService.addBrand(newBrand).subscribe(
       {
         next:()=>{
-          this.router.navigate(["admin/brandManager/view-brands"])
+          this.router.navigate(["admin/dashboard"])
         },
         error:(err)=>{console.log(err)}
       }

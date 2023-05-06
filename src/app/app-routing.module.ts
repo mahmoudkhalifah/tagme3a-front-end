@@ -23,6 +23,10 @@ import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-
 import { OrderComponent } from './Components/UserComponents/Order-mange/order/order.component';
 import { AdminGuard } from './guards/admin.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { UserGuard } from './guards/user.guard';
+import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
+import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
+import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
 import { EditPCComponent } from './Components/AdminComponents/PCManager/edit-pc/edit-pc.component';
 import { AddPCComponent } from './Components/AdminComponents/PCManager/add-pc/add-pc.component';
@@ -34,6 +38,13 @@ import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { PaymentComponent } from './Components/UserComponents/payment/payment.component';
+import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
+import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
+import { AboutComponent } from './Components/about/about.component';
+import { ProfileComponent } from './Components/UserComponents/profile/profile.component';
+import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
+import { SearchComponent } from './Components/UserComponents/search/search.component';
+import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
 
 
 
@@ -46,55 +57,70 @@ const routes: Routes = [
     {path: "products" , component:ProductsComponent},
     {path: "pcs" , component:DisplayPCComponent},
     {path: "details-pc/:id" , component:DetailsPCComponent},
+    {path: "addtocart-pc/:id" , component:AddtocartPcComponent},
 
     //payment
     {path:"payment",component:PaymentComponent},
     {path: "products/:id" , component:ProductsComponent},
     {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
+    {path:"about",component:AboutComponent},
+    {path:"profile",component:ProfileComponent},
+    {path:"profileSetting",component:ProfileSettingComponent},
+    {path: 'search/:query', component: SearchComponent},
+
+
     //Admin
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
     //Admin Category
-    {path:"admin/categoryManager/add-category",component:AddCategoryComponent},
-    {path:"admin/categoryManager/edit-category/:id",component:EditCategoryComponent},
-    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent},
-    {path:"admin/categoryManager/delete-category/:id",component:DeleteCategoryComponent},
+    {path:"admin/categoryManager/add-category",component:AddCategoryComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/edit-category/:id",component:EditCategoryComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/view-categories",component:ViewCategoriesComponent,canActivate:[AdminGuard]},
+    {path:"admin/categoryManager/delete-category/:id",component:DeleteCategoryComponent,canActivate:[AdminGuard]},
 
     //Admin Brand
-    {path:"admin/brandManager/add-brand",component:AddBrandComponent},
-    {path:"admin/brandManager/edit-brand/:id",component:EditBrandComponent},
-    {path:"admin/brandManager/view-brands",component:ViewBrandsComponent},
-    {path:"admin/brandManager/delete-brand/:id",component:DeleteBrandComponent},
+    {path:"admin/brandManager/add-brand",component:AddBrandComponent,canActivate:[AdminGuard]},
+    {path:"admin/brandManager/edit-brand/:id",component:EditBrandComponent, canActivate:[AdminGuard]},
+    {path:"admin/brandManager/view-brands",component:ViewBrandsComponent, canActivate:[AdminGuard]},
+    {path:"admin/brandManager/delete-brand/:id",component:DeleteBrandComponent, canActivate:[AdminGuard]},
 
 
     //Admin Product
-    {path:"admin/productManager/view-products",component:ViewProductsComponent},
-    {path:"admin/productManager/add-product",component:AddProductComponent},
-    {path:"admin/productManager/edit-product/:id",component:EditProductComponent},
-    {path:"admin/productManager/product-details/:id",component:ProductDetailsComponent},
+    {path:"admin/productManager/view-products",component:ViewProductsComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/add-product",component:AddProductComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/edit-product/:id",component:EditProductComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/product-details/:id",component:ProductDetailsComponent,canActivate:[AdminGuard]},
 
 
     // {path:"**",component:ErrorComponent}
 
-    //Admin Orders
-    {path:"admin/Order/order-manager",component:OrderManagerComponent},
-    {path:"admin/Order/show-details/:id",component:ShowDetailsComponent},
-    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent},
 
     //Admin Dashboard
 
     {path:"admin/dashboard" , component:AdminDashboardComponent},
 
 
-
-
-
-
-
-
-
     //userOrders
-    {path:"User/Order-mange/order/:ID",component:OrderComponent},
+     {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+     {path:"User/Order-mange/show-order-details/:id",component:ShowOrderDetailsComponent},
+
+    //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent},
+    {path:"User/Order-mange/order",component:OrderComponent},
+    {path:"User/Order-mange/add-adress",component:AddADRESSComponent},
+
+    {path:"admin/Order/order-manager",component:OrderManagerComponent, canActivate:[AdminGuard]},
+    {path:"admin/Order/show-details/:id",component:ShowDetailsComponent, canActivate:[AdminGuard]},
+    {path:"admin/Order/manage-order/:id",component:ManageOrderComponent, canActivate:[AdminGuard]},
+    {path:"admin/dashboard" , component:AdminDashboardComponent, canActivate:[AdminGuard]},
+
+    //users
+    //userOrders
+    {path:"User/Order-mange/order/:ID",component:OrderComponent,canActivate:[UserGuard]},
+    {path:"User/journeyMode",component:JourneyModeComponent},
+    {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+    //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent},
 
 
     //Admin PC
@@ -104,8 +130,12 @@ const routes: Routes = [
     {path:"admin/PCManager/addprdpc",component:AddprdpcComponent},
     // {path:"home",component:AddprdpcComponent}
     {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
-    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent}
+    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent},
+
+
   ];
+
+
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

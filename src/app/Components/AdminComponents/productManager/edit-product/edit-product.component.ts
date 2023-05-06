@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { ProductService } from '../../../AdminComponents/productManager/services/product.service';
 import { Product } from '../../models/product';
-import { BrandService } from 'src/app/Services/brand.service';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BrandService } from 'src/app/services/brand.service';
 
 
 @Component({
   selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css']
+  templateUrl: './edit-product.component.html'
 })
 export class EditProductComponent implements OnInit {
   id :any;
@@ -98,16 +97,6 @@ for(var i = 0;i<productImages.length;i++)
     this.product.productImages[i] = productImages[i];
   }
 }
-      // var prd = new Product(0,this.formValidation.controls["name"].value ?? '',
-      // this.formValidation.controls["description"].value ?? '',
-      // this.formValidation.controls["price"].value ?? 0,
-      // this.formValidation.controls["discount"].value ?? 0,
-      // this.formValidation.controls["unitInStocks"].value ?? 0,
-      // this.formValidation.controls["category"].value ?? 0,
-      // this.formValidation.controls["brand"].value ?? 0,
-      // productImages )
-      // console.log("grgrgfrgrg");
-      // console.log(this.product);
       this.onSubmit()
     }
   }

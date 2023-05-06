@@ -7,7 +7,7 @@
 
           </div>
           <div class="card-body">
-            <a routerLink="../add-category" class="btn btn-primary">Add</a>
+            <a routerLink="../categoryManager/add-category" class="btn btn-primary">Add</a>
           </div>
         </div>
 
@@ -28,10 +28,13 @@
                   <div class="card-body">
                     <h5 class="card-title">{{c.name}}</h5>
                     <p class="card-text">{{c.description}}</p>
+
                     <p class="card-text">InJourney Mode: {{c.inJourneyMode}}</p>
                     <p class="card-text">orderForJourneyMode: {{c.orderForJourneyMode}}</p>
-                    <a routerLink="../edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
+                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
+                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
+
+
                   </div>
                 </div>
               </div>

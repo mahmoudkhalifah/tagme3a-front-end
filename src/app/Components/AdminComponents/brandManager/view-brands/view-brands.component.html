@@ -7,7 +7,7 @@
 
         </div>
         <div class="card-body">
-          <a routerLink="../add-brand" class="btn btn-primary">Add</a>
+          <a routerLink="../brandManager/add-brand" class="btn btn-primary">Add</a>
         </div>
       </div>
 
@@ -28,8 +28,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{c.name}}</h5>
                   <p class="card-text">{{c.description}}</p>
-                  <a routerLink="../edit-brand/{{c.brandId}}"  class="btn btn-primary m-2">Edit</a>
-                  <a routerLink="../delete-brand/{{c.brandId}}" class="btn btn-primary m-2">Delete</a>
+                  <a routerLink="../brandManager/edit-brand/{{c.brandId}}"  class="btn btn-primary m-2">Edit</a>
+                  <a routerLink="../brandManager/delete-brand/{{c.brandId}}" class="btn btn-primary m-2">Delete</a>
                 </div>
               </div>
             </div>
