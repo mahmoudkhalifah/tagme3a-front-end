@@ -58,7 +58,7 @@
 
 <div class="container">
   <div class="row mt-4">
-    
+
     <div class="col-md-8">
       <div class="card">
         <div class="card-body">
@@ -76,18 +76,18 @@
                 <ng-template #insufficient>
                   Remaining: insufficient money
                 </ng-template>
-          
+
                 <div class="d-flex align-items-center" *ngIf="!proceedAfterExceeded;else totalAfterProceed">
                   <span class="me-2">Budget:</span>
                   <span>{{totalPrice}}</span>
-                </div> 
+                </div>
                 <ng-template #totalAfterProceed>
                   Total cost:{{totalCost}}
                 </ng-template>
-            
+
               </div>
             </div>
-            <hr> 
+            <hr>
 
             <div class="row">
               <div class="col-12">
@@ -112,7 +112,7 @@
                   <div class="card-body">
                     <h5 class="card-title">{{steps[selectedCategory].name}}</h5>
                     <p class="card-text">{{steps[selectedCategory].description}}</p>
-                    
+
                     <form>
                       <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
@@ -145,18 +145,18 @@
                             </div>
                           </div>
                         </div>
-                        
+
                       </div>
                       <ng-template #produtless >
                          <div *ngIf="isSearched" class="alert alert-danger mt-2">Not found product in range {{price.value}}</div>
                       </ng-template>
                     </div>
-                    
+
                   </div>
                 </div>
               </div>
             </div>
-            
+
               <ng-template #budget class="row">
                 <div class="mb-3">
                   <label for="totalPrice" class="form-label">Total Price</label>
@@ -186,7 +186,7 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-success w-100 "  (click)="finishBuy()">Finish shopping</button>
+            <button class="btn btn-success w-100 " *ngIf="finish"  (click)="finishBuy()">Finish shopping</button>
 
             <!-- </div> -->
           </div>
@@ -199,7 +199,7 @@
 
   </div>
 </div>
-          
+
 <div class="modal" id="exampleModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content">
