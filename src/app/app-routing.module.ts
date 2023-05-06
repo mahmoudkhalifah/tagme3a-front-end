@@ -33,6 +33,10 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AboutComponent } from './Components/about/about.component';
+import { ProfileComponent } from './Components/UserComponents/profile/profile.component';
+import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
+import { SearchComponent } from './Components/UserComponents/search/search.component';
 
 
 
@@ -48,6 +52,12 @@ const routes: Routes = [
 
     {path: "products/:id" , component:ProductsComponent},
     {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
+    {path:"about",component:AboutComponent},
+    {path:"profile",component:ProfileComponent},
+    {path:"profileSetting",component:ProfileSettingComponent},
+    {path: 'search/:query', component: SearchComponent},
+
+
     //Admin
     {path:"admin/admin-home",component:AdminHomeComponent,canActivate:[AdminGuard]},
 
@@ -84,12 +94,6 @@ const routes: Routes = [
 
 
 
-
-
-
-
-
-
     //userOrders
     {path:"User/Order-mange/order/:ID",component:OrderComponent},
 
@@ -101,7 +105,9 @@ const routes: Routes = [
     {path:"admin/PCManager/addprdpc",component:AddprdpcComponent},
     // {path:"home",component:AddprdpcComponent}
     {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
-    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent}
+    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent},
+
+    
   ];
 
 @NgModule({

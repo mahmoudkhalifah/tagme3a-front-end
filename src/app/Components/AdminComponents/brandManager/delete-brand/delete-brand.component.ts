@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrandService } from 'src/app/Services/brand.service';
+import { BrandService } from 'src/app/services/brand.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({
@@ -32,7 +32,7 @@ export class DeleteBrandComponent {
   {
     this.service.deleteBrandById(this.Id).subscribe({
       next:()=>{
-        this.router.navigate(["admin/brandManager/view-brands"])
+        this.router.navigate(["admin/dashboard"])
       },
       error:(err)=>{console.log(err)}
     });

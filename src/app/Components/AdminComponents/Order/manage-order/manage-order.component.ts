@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from 'src/app/Services/order.service';
+import { OrderService } from 'src/app/services/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -41,7 +41,7 @@ export class ManageOrderComponent implements OnInit {
       {
 
         next:()=>{
-          this.router.navigate(["admin/Order/order-manager"])
+          this.router.navigate(["admin/dashboard"])
         },
         error:(err)=>{console.log(err)}
 

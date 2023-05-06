@@ -22,7 +22,7 @@ import { ProductsComponent } from './Components/UserComponents/products/products
 
 import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
 import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
-import { CategoryServiceService } from './Services/category-service.service';
+import { CategoryServiceService } from './services/category-service.service';
 import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
 import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
 import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
@@ -42,11 +42,16 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { DetailsPCComponent } from './Components/UserComponents/PC/details-pc/details-pc.component';
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
-
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AboutComponent } from './Components/about/about.component';
+import { ProfileComponent } from './Components/UserComponents/profile/profile.component';
+import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
+import { SearchComponent } from './Components/UserComponents/search/search.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +90,10 @@ import { NgChartsModule } from 'ng2-charts';
     HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
+    AboutComponent,
+    ProfileComponent,
+    ProfileSettingComponent,
+    SearchComponent,
 
 
 
@@ -96,6 +105,10 @@ import { NgChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
+    BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    ModalModule
   ],
   providers: [
     {

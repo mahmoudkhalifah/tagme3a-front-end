@@ -47,7 +47,14 @@ export class LoginComponent {
         next: (res)=> {
           console.log(res);
           this.userAuthService.storeToken(res.token);
+          if(this.userAuthService.isAdmin()){
+          this.router.navigateByUrl('admin/dashboard');
+
+          }
+          else{
           this.router.navigateByUrl('/home');
+          }
+
         },
         error: (error)=> {
           this.error = true;

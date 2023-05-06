@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PCServiceService } from 'src/app/Services/pcservice.service';
+import { PCServiceService } from 'src/app/services/pcservice.service';
 import { AppComponent } from 'src/app/app.component';
 
 @Component({

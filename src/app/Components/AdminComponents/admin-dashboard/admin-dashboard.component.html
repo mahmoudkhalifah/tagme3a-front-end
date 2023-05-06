@@ -1,25 +1,135 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-2">
-<nav class="sidebar bg-dark">
-  <ul class="sidebar-nav">
-    <li class="sidebar-item" routerLinkActive="active">
-      <a class="sidebar-link" routerLink="/admin/dashboard">
-        <i class="fa fa-Main"></i>
-        <span class="sidebar-text">Main</span>
-      </a>
-    </li>
-    <li class="sidebar-item" routerLinkActive="active">
-      <a class="sidebar-link" routerLink="/admin/admin-home">
-        <i class="fa fa-cogs"></i>
-        <span class="sidebar-text">Settings</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+      <nav class="sidebar bg-dark">
+        <ul class="sidebar-nav">
+
+
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" routerLink="/admin/dashboard" 
+             (click)="showDashboardComponent = true; 
+             showProductComponent = false;
+             showbrandComponent=false; 
+             showCategoryComponent =false;
+             showOrderComponent = false;
+             showPcComponent =false ">
+              <i class="fa fa-Main"></i>
+              <span class="sidebar-text">Main</span>
+            </a>
+          </li>
+
+
+
+
+          <li class="sidebar-item" routerLinkActive="active" >
+            <a class="sidebar-link"
+            (click)="showDashboardComponent = false; 
+            showProductComponent = true; 
+            showbrandComponent = false;
+            showCategoryComponent = false;
+            showOrderComponent = false;
+            showPcComponent =false">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">Product</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item" routerLinkActive="active" >
+            <a class="sidebar-link" 
+            (click)="showDashboardComponent = false;
+            showProductComponent = false ;
+            showbrandComponent = true ; 
+            showCategoryComponent = false;
+            showOrderComponent = false;
+            showPcComponent =false">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">Brand</span>
+            </a>
+          </li>
+
+
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" 
+            (click)="showDashboardComponent = false; 
+            showProductComponent = false; 
+            showbrandComponent=false; 
+            showCategoryComponent = true;
+            showOrderComponent = false;
+            showPcComponent =false">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">Category</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" 
+            (click)="showDashboardComponent = false; 
+            showProductComponent = false; 
+            showbrandComponent=false;
+            showCategoryComponent = false; 
+            showOrderComponent = true;
+            showPcComponent =false">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">Order</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" 
+            (click)="showDashboardComponent = false; 
+            showProductComponent = false; 
+            showbrandComponent=false;
+            showCategoryComponent = false; 
+            showOrderComponent = false;
+            showPcComponent =true">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">PC</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item" routerLinkActive="active">
+            <a class="sidebar-link" (click)="onLogout()" 
+            (click)="showDashboardComponent = false; 
+            showProductComponent = false; 
+            showbrandComponent=false;
+            showCategoryComponent = false; 
+            showOrderComponent = false;
+            showPcComponent =true">
+              <i class="fa fa-cogs"></i>
+              <span class="sidebar-text">Logout</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
     </div>
-    <div class="col-md-9">
-      <app-admin-dashboard-main></app-admin-dashboard-main>
+    <div class="col-md-10">
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="showDashboardComponent">
+          <app-admin-dashboard-main></app-admin-dashboard-main>
+        </div>
+
+        <div class="col-md-12" *ngIf="showProductComponent">
+          <app-view-products></app-view-products>
+        </div>
+
+        <div class="col-md-12" *ngIf="showbrandComponent">
+          <app-view-brands></app-view-brands>
+        </div>
+
+        <div class="col-md-12" *ngIf="showCategoryComponent">
+          <app-view-categories></app-view-categories>
+        </div>
+        <div class="col-md-12" *ngIf="showOrderComponent">
+          <app-order-manager></app-order-manager>
+        </div>
+
+        <div class="col-md-12" *ngIf="showPcComponent">
+          <app-view-pc></app-view-pc>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

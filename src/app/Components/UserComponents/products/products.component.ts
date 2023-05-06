@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
-import { BrandService } from 'src/app/Services/brand.service';
-import { CategoryServiceService } from 'src/app/Services/category-service.service';
+import { BrandService } from 'src/app/services/brand.service';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { AppComponent } from 'src/app/app.component';
 import { ProductService } from '../../AdminComponents/productManager/services/product.service';
 
