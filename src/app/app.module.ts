@@ -46,6 +46,7 @@ import { HomeProductDetailsComponent } from './Components/UserComponents/product
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
+import { PaymentComponent } from './Components/UserComponents/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { NgChartsModule } from 'ng2-charts';
     HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
+    PaymentComponent,
 
 
 

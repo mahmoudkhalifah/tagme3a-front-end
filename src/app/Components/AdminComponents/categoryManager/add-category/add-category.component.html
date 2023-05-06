@@ -9,6 +9,27 @@
               Name Length should be greater than 3
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="orderinjourneymode" class="form-label">Order in Journey Mode</label>
+            <input formControlName="orderinjourneymode" #orderinjourneymode type="number" class="form-control" id="orderinjourneymode" name="orderinjourneymode">
+            <div *ngIf="!OrderInJourneyModeValid" style="color: red; text-align: center;">
+              Order In Journey should Not Be Null
+            </div>
+          </div>
+
+
+          <div class="mb-3" >
+            <label for="injourneymode" class="form-label">In Journey Mode</label>
+            <select formControlName="injourneymode" class="form-control" name="injourneymode" id="injourneymode" #injourneymode   >
+              <option   value="1">True</option>
+              <option   value="0">False</option>
+            </select>
+            <div *ngIf="!InJourneyModeValid" style="color: red; text-align: center;">
+              Order In Journey should Not Be Null
+            </div>
+          </div>
+
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
             <textarea   formControlName="description" #description class="form-control" id="description" name="description"></textarea>

@@ -16,9 +16,12 @@ export class EditCategoryComponent {
   Id:any
   category:any;
   image:any;
+  in:any;
   formValidation = new FormGroup({
     name:new FormControl("",[Validators.required,Validators.minLength(2)]),
     description:new FormControl("",[Validators.minLength(3),Validators.required]),
+    orderinjourneymode:new FormControl(0,[Validators.required,Validators.min(1)]),
+    injourneymode:new FormControl(0,[Validators.required])
   });
   constructor(private appComponent: AppComponent,private router:Router, myActivate:ActivatedRoute,private myService:CategoryServiceService) {
     appComponent.showFooter = false;
@@ -26,7 +29,7 @@ export class EditCategoryComponent {
     this.category = myService.getCategoryById(this.Id).subscribe({
       next:(data)=>{
         this.category = data
-        console.log(this.category);
+        console.log(this.category);//
       },
       error:(err)=>{console.log(err);}
     });
@@ -37,10 +40,21 @@ export class EditCategoryComponent {
     //console.log(this.message1);
       return this.formValidation.controls["name"].valid
     }
+    get InJourneyModeValid(){
+
+      //this.message1 = this.formValidation.controls["name"];
+      //console.log(this.message1);
+        return this.formValidation.controls["injourneymode"].valid;
+      }
     get DescriptionValid(){
       return this.formValidation.controls["description"].valid
     }
+    get OrderInJourneyModeValid(){
 
+      //this.message1 = this.formValidation.controls["name"];
+      //console.log(this.message1);
+        return this.formValidation.controls["orderinjourneymode"].valid;
+      }
   handleUpload(event:any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -56,24 +70,39 @@ getValue(){
   console.log("Name: ",this.formValidation.controls["name"].valid);
   console.log("Description: ",this.formValidation.controls["description"].valid);
   //console.log("Logo: ",this.formValidation.controls["logo"].valid);
-  if(this.formValidation.controls["name"].valid && this.formValidation.controls["description"].valid)
+  if(this.formValidation.controls["name"].valid && this.formValidation.controls["description"].valid
+  &&this.formValidation.controls["orderinjourneymode"].valid&&this.formValidation.controls["injourneymode"].valid)
   {
     console.log("E3ml UPDATE");
     //alert("Data Entered Succesfully");
-    this.Update();
+    this.Update(this.formValidation.controls["orderinjourneymode"].value,
+    this.formValidation.controls["injourneymode"].value);
   }
 }
-  Update(){
+  Update(order:any,inJourney:any){
     var BI;
     if(this.image == undefined){
-      BI = new CategoryInsert(this.category.name,this.category.description);
+      console.log("Ana gowa elundefined");
+   //   BI = new CategoryInsert(this.category.name,this.category.description);
+   if(inJourney == 1){this.in = true}
+      else{this.in = false;}
+     // this.category.image = this.image.toString().split(",")[1];
+      this.category.orderForJourneyMode =+order
+      this.category.inJourneyMode = this.in
+      BI = new CategoryInsert(this.category.name,this.category.description,this.category.image,this.category.inJourneyMode,this.category.orderForJourneyMode);
+
       console.log(BI);
     }
     else
 
     {
+      //var cat = new
+      if(inJourney == 1){this.in = true}
+      else{this.in = false;}
       this.category.image = this.image.toString().split(",")[1];
-      BI = new CategoryInsert(this.category.name,this.category.description,this.category.image);
+      this.category.orderForJourneyMode =+order
+      this.category.inJourneyMode = this.in
+      BI = new CategoryInsert(this.category.name,this.category.description,this.category.image,this.category.inJourneyMode,this.category.orderForJourneyMode);
       console.log(BI);
     }
     console.log("FINAL BI")
