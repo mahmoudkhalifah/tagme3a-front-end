@@ -1,1 +1,108 @@
-<p>confirm-order works!</p>
+<div class="container">
+  <div class="row">
+  <div class="col-md-6">
+<!-- Select  -->
+<div style="margin: auto; text-align: center;margin-right: 40px;">
+<p style="color: gray;font-size: 30px;margin: 20px;margin-left: -140px;">Select Address</p>
+  </div>
+
+
+  <form [formGroup]="myForm" >
+  <div class="form-group  col-md-2 m-2">
+    <select  #AddressChosen formControlName="myDropdown"  (change)="onSelected(AddressChosen.value)"   formControlName="Address" class="form-control mb-3" name ="Address" style="width: 400px;">
+      <option  ng-selected="true">--Select Address--</option>
+      <option *ngFor="let Address of Addresses;"
+              [value]="Address.id">
+         {{Address.cityName}} ,{{Address.streetName}},{{Address.apartementNumber}},{{Address.floorNumber}}
+      </option>
+    </select>
+    </div>
+    <div *ngIf="myForm.controls['myDropdown'].invalid && myForm.controls['myDropdown'].touched">
+      Please select an option.
+    </div>
+
+  </form>
+<!--  -->
+<!-- Form  -->
+
+<div  #AddressForm style="display: none;" *ngIf="AddressTarget">
+  <div class="card" style="width:600px;text-align: center;margin-top: 20px; ">
+    <div class="card-body">
+      <h4 class="card-title" style="color: red;"> <i style="color: black;">City Name</i> {{AddressTarget.cityName}}, <i style="color: black;">streetName</i> {{AddressTarget.streetName}}</h4>
+      <p class="card-text">apartementNumber {{AddressTarget.apartementNumber}}floorNumber {{AddressTarget.floorNumber}} </p>
+      <p class="card-text"> <i style="color: red;">nearestLandmark</i> {{AddressTarget.nearestLandmark}} <i style="color: red;">zipCode</i><i> {{AddressTarget.zipCode}} </i>
+    </div>
+  </div>
+</div>
+
+  <div style="margin-top: 40px; margin-left: 5px; text-align: center;">
+    <a routerLink="/User/Order-mange/add-adress" class="btn btn-danger" style="width: 250px;  margin: 30px; margin-right: 200px;">
+      Add New Address</a>
+  </div>
+
+  <!-- apartementNumber,floorNumber,streetName,area,zipCode,nearestLandmark,cityId,userId -->
+
+
+
+<!-- End Form -->
+
+  </div>
+<div class="col-md-6">
+  <div style="margin: auto; text-align: center;">
+    <p style="color: gray;font-size: 30px;margin: 10px;">Summary</p>
+    </div>
+    <div tyle="margin: auto; text-align:center;">
+    <table class="table table-bordered " style="width: 600px;margin: 10px;">
+      <thead>
+        <tr>
+          <th colspan="3" scope="col">Product Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="data ; else loadingBlock">
+       <tr *ngFor="let item of data;let i =  index">
+        <td colspan="3">{{item.prdName}}</td>
+        <td>{{item.quantity}}</td>
+        <td style="color: red;">{{item.price}}</td>
+       </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr style="width: 600px;margin: 10px;">
+  <div >
+    <p  style="margin: 180px; color: red; font-size: 20px;display: inline; ">  <i style="color:gray;">Total Price:</i>{{TotalPrice}}</p>
+  </div>
+
+<select class="form-select" aria-label="Default select example" name="PayMethod" id="PayMethod" #PayMethod  >
+  <option selected>Paymnet Method</option>
+  <option  value="1">Cash</option>
+  <option   value="2">Visa</option>
+</select>
+
+
+
+<div style="margin-top: 20px; text-align: center;">
+    <button style="width: 100px;" (click)="checkOut(PayMethod.value)" class="btn btn-danger">checkOut</button>
+</div>
+</div>
+</div>
+</div>
+
+<div #Error  style="text-align: center;margin: auto;display: none;">
+  <p style="color: red;font-size: 20px;">
+    Please Select A Address
+  </p>
+</div>
+
+
+
+  <ng-template #loadingBlock>
+    <button class="btn btn-primary" type="button" disabled>
+      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+      Loading...
+    </button>
+  </ng-template>
+
+
+

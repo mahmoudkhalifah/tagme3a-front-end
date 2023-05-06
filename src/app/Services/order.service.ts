@@ -43,6 +43,13 @@ export class OrderService {
     return this.Client.post(this.URL+'/Order',order);
   }
 
+  // https://localhost:7004/api/Order/OrderByUserID?ID=3e080e3d-ee13-471a-8b73-415d3139d7ac
+
+  // https://localhost:7004/api/Order/GetWithProduct?id=46
+
+  GetProductUserDetails(ID:number){
+    return this.Client.get(this.URL+'/Order/GetWithProduct?id='+ID);
+  }
 }
 
 

@@ -1,10 +1,46 @@
-<table>
- <tbody>
-  <tr *ngFor="let item of orders">
-    <td>{{item.bill}}</td>
-    <td>{{item.fname}}</td>
-    <td>{{item.orderState}}</td>
+<div tyle="margin: auto; text-align:center;">
+  <table class="table table-bordered ">
+    <thead>
+        <tr>
+          <th>Bill</th>
+          <th>Order Date</th>
+          <th>Shipping Date</th>
+          <th>Arrival Date</th>
+          <th>Order State</th>
+        </tr>
+    </thead>
+              <!-- shippingDate,arrivalDate,orderState,productName,quantiy -->
 
-  </tr>
- </tbody>
+    <tbody>
+      <tr *ngFor="let item of orders">
+        <td>{{item.bill}}</td>
+        <td>{{item.orderDate}}</td>
+        <td>{{item.shippingDate}}</td>
+        <td>{{item.arrivalDate}}</td>
+        <td>{{item.orderState}}</td>
+        <td>
+          <a routerLink="/User/Order-mange/show-order-details/{{item.id}}" class="btn btn-danger">ShowDetails</a>
+        </td>
+      </tr>
+    </tbody>
 </table>
+</div>
+
+
+<!-- "id": 47,
+"addressId": 0,
+"userId": "",
+"cityName": "Cairo",
+"bill": 23992,
+"orderDate": "2023-05-06T04:41:05.938",
+"shippingDate": "2023-05-21T04:41:05.938",
+"arrivalDate": "2023-05-22T04:41:05.938",
+"orderState": "Processing",
+"payMethod": "Visa",
+"fname": "Mariem",
+"lname": "Hesham",
+"productOrdersReadInOrder": [
+  {
+    "productName": "وحدة ذاكرة رام فيوري بيست من كينجستون",
+    "quantiy": 8
+  } -->

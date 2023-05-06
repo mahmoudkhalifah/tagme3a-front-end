@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { DashboardService } from 'src/app/Services/dashboard.service';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-admin-dashboard-main',
@@ -14,7 +14,7 @@ export class AdminDashboardMainComponent implements OnInit {
   numOfCategories: any;
   numOfOrders: any;
   totalEarnings: any;
-  
+
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class AdminDashboardMainComponent implements OnInit {
     });
 
     // Chart for Orderس
-    
+
   }
 
   initChart() {

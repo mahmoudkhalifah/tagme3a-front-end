@@ -35,6 +35,8 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
+import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
 
 
 
@@ -85,18 +87,15 @@ const routes: Routes = [
     {path:"admin/dashboard" , component:AdminDashboardComponent},
 
 
-
-
-
-
-
-
-
     //userOrders
      {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+     {path:"User/Order-mange/show-order-details/:id",component:ShowOrderDetailsComponent},
+
     //basket
     {path:"User/ManageBasket/basket",component:BasketComponent},
-    {path:"User/Order-mange/order/:ID",component:OrderComponent},
+    {path:"User/Order-mange/order",component:OrderComponent},
+    {path:"User/Order-mange/add-adress",component:AddADRESSComponent},
+
 
 
     //Admin PC
@@ -107,6 +106,7 @@ const routes: Routes = [
     // {path:"home",component:AddprdpcComponent}
     {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
     {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent}
+
   ];
 
 

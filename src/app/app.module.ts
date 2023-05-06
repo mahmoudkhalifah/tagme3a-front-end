@@ -18,11 +18,11 @@ import { ViewProductsComponent } from './Components/AdminComponents/productManag
 import { EditProductComponent } from './Components/AdminComponents/productManager/edit-product/edit-product.component';
 import { AddProductComponent } from './Components/AdminComponents/productManager/add-product/add-product.component';
 import { AdminNavbarComponent } from './Components/AdminComponents/admin-navbar/admin-navbar.component';
-import { ProductsComponent } from './Components/UserComponents/products/products.component';
+import { ProductsComponent } from './Components/UserComponents/products/products.component'
 
 import { ProductDetailsComponent } from './Components/AdminComponents/productManager/product-details/product-details.component';
 import { ProductService } from './Components/AdminComponents/productManager/services/product.service';
-import { CategoryServiceService } from './services/category-service.service';
+import { CategoryServiceService } from './services/category-service.service'
 import { DeleteCategoryComponent } from './Components/AdminComponents/categoryManager/delete-category/delete-category.component';
 import { ViewBrandsComponent } from './Components/AdminComponents/brandManager/view-brands/view-brands.component';
 import { AddBrandComponent } from './Components/AdminComponents/brandManager/add-brand/add-brand.component';
@@ -48,6 +48,8 @@ import { HomeProductDetailsComponent } from './Components/UserComponents/product
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
+import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
+import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { NgChartsModule } from 'ng2-charts';
     HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
+    AddADRESSComponent,
+    ShowOrderDetailsComponent,
 
 
 
