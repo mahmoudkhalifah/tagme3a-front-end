@@ -41,7 +41,7 @@ export class ManageOrderComponent implements OnInit {
       {
 
         next:()=>{
-          this.router.navigate(["admin/Order/order-manager"])
+          this.router.navigate(["admin/dashboard"])
         },
         error:(err)=>{console.log(err)}
 

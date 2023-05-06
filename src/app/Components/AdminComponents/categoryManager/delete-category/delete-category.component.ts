@@ -34,7 +34,7 @@ export class DeleteCategoryComponent {
         this.service.deleteCategoryById(this.Id).subscribe(
           {
             next:()=>{
-              this.router.navigate(["admin/categoryManager/view-categories"])
+              this.router.navigate(["admin/dashboard"])
             },
             error:(err)=>{console.log(err)}
           }

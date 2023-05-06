@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from 'src/app/services/basket.service';
 import { UserAuthService } from 'src/app/services/user-auth.service';
@@ -7,8 +8,10 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent  implements OnInit{
-  constructor(public userAuthService:UserAuthService, public basketService:BasketService) {}
+  searchQuery!: string;
+  constructor(public userAuthService:UserAuthService, public basketService:BasketService , private router : Router) {}
   data:any=0
   id=this.userAuthService.getUserId()
   ngOnInit(): void {
@@ -22,5 +25,9 @@ export class NavbarComponent  implements OnInit{
   onLogout() {
     this.userAuthService.logout();
   }
-
+  SearchQuery(){
+    if (this.searchQuery) {
+      this.router.navigate(['/search', this.searchQuery]);
+    }
+}
 }

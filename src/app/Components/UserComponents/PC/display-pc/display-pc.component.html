@@ -1,35 +1,55 @@
-<!-- All pcs -->
+<!-- 
 <div class="card text-center mt-3 mb-3">
-  <div class="card-header bg-dark" style="color: white;">
-    <h3> Ready Tagme3a </h3>
+    <div class="card-header bg-dark " style="color: white;">
+      <h3> Ready Tagme3a </h3>
+    </div>
+    <div  class="card-body">
+<div  class="row d-flex flex-row  justify-content-center">
+
+    <div *ngFor="let p of PCs" class="col-sm-4 col-lg-4">
+      <div class=" card mb-4">
+        <img class="card-img-top" src="{{'data:image/jpg;base64,' + p.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{p.bundleName}}</h5>
+        <p class="card-text">TotalPrice : {{p.totalPrice}}</p>
+        <div  *ngFor="let prd of p.products">
+        <p class="card-text">Name : {{prd.name}}</p>
+        <p class="card-text">quantity : {{prd.quantitiy}}</p>
   </div>
-  <div class="card-body">
-    <div class="row d-flex flex-row justify-content-center">
-      <!-- Card1 -->
-      <div *ngFor="let p of PCs" class="col-sm-4 col-lg-4">
-        <div class="card mb-4">
-          <img class="card-img-top" src="{{'data:image/jpg;base64,' + p.image}}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{p.bundleName}}</h5>
-            <p class="card-text">TotalPrice : {{p.totalPrice}}</p>
-            <div class="product-list">
-              <div *ngFor="let prd of p.products">
-                <div class="product-item">
-                  <p class="product-title">{{prd.name}}</p>
-                  <p class="product-description">{{prd.description}}</p>
-                  <p class="product-quantity">Quantity: {{prd.quantitiy}}</p>
-                </div>
-              </div>
-            </div>
-            
-            <a routerLink="../details-pc/{{p.id}}" class="btn btn-primary" style="margin: 5px;">Details</a>
-            <button class="btn btn-primary" *ngIf="!p.addedToCart" (click)="addToCart(p.id)">Add To Cart</button>
-            <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <a routerLink="../details-pc/{{p.id}}" class="btn btn-primary">Details</a>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+
+<section class="bg-light">
+  <div class="container py-5">
+      <div class="row text-center py-3">
+          <div class="col-lg-6 m-auto">
+            <h3 class="text-center fw-bold display-1 mb-5">Ready <span class="text-success">PC</span></h3>
+
+              <p>
+                 Here you can find a ready PC to buy
+              </p>
+          </div>
+      </div>
+      <div class="row">
+          <div *ngFor="let p of PCs"  class="col-12 col-md-4 mb-4">
+              <div class="card h-100" >
+                  <a routerLink="../details-pc/{{p.id}}" >
+                      <img src="{{'data:image/jpg;base64,' + p.image}}" class="card-img-top" alt="...">
+                  </a>
+                  <div class="card-body">
+                      <ul class="list-unstyled d-flex justify-content-between">
+                         Price  <li class="text-muted text-right"> {{p.totalPrice}}</li>
+                      </ul>
+                      <a routerLink="../details-pc/{{p.id}}" class="h2 text-decoration-none text-green">{{p.bundleName}}</a>
+                      <p class="card-text"></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

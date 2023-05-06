@@ -75,7 +75,7 @@ getValue(){
       this.myService.updateBrandById(this.Id,this.brand).subscribe(
         {
           next:()=>{
-            this.router.navigate(["admin/brandManager/view-brands"])
+            this.router.navigate(["admin/dashboard"])
           },
           error:(err)=>{console.log(err)}
         }
