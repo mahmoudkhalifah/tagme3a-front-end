@@ -12,11 +12,11 @@ import { PrdPCDTO } from 'src/app/Models/PrdPcDTO';
 })
 export class AddprdpcComponent implements OnInit {
 
-  
+
   selectedPC:any;
   pcs:any;
   products:any;
-  constructor(appcomponent:AppComponent , private route :Router , private myService:PCServiceService 
+  constructor(appcomponent:AppComponent , private route :Router , private myService:PCServiceService
     , private prdService:ProductService){
     appcomponent.showFooter = false;
   }
@@ -30,7 +30,7 @@ export class AddprdpcComponent implements OnInit {
         console.log(err);
       }
     });
-    
+
     this.prdService.getAllProducts().subscribe({
       next:(data)=>{
         this.products = data;

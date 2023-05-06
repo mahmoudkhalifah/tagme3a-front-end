@@ -1,0 +1,88 @@
+
+<div style="margin: auto; text-align: center;margin-left: 500px;">
+
+<div class="container" style="display: block;" #divForm>
+  <div >
+<div>
+<form
+(ngSubmit)="getValue()" [formGroup] ="formValidation" >
+  <div class="form-row">
+    <div class="form-group col-md-2 m-2" style="width: 400px;">
+
+      <label for="apartementNumber" class="m-2 "> Apartement Number</label>
+      <input formControlName="apartementNumber"  #apartementNumber placeholder="Apartement Number" type="text" class="form-control" id="apartementNumber">
+      <div *ngIf="!apartementNumberValid "style="color: red; text-align: center;width: 400px;">
+        Apartement Number Not valid
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group col-md-2 m-2" style="width: 400px;">
+      <label for="floorNumber" class="m-2" style="width: 400px;">Floor Number</label>
+      <input style="width: 400px;" formControlName="floorNumber" #floorNumber placeholder="floor Number" type="number" class="form-control" id="floorNumber">
+      <div  *ngIf="!floorNumberValid" style="color: red; text-align: center;width: 400px;">
+       write  Floor Number
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group col-md-2 m-2">
+      <label class="m-2 " for="streetName" class="m-2"  style="width: 400px;">street Name</label>
+      <input   tyle="width: 400px;" style="width: 400px;"  formControlName="streetName" #streetName placeholder="street Name" type="text" class="form-control" id="streetName">
+      <div *ngIf="!streetNameValid" style="color: red; text-align: center;width: 400px;">
+        street Name Length should be greater than 5
+       </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group col-md-2 m-2">
+      <label for="area" class="m-2"  style="width: 400px;">Area</label>
+      <input   style="width: 400px;" formControlName="area" #area placeholder="Area" type="text" class="form-control" id="area">
+      <div *ngIf="!areaValid" style="color: red; text-align: center;width: 400px;">
+        Area Length should be greater than 5
+       </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group col-md-2 m-2">
+      <label  class="m-2"  style="width: 400px;" for="zipCode">zipCode</label>
+      <input  style="width: 400px;"   formControlName="zipCode" #zipCode placeholder="zipCode" type="text" class="form-control" id="zipCode">
+      <div *ngIf="!zipCodeValid" style="color: red; text-align: center;width: 400px;">
+        zipCode Length should be greater than 2
+       </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group col-md-2 m-2">
+      <label class="m-2"  style="width: 400px;"  for="nearestLandmark">nearestLandmark</label>
+      <input style="width: 400px;"   formControlName="nearestLandmark" #nearestLandmark placeholder="nearestLandmark" type="text" class="form-control" id="nearestLandmark">
+      <div *ngIf="!nearestLandmarkValid" style="color: red; text-align: center;width: 400px;">
+        nearestLandmark Length should be greater than 2
+       </div>
+    </div>
+  </div>
+
+  <div class="form-group  col-md-2 m-2">
+    <label class="m-2"  style="width: 400px;"  for="city" >city</label>
+    <select formControlName="city" class="form-control mb-3" name ="city" style="width: 400px;">
+      <option  selected>--Select City--</option>
+      <option *ngFor="let city of Cities"
+              value={{city.id}}>
+          {{city.name}}
+      </option>
+    </select>
+    </div>
+    <div class="form-group text-center  m-auto mb-2" >
+      <input style="width: 100px; margin: 10px; margin-left: -400px;" type="submit" value="Save" class="btn btn-outline-success" >
+    </div>
+
+  </form>
+  </div>
+  </div>
+</div>
+</div>

@@ -40,7 +40,7 @@ export class EditPCComponent {
   get NameValid(){
     return this.formValidation.controls["name"].valid;
   }
-  
+
   // get PriceValid(){
   //   return this.formValidation.controls["price"].valid;
   // }

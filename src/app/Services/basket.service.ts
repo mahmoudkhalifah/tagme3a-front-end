@@ -54,4 +54,10 @@ export class BasketService {
     return this.Client.delete(this.URL+"/UserProducstInCart/"+UserId+"/"+PID);
   }
 
+  DeleteCart(UserId:string)
+  {
+    return this.Client.delete(this.URL+"/UserProducstInCart/DeleteCarts?UID="+UserId);
+  }
+  // https://localhost:7004/api/UserProducstInCart/DeleteCarts?UID=1ed81e79-9a3b-4910-9167-5e80e3b7f613
+
 }

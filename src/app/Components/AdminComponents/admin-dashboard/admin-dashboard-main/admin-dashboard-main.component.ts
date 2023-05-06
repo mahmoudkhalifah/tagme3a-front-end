@@ -14,7 +14,7 @@ export class AdminDashboardMainComponent implements OnInit {
   numOfCategories: any;
   numOfOrders: any;
   totalEarnings: any;
-  
+
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
@@ -54,7 +54,7 @@ export class AdminDashboardMainComponent implements OnInit {
     });
 
     // Chart for Orderس
-    
+
   }
 
   initChart() {

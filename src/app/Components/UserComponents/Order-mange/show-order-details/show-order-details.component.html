@@ -1,0 +1,35 @@
+
+<div class="container" *ngIf="data; else loadingBlock">
+  <div class="row d-flex justify-content-center"  >
+      <table class="table table-striped" style="width: 800px;">
+        <thead>
+            <tr>
+              <th>productName</th>
+              <th>Quantiy</th>
+              <th>price</th>
+            </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of data">
+            <td>{{item.productName}}</td>
+            <td>{{item.quantiy}}</td>
+            <td>{{item.price}}</td>
+          </tr>
+        </tbody>
+
+    </table>
+    </div>
+  </div>
+
+  <ng-template #loadingBlock>
+    <div class="text-center">
+      <div class="spinner-border"  style="width: 5rem; height: 5rem;"role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+<!-- "productName": "jnjn",
+"quantiy": 3,
+"productId": 32,
+"price": 454 -->

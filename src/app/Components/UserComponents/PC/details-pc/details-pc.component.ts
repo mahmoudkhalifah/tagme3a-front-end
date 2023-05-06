@@ -13,11 +13,11 @@ import { BasketService } from 'src/app/services/basket.service';
   styleUrls: ['./details-pc.component.css']
 })
 export class DetailsPCComponent implements OnInit{
-  
+
   Id:any;
   pc:any;
 
-  
+
   constructor(private appComponent:AppComponent ,private basketService:BasketService  , private auth:UserAuthService ,myactivate:ActivatedRoute , private myService :PCServiceService){
     appComponent.showFooter = false;
     this.Id = myactivate.snapshot.params["id"];
@@ -32,15 +32,15 @@ export class DetailsPCComponent implements OnInit{
       error:(err)=>{
         console.log(err);
       }
-    }) 
+    })
   }
 
   isLoading = false;
   Mylist:Array<UserPCInCartInsertDTO> =[];
-  
+
   id:any = this.auth.getUserId()
   selectedProductId: any;
-  
+
   addToCart(id: any) {
     this.isLoading = true;
     this.selectedProductId = id; // set the selected product ID
@@ -53,15 +53,15 @@ export class DetailsPCComponent implements OnInit{
         console.log(err);
       }
     });
-  
+
   }
-  
+
   addProductsToCart() {
-  
+
     if (this.pc && this.pc.products) {
       if(this.pc.products.length ==0) console.log("couldn't add");
       let userPcList: UserPCInCartInsertDTO[] = [];
-  
+
       for (let product of this.pc.products) {
         let userPc: UserPCInCartInsertDTO = {
           productId: product.productId,
@@ -69,9 +69,9 @@ export class DetailsPCComponent implements OnInit{
         };
         userPcList.push(userPc);
       }
-  
+
       console.log(userPcList);
-  
+
       this.basketService.AddLstProductInCart(userPcList, this.id).subscribe({
         next: () => {
           this.isLoading = false;
@@ -83,7 +83,7 @@ export class DetailsPCComponent implements OnInit{
           console.log(err);
         }
       });
-  
+
     } else {
       console.log('Unable to add items to cart. Products are undefined.');
     }

@@ -37,6 +37,8 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
+import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
+import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
 import { AboutComponent } from './Components/about/about.component';
 import { ProfileComponent } from './Components/UserComponents/profile/profile.component';
 import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
@@ -89,7 +91,21 @@ const routes: Routes = [
 
     // {path:"**",component:ErrorComponent}
 
-    //Admin Orders
+
+    //Admin Dashboard
+
+    {path:"admin/dashboard" , component:AdminDashboardComponent},
+
+
+    //userOrders
+     {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+     {path:"User/Order-mange/show-order-details/:id",component:ShowOrderDetailsComponent},
+
+    //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent},
+    {path:"User/Order-mange/order",component:OrderComponent},
+    {path:"User/Order-mange/add-adress",component:AddADRESSComponent},
+
     {path:"admin/Order/order-manager",component:OrderManagerComponent, canActivate:[AdminGuard]},
     {path:"admin/Order/show-details/:id",component:ShowDetailsComponent, canActivate:[AdminGuard]},
     {path:"admin/Order/manage-order/:id",component:ManageOrderComponent, canActivate:[AdminGuard]},
@@ -113,7 +129,7 @@ const routes: Routes = [
     {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
     {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent},
 
-    
+
   ];
 
 
