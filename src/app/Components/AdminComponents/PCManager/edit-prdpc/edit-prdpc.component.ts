@@ -61,7 +61,6 @@ export class EditPrdpcComponent implements OnInit {
     this.myService.deletePrdPC(this.pc.id , prdPc).subscribe({
       next:()=>{
         this.pc.products.splice(i , 1);
-
       },
       error:(err)=>{
         console.log(err);

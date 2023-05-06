@@ -33,6 +33,7 @@ import { OrderComponent } from './Components/UserComponents/Order-mange/order/or
 import { ShowDetailsComponent } from './Components/AdminComponents/Order/show-details/show-details.component';
 import { ManageOrderComponent } from './Components/AdminComponents/Order/manage-order/manage-order.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { JourneyModeComponent } from './Components/UserComponents/journey-mode/journey-mode/journey-mode.component';
 import { BasketComponent } from './Components/UserComponents/ManageBasket/basket/basket.component';
 import { ConfirmOrderComponent } from './Components/UserComponents/Order-mange/order/confirm-order/confirm-order.component';
 import { ViewPCComponent } from './Components/AdminComponents/PCManager/view-pc/view-pc.component';
@@ -44,12 +45,19 @@ import { DeletePCComponent } from './Components/AdminComponents/PCManager/delete
 import { DetailsPCComponent } from './Components/UserComponents/PC/details-pc/details-pc.component';
 import { EditPrdpcComponent } from './Components/AdminComponents/PCManager/edit-prdpc/edit-prdpc.component';
 import { HomeProductDetailsComponent } from './Components/UserComponents/product-details/home-product-details/home-product-details.component';
-
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
 import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
 import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AboutComponent } from './Components/about/about.component';
+import { ProfileComponent } from './Components/UserComponents/profile/profile.component';
+import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
+import { SearchComponent } from './Components/UserComponents/search/search.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +86,7 @@ import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-man
     OrderComponent,
     ShowDetailsComponent,
     ManageOrderComponent,
+    JourneyModeComponent,
     BasketComponent,
     ConfirmOrderComponent,
     ViewPCComponent,
@@ -93,6 +102,11 @@ import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-man
     AdminDashboardMainComponent,
     AddADRESSComponent,
     ShowOrderDetailsComponent,
+    AboutComponent,
+    ProfileComponent,
+    ProfileSettingComponent,
+    SearchComponent,
+    AddtocartPcComponent,
 
 
 
@@ -105,6 +119,10 @@ import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-man
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
+    BrowserModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    ModalModule
   ],
   providers: [
     {

@@ -4,11 +4,11 @@ import { AppComponent } from 'src/app/app.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../../AdminComponents/productManager/services/product.service';
 import { Product } from '../../models/product';
-import { BrandService } from 'src/app/services/brand.service'
-import { CategoryServiceService } from 'src/app/services/category-service.service'
+import { CategoryServiceService } from 'src/app/services/category-service.service';
+import { BrandDTO } from 'src/app/Models/BrandDTO';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BrandDTO } from 'src/app/Models/BrandDTO';
+import { BrandService } from 'src/app/services/brand.service';
 
 
 @Component({

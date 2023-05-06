@@ -1,0 +1,17 @@
+.products-row .card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .products-row .card-body {
+    flex-grow: 1;
+  }
+  
+  .products-row .carousel-inner img {
+    max-height: 300px;
+  }
+
+#imgDiv{
+  height: 500 !important;
+  background-color: aqua;
+}

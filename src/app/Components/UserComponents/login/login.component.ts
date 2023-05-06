@@ -45,14 +45,19 @@ export class LoginComponent {
         next: (res)=> {
           console.log(res);
           this.userAuthService.storeToken(res.token);
+          if(this.userAuthService.isAdmin()){
+          this.router.navigateByUrl('admin/dashboard');
+
+          }
+          else{
           this.router.navigateByUrl('/home');
+          }
+
         },
         error: (error)=> {
           this.error = true;
-          if (error.status == 404)
-            this.errorMsg = "Incorrect email.";
-          else if(error.status == 401)
-            this.errorMsg = "Incorrect password.";
+          if (error.status == 404 || error.status == 401)
+            this.errorMsg = "Incorrect email or password.";
           else
             this.errorMsg = "Connection error.";
         }

@@ -20,14 +20,13 @@
         >{{cat.name}}</button>
       </div>
     </div>
+    
         <!-- All Products -->
         <div class="card text-center mt-3 mb-3 col-lg-9">
-          <div class="card-header bg-dark" style="color: white;">
-            <h3>All Products</h3>
-          </div>
+          <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
           <div  class="card-body">
-            <div class="row">
-              <div class="col-md-4" *ngFor="let product of products">
+            <div class="row products-row">
+              <div class="col-md-4" *ngFor="let product of products" >
                 <div   class="card mb-4">
                   <!-- data-bs-ride="true" -->
                   <div [attr.id]="'carouselExampleIndicators' + product.id" class="carousel slide" >
@@ -36,8 +35,9 @@
                       <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="1" aria-label="Slide 2"></button>
                       <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <div style="width: 280; height: 500;" class="carousel-inner">
-                      <div  class="carousel-item active">
+<!-- 
+                    <div style="width: 280; height: 500;" class="carousel-inner"  >
+                      <div  class="carousel-item active" >
                         <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" class="d-block w-100" alt="...">
                       </div>
                        <div  class="carousel-item">
@@ -46,13 +46,31 @@
                       <div  class="carousel-item">
                         <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[2]}}" class="d-block w-100" alt="...">
                       </div>
+                  </div> -->
+
+                  <div style="width:200px; height: 191px; " class="carousel-inner">
+                    <div class="carousel-item active">
+                      <div style="  justify-content: center; align-items: center;" class="mt-5 ms-4 ">
+                        <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                      </div>
                     </div>
+                    <div class="carousel-item">
+                      <div style="  justify-content: center; align-items: center;" class="mt-5 ms-5 ">
+                        <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[1]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <div style="  justify-content: center; align-items: center;" class="mt-5 ms-5 ">
+                        <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[2]}}" style=" width: 100%; height: 100%; object-fit: cover;" alt="...">
+                      </div>
+                    </div>
+                  </div>
                     <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span style="background-color: black;" class="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span style="background-color: black;" class="carousel-control-next-icon" aria-hidden="true"></span>
                       <span class="visually-hidden">Next</span>
                     </button>
                   </div>
@@ -63,8 +81,22 @@
                     <h5 class="card-title">{{product.name}}</h5>
                     <p class="card-text">Price: {{product.price}} $</p>
                     <p class="card-text">Description: {{product.description}}</p>
-                    <button type="button" (click)="Insert(id.value)"  class="btn btn-primary m-2">Add to Cart</button>
-                    <a href="#" class="btn btn-primary m-2">Add to wishlist</a>
+                    <div class="row pb-3">
+                      <div class="col-5 d-grid">
+
+                      <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="far fa-cart-plus"></i></a>
+                        <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
+                      </div>
+                  
+                      <div class="col-5 d-grid">
+                      <a class="btn btn-success text-white mt-2" href=""><i class="fas fa-heart"></i></a>
+
+                        <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button> -->
+                      </div>
+                    </div>
+                    <!-- <a routerLink="../edit-product/{{product.id}}" class="btn btn-primary m-2">Edit</a>
+                    <a routerLink="../product-details/{{product.id}}" class="btn btn-primary m-2">Detials</a> -->
+                    <!-- <button class="btn btn-primary m-2" (click)="deleteProduct(product.id)">Delete</button> -->
                   </div>
                 </div>
               </div>

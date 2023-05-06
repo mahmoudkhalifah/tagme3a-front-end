@@ -41,8 +41,7 @@ export class AddprdpcComponent implements OnInit {
       }
     })
   }
-
-  AddProduct(id:any){
+ AddProduct(id:any){
     let quantity = document.getElementById(`qty-${id}`) as HTMLInputElement;
     console.log(quantity.value);
     let newprd = new PrdPCDTO(id

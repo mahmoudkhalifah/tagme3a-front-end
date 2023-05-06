@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { CategoryInsert } from 'src/app/Models/CategoryInsertDTO';
+import { CategoryServiceService } from 'src/app/services/category-service.service';
 
 @Component({
   selector: 'app-add-category',
@@ -64,7 +64,7 @@ getValue(){
     //console.log(newCat);
     this.myService.addCategory(newCat).subscribe({
       next:()=>{
-        this.router.navigate(["admin/categoryManager/view-categories"])
+        this.router.navigate(["admin/dashboard"])
       },
       error:(err)=>{console.log(err)}
     });

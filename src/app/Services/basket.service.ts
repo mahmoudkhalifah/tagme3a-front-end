@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import {UserProductInCartInsert } from 'src/app/Models/UserProductInCartInsertDTO';
 import { UserUpdateCart } from '../Models/UserUpdateCart';
+import { uid } from 'chart.js/dist/helpers/helpers.core';
 
 
 
@@ -23,6 +24,13 @@ export class BasketService {
   {
 
     return this.Client.post(this.URL+'/UserProducstInCart',Cart);
+  }
+
+
+  AddLstProductInCart(prd:any , UId :any)
+  {
+
+    return this.Client.post(this.URL+'/UserProducstInCart/'+UId,prd);
   }
 
   DeleteProductInCart(UserId:string,ProductId :number)

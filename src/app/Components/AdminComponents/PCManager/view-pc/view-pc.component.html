@@ -7,8 +7,8 @@
 
           </div>
           <div class="card-body">
-            <a routerLink="../add-pc" class="btn btn-primary" style="margin: 4px;">Add PC</a>
-            <a routerLink="../addprdpc" class="btn btn-primary">Add Product PC</a>
+            <a routerLink="../PCManager/add-pc" class="btn btn-primary" style="margin: 4px;">Add PC</a>
+            <a routerLink="../PCManager/addprdpc" class="btn btn-primary">Add Product PC</a>
           </div>
         </div>
 
@@ -34,9 +34,9 @@
                     <p class="card-text">Description : {{prd.description}}</p>
                     <p class="card-text">quantity : {{prd.quantitiy}}</p>
                 </div>
-                    <a routerLink="../edit-pc/{{p.id}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../edit-prdpc/{{p.id}}"  class="btn btn-primary m-2">Edit Product In Pc</a>
-                    <a routerLink="../delete-pc/{{p.id}}" class="btn btn-primary m-2">Delete</a>
+                    <a routerLink="../PCManager/edit-pc/{{p.id}}"  class="btn btn-primary m-2">Edit</a>
+                    <a routerLink="../PCManager/edit-prdpc/{{p.id}}"  class="btn btn-primary m-2">Edit Product In Pc</a>
+                    <a routerLink="../PCManager/delete-pc/{{p.id}}" class="btn btn-primary m-2">Delete</a>
                   </div>
                 </div>
               </div>
