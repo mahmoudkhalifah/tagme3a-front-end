@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
-import { UserLogin } from 'src/app/models/user-login';
+import { UserLogin } from 'src/app/Models/user-login';
 import { UserAuthService } from 'src/app/services/user-auth.service';
 
 
@@ -58,10 +58,8 @@ export class LoginComponent {
         },
         error: (error)=> {
           this.error = true;
-          if (error.status == 404)
-            this.errorMsg = "Incorrect email.";
-          else if(error.status == 401)
-            this.errorMsg = "Incorrect password.";
+          if (error.status == 404 || error.status == 401)
+            this.errorMsg = "Incorrect email or password.";
           else
             this.errorMsg = "Connection error.";
         }

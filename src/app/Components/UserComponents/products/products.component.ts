@@ -7,6 +7,10 @@ import { BrandService } from 'src/app/services/brand.service';
 import { CategoryServiceService } from 'src/app/services/category-service.service';
 import { AppComponent } from 'src/app/app.component';
 import { ProductService } from '../../AdminComponents/productManager/services/product.service';
+import { BasketService } from 'src/app/services/basket.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
+import {UserProductInCartInsert } from 'src/app/Models/UserProductInCartInsertDTO';
+
 
 @Component({
   selector: 'app-products',
@@ -19,20 +23,21 @@ export class ProductsComponent {
   products:any;
   brandIdSelected=0;
   categoryIdSelected=0;
+  userID:any;
   id:any
-  constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
-    appComponent.showFooter = true;
-    appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
+  constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
+  // constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
+  //   appComponent.showFooter = true;
+  //   appComponent.showNavbar = true;
+  //   appComponent.adminNavbar = false;
+  // }
   }
   ngOnInit(): void {
     this.getInitialPrds();
     //this.getProducts();
     this.getBrands();
     this.getCategories();
-
-   // console.log(this.brands);
-    //console.log(this.categories);
+    this.userID= this.auth.getUserId()
    }
   public ShowPrds(Id:any)
    {
@@ -138,5 +143,17 @@ export class ProductsComponent {
     console.log(id);
     //src\app\Components\UserComponents\products\product-details\product-details.component.html
     this.router.navigate(["home-product-details/"+id])
+   }
+
+   Insert(id:any)
+   {
+    let User="1ed81e79-9a3b-4910-9167-5e80e3b7f613";
+    let prd = new UserProductInCartInsert(+id,this.userID,1);
+    this.basketService.AddProductInCart(prd).subscribe(
+      {
+        error:(err)=>{console.log(err)}
+      }
+    );
+    console.log(id)
    }
 }

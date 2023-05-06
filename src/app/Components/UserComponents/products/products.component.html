@@ -76,13 +76,15 @@
                   </div>
                   <!-- <img class="card-img-top" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" alt="Card image cap"> -->
                   <div class="card-body">
+                    <input #id  value="{{product.id}} "  hidden  class="form-control" >
+                    <!-- <p #id>{{product.id}}</p> -->
                     <h5 class="card-title">{{product.name}}</h5>
                     <p class="card-text">Price: {{product.price}} $</p>
                     <p class="card-text">Description: {{product.description}}</p>
                     <div class="row pb-3">
                       <div class="col-5 d-grid">
 
-                      <a class="btn btn-success text-white mt-2" href=""><i class="far fa-eye"></i></a>
+                      <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="far fa-cart-plus"></i></a>
                         <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
                       </div>
                   
