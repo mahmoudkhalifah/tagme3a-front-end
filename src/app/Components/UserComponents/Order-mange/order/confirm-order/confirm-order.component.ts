@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,6 +21,7 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   templateUrl: './confirm-order.component.html',
 })
 export class ConfirmOrderComponent  implements OnInit{
+  handler:any = null;
   Cities:any
   Addresses:any
   id=this.auth.getUserId()
@@ -37,7 +39,7 @@ export class ConfirmOrderComponent  implements OnInit{
 
 
 
-  constructor(private router:Router,private OPService:POserviceService,private basketSrvice:BasketService,  private orderService:OrderService,private addressService:AddressesService,   private City:CityService ,private appComponent: AppComponent,public basketService:BasketService,private auth:UserAuthService)
+  constructor(private http: HttpClient,private router:Router,private OPService:POserviceService,private basketSrvice:BasketService,  private orderService:OrderService,private addressService:AddressesService,   private City:CityService ,private appComponent: AppComponent,public basketService:BasketService,private auth:UserAuthService)
   {
     appComponent.showFooter = false;
     appComponent.showNavbar = true;
@@ -45,7 +47,7 @@ export class ConfirmOrderComponent  implements OnInit{
 
   }
   ngOnInit(): void {
-
+    this.loadStripe();
     this.basketService.GetUserCartPrdName(this.id).subscribe(
       {
          next:(Items)=>{this.data=Items
@@ -129,7 +131,9 @@ export class ConfirmOrderComponent  implements OnInit{
             console.log("Done Order")
             // this.DeleteCart()
             this.AddProductOrder();
-
+            if(PayMethod == "2"){
+            this.pay(this.Total*100);
+            }
           },
           error:(err)=>{console.log(err)
             this.ErrorDiv.nativeElement.style.display="block";
@@ -181,6 +185,53 @@ export class ConfirmOrderComponent  implements OnInit{
         }
       )
     }
+    pay(amount:any) {
+    //  amount = 1000;
+      console.log(amount);
+      this.http.post<{ clientSecret: string }>('https://localhost:7004/api/Payment/create-payment-intent', amount)
+          .subscribe(data => {
+          var handler = (<any>window).StripeCheckout.configure({
+            key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',
+            locale: 'auto',
+            token: function (token: any) {
+              // You can access the token ID with `token.id`.
+              // Get the token ID to your server-side code for use.
+              console.log(token)
+              alert('Token Created!!');
+            }
+          });
+
+          handler.open({
+            name: 'Demo Site',
+            description: '2 widgets',
+            amount: amount * 100
+          });
+        });
+        }
+
+        loadStripe() {
+
+          if(!window.document.getElementById('stripe-script')) {
+            var s = window.document.createElement("script");
+            s.id = "stripe-script";
+            s.type = "text/javascript";
+            s.src = "https://checkout.stripe.com/checkout.js";
+            s.onload = () => {
+              this.handler = (<any>window).StripeCheckout.configure({
+                key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',
+                locale: 'auto',
+                token: function (token: any) {
+                  // You can access the token ID with `token.id`.
+                  // Get the token ID to your server-side code for use.
+                  console.log(token)
+                  alert('Payment Success!!');
+                }
+              });
+            }
+
+            window.document.body.appendChild(s);
+          }
+        }
 
 
   }

@@ -48,6 +48,7 @@ import { HomeProductDetailsComponent } from './Components/UserComponents/product
 import { AdminDashboardComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard.component';
 import { AdminDashboardMainComponent } from './Components/AdminComponents/admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { NgChartsModule } from 'ng2-charts';
+import { PaymentComponent } from './Components/UserComponents/payment/payment.component';
 import { AddADRESSComponent } from './Components/UserComponents/Order-mange/add-adress/add-adress.component';
 import { ShowOrderDetailsComponent } from './Components/UserComponents/Order-mange/show-order-details/show-order-details.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -100,13 +101,14 @@ import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-p
     HomeProductDetailsComponent,
     AdminDashboardComponent,
     AdminDashboardMainComponent,
+    PaymentComponent,
     AddADRESSComponent,
     ShowOrderDetailsComponent,
     AboutComponent,
     ProfileComponent,
-    ProfileSettingComponent,
     SearchComponent,
     AddtocartPcComponent,
+
 
 
 
