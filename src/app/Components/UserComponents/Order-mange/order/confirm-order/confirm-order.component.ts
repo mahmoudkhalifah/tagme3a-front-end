@@ -85,13 +85,10 @@ export class ConfirmOrderComponent  implements OnInit{
     get TotalPrice()
     {
       let sum = 0;
-      if(this.data!='undefined')
-      {
-        for (let i = 0; i < this.data.length; i++) {
+        for (let i = 0; i < this.data?.length; i++) {
           sum +=(this.data[i].price - this.data[i].discount||0) * this.data[i].quantity;
         }
-       this.Total=sum;
-      }
+      this.Total=sum;
       console.log(this.Total)
       return sum
     }
@@ -130,9 +127,10 @@ export class ConfirmOrderComponent  implements OnInit{
           next:()=>{
             console.log("Done Order")
             // this.DeleteCart()
-            this.AddProductOrder();
             if(PayMethod == "2"){
-            this.pay(this.Total*100);
+              this.pay(this.Total*100);
+            } else {
+              this.AddProductOrder();
             }
           },
           error:(err)=>{console.log(err)
@@ -186,7 +184,7 @@ export class ConfirmOrderComponent  implements OnInit{
       )
     }
     pay(amount:any) {
-    //  amount = 1000;
+      //amount *= 100;
       console.log(amount);
       this.http.post<{ clientSecret: string }>('https://localhost:7004/api/Payment/create-payment-intent', amount)
           .subscribe(data => {
@@ -196,15 +194,16 @@ export class ConfirmOrderComponent  implements OnInit{
             token: function (token: any) {
               // You can access the token ID with `token.id`.
               // Get the token ID to your server-side code for use.
-              console.log(token)
-              alert('Token Created!!');
+              console.log(token);
+              this.AddProductOrder();
+              // alert('Token Created!!');
             }
           });
 
           handler.open({
-            name: 'Demo Site',
-            description: '2 widgets',
-            amount: amount * 100
+            name: 'Tagme3a Site',
+            description: 'PC online shop',
+            amount: amount
           });
         });
         }
@@ -224,7 +223,7 @@ export class ConfirmOrderComponent  implements OnInit{
                   // You can access the token ID with `token.id`.
                   // Get the token ID to your server-side code for use.
                   console.log(token)
-                  alert('Payment Success!!');
+                  // alert('Payment Success!!');
                 }
               });
             }

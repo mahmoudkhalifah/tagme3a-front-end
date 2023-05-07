@@ -57,15 +57,16 @@ const routes: Routes = [
     {path: "products" , component:ProductsComponent},
     {path: "pcs" , component:DisplayPCComponent},
     {path: "details-pc/:id" , component:DetailsPCComponent},
+    //? ??????
     {path: "addtocart-pc/:id" , component:AddtocartPcComponent},
 
     //payment
-    {path:"payment",component:PaymentComponent},
+    // {path:"payment",component:PaymentComponent},
     {path: "products/:id" , component:ProductsComponent},
-    {path: "home-product-details/:id" , component:HomeProductDetailsComponent},
+    {path: "home-product-details/:id" ,component:HomeProductDetailsComponent},
     {path:"about",component:AboutComponent},
-    {path:"profile",component:ProfileComponent},
-    {path:"profileSetting",component:ProfileSettingComponent},
+    {path:"profile",component:ProfileComponent,canActivate:[UserGuard]},
+    {path:"profileSetting",component:ProfileSettingComponent,canActivate:[UserGuard]},
     {path: 'search/:query', component: SearchComponent},
 
 
@@ -97,17 +98,17 @@ const routes: Routes = [
 
     //Admin Dashboard
 
-    {path:"admin/dashboard" , component:AdminDashboardComponent},
+    {path:"admin/dashboard" , component:AdminDashboardComponent,canActivate:[AdminGuard]},
 
 
     //userOrders
-     {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
-     {path:"User/Order-mange/show-order-details/:id",component:ShowOrderDetailsComponent},
+    {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent,canActivate:[UserGuard]},
+    {path:"User/Order-mange/show-order-details/:id",component:ShowOrderDetailsComponent,canActivate:[UserGuard]},
 
-    //basket
-    {path:"User/ManageBasket/basket",component:BasketComponent},
-    {path:"User/Order-mange/order",component:OrderComponent},
-    {path:"User/Order-mange/add-adress",component:AddADRESSComponent},
+     //basket
+    {path:"User/ManageBasket/basket",component:BasketComponent,canActivate:[UserGuard]},
+    {path:"User/Order-mange/order",component:OrderComponent,canActivate:[UserGuard]},
+    {path:"User/Order-mange/add-adress",component:AddADRESSComponent,canActivate:[UserGuard]},
 
     {path:"admin/Order/order-manager",component:OrderManagerComponent, canActivate:[AdminGuard]},
     {path:"admin/Order/show-details/:id",component:ShowDetailsComponent, canActivate:[AdminGuard]},
@@ -117,22 +118,21 @@ const routes: Routes = [
     //users
     //userOrders
     {path:"User/Order-mange/order/:ID",component:OrderComponent,canActivate:[UserGuard]},
-    {path:"User/journeyMode",component:JourneyModeComponent},
-    {path:"User/Order-mange/confirm-order",component:ConfirmOrderComponent},
+    {path:"User/journeyMode",component:JourneyModeComponent,canActivate:[UserGuard]},
     //basket
-    {path:"User/ManageBasket/basket",component:BasketComponent},
 
 
     //Admin PC
-    {path:"admin/PCManager/view-pc",component:ViewPCComponent},
-    {path:"admin/PCManager/add-pc",component:AddPCComponent},
-    {path:"admin/PCManager/edit-pc/:id",component:EditPCComponent},
-    {path:"admin/PCManager/addprdpc",component:AddprdpcComponent},
+    {path:"admin/PCManager/view-pc",component:ViewPCComponent,canActivate:[AdminGuard]},
+    {path:"admin/PCManager/add-pc",component:AddPCComponent,canActivate:[AdminGuard]},
+    {path:"admin/PCManager/edit-pc/:id",component:EditPCComponent,canActivate:[AdminGuard]},
+    {path:"admin/PCManager/addprdpc",component:AddprdpcComponent,canActivate:[AdminGuard]},
     // {path:"home",component:AddprdpcComponent}
-    {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent},
-    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent},
+    {path:"admin/PCManager/delete-pc/:id",component:DeletePCComponent,canActivate:[AdminGuard]},
+    {path:"admin/PCManager/edit-prdpc/:id",component:EditPrdpcComponent,canActivate:[AdminGuard]},
 
-
+    //not found
+    {path:"**",component:EditPrdpcComponent},
   ];
 
 

@@ -9,7 +9,7 @@
 
   <form [formGroup]="myForm" >
   <div class="form-group  col-md-2 m-2">
-    <select  #AddressChosen formControlName="myDropdown"  (change)="onSelected(AddressChosen.value)"   formControlName="Address" class="form-control mb-3" name ="Address" style="width: 400px;">
+    <select  #AddressChosen formControlName="myDropdown"  (change)="onSelected(AddressChosen.value)" class="form-control mb-3" name ="Address" style="width: 400px;">
       <option  ng-selected="true">--Select Address--</option>
       <option *ngFor="let Address of Addresses;"
               [value]="Address.id">
