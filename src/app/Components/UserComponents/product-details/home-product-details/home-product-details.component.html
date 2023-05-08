@@ -1,8 +1,6 @@
 <div class="container" *ngIf="product;">
 <div class="card text-center mt-3 mb-3">
-  <div class="card-header bg-dark" style="color: white;">
-    <h3>Products Details</h3>
-  </div>
+  <h5 class="text-center  display-1 mb-2">Product <span class="text-success">Details</span></h5>
   <div  class="card-body">
     <div class="row justify-content-center">
         <div class="col-sm-4">
@@ -41,8 +39,8 @@
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">Price: {{product.price}} $</p>
             <p class="card-text">Description: {{product.description}}</p>
-            <a href="#" class="btn btn-primary m-2">Add to Cart</a>
-            <a href="#" class="btn btn-primary m-2">Add to wishlist</a>
+            <a href="#" class="btn btn-success m-2"><i class="fas fa-cart-plus"></i></a>
+            <!-- <a href="#" class="btn btn-success m-2">Add to wishlist</a> -->
            </div>
           </div>
 

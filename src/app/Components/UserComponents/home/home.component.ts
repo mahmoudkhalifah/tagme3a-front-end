@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryDTO } from 'src/app/Models/CategoryDTO';
-import { CategoryServiceService } from 'src/app/services/category-service.service';
+import { CategoryServiceService } from'src/app/services/category-service.service';
 import { AppComponent } from 'src/app/app.component';
 import 'owl.carousel';
 import { OwlOptions } from 'ngx-owl-carousel-o';

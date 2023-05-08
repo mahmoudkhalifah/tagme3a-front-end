@@ -4,6 +4,12 @@ export class PostOrder {
       public arrivalDate:Date,public orderState:number,
       public  payMethod:number,public userId:String ){}
 
+
+      // constructor(public addressID: number,public  bill: number,
+      //   public orderDate:string,public shippingDate:string,
+      //   public arrivalDate:string,public orderState:number,
+      //   public  payMethod:number,public userId:String ){}
+
 }
 
 // "addressID": 0,

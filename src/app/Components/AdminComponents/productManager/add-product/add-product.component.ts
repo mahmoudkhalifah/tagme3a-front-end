@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  templateUrl: './add-product.component.html'
 })
 export class AddProductComponent implements OnInit {
   brands:BrandDTO[]=[];
@@ -57,10 +56,6 @@ export class AddProductComponent implements OnInit {
   }
 
   getValue(){
-    //console.log("Form: ",this.formValidation.valid);
-    //console.log("Name: ",this.formValidation.controls["name"].valid);
-    //console.log("Description: ",this.formValidation.controls["description"].valid);
-    //console.log("Logo: ",this.formValidation.controls["logo"].valid);
     if(this.formValidation.controls["name"].valid
     &&this.formValidation.controls["description"].valid
     &&this.formValidation.controls["brand"].valid
@@ -73,10 +68,7 @@ export class AddProductComponent implements OnInit {
     &&this.formValidation.controls["productImage3"].valid
     )
     {
-      /*const imgArr: (string | null)[] = [
-        this.formValidation.controls["productImage1"].value,
-      this.formValidation.controls["productImage2"].value
-    ,this.formValidation.controls["productImage3"].value]*/
+
     const imgArr: (string | null)[] = [this.imagePic1,this.imagePic2,this.imagePic3];
     const productImages: string[] = imgArr.filter(img => img !== null) as string[];
 
@@ -88,8 +80,8 @@ export class AddProductComponent implements OnInit {
       this.formValidation.controls["category"].value ?? 0,
       this.formValidation.controls["brand"].value ?? 0,
       productImages )
-
       this.AddProduct(prd)
+
     }
   }
 

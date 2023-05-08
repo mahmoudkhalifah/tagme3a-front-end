@@ -24,6 +24,7 @@ export class NavbarComponent  implements OnInit{
   }
   onLogout() {
     this.userAuthService.logout();
+    this.router.navigate(["/login"]);
   }
   SearchQuery(){
     if (this.searchQuery) {
