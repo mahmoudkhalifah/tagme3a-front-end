@@ -108,10 +108,7 @@ import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-p
     ProfileComponent,
     SearchComponent,
     AddtocartPcComponent,
-
-
-
-
+    ProfileSettingComponent
   ],
   imports: [
 
@@ -121,10 +118,9 @@ import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-p
     ReactiveFormsModule,
     HttpClientModule,
     NgChartsModule,
-    BrowserModule,
     CarouselModule,
     BrowserAnimationsModule,
-    ModalModule
+    ModalModule,
   ],
   providers: [
     {
