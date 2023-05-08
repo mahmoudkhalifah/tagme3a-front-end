@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserLogin } from 'src/app/models/user-login';
 import { UserAuthService } from 'src/app/services/user-auth.service';
+import { UserProfileService } from 'src/app/services/user-profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,8 +8,18 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  Email : any
-  constructor(private userAuth : UserAuthService) {}
-  
+  user : any
+  constructor(private userAuth : UserAuthService , private profileService : UserProfileService) {}
 
+  ngOnInit(): void {
+    this.profileService.getUser(this.userAuth.getUserId()).subscribe(
+      (data) => {
+        console.log(data);
+        this.user = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 }
