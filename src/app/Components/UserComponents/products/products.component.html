@@ -4,7 +4,7 @@
       <h5 class="text-success fw-bold mt-3 mb-3">Brands</h5>
       <div class="list-group">
         <button
-         class="list-group-item list-group-item-action" *ngFor="let brand of brands"
+         class="list-group-item list-group-item-action list-group-item-success" *ngFor="let brand of brands"
          [class.active]="brand.brandId===brandIdSelected"
          [value]="brand.brandId"
          (click)="onBrandSelected(brand.brandId)"
@@ -13,14 +13,14 @@
         </div>
       <h5 class="text-success fw-bold mt-3 mb-3">Categories</h5>
       <div class="list-group">
-        <button class="list-group-item list-group-item-action" *ngFor="let cat of categories"
+        <button class="list-group-item list-group-item-action list-group-item-success" *ngFor="let cat of categories"
         [class.active]="cat.categoryId===categoryIdSelected"
          [value]="cat.categoryId"
          (click)="onCategorySelected(cat.categoryId)"
         >{{cat.name}}</button>
       </div>
     </div>
-    
+
         <!-- All Products -->
         <div class="card text-center mt-3 mb-3 col-lg-9">
           <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
@@ -35,7 +35,7 @@
                       <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="1" aria-label="Slide 2"></button>
                       <button type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-<!-- 
+<!--
                     <div style="width: 280; height: 500;" class="carousel-inner"  >
                       <div  class="carousel-item active" >
                         <img (click)="getDetails(product.id)" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" class="d-block w-100" alt="...">
@@ -84,10 +84,10 @@
                     <div class="row pb-3">
                       <div class="col-5 d-grid">
 
-                      <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="far fa-cart-plus"></i></a>
+                      <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="fas fa-cart-plus"></i></a>
                         <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
                       </div>
-                  
+
                       <div class="col-5 d-grid">
                       <a class="btn btn-success text-white mt-2" href=""><i class="fas fa-heart"></i></a>
 
