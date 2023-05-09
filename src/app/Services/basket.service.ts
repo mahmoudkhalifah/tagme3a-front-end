@@ -22,7 +22,6 @@ export class BasketService {
 
   AddProductInCart<UserProductInCartInsert>(Cart:UserProductInCartInsert)
   {
-
     return this.Client.post(this.URL+'/UserProducstInCart',Cart);
   }
 

@@ -25,6 +25,8 @@ export class ProductsComponent {
   categoryIdSelected=0;
   userID:any;
   id:any
+  added:boolean=false;
+  alreadyAdded:boolean=false;
   constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
   // constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
   //   appComponent.showFooter = true;
@@ -147,11 +149,22 @@ export class ProductsComponent {
 
    Insert(id:any)
    {
-    let User="1ed81e79-9a3b-4910-9167-5e80e3b7f613";
+    this.added=false;
+    this.alreadyAdded=false;
     let prd = new UserProductInCartInsert(+id,this.userID,1);
     this.basketService.AddProductInCart(prd).subscribe(
       {
-        error:(err)=>{console.log(err)}
+        next:()=>
+        {
+          this.added = true;
+        },
+        error:(err)=>{
+          console.log(err.status);
+          if(err.status == 400){
+            this.alreadyAdded = true
+        //   alert("Product Already In Cart");
+          }
+        }
       }
     );
     console.log(id)
