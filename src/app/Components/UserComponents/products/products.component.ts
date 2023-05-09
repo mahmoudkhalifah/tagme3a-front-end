@@ -147,7 +147,11 @@ export class ProductsComponent {
 
    Insert(id:any)
    {
-    let User="1ed81e79-9a3b-4910-9167-5e80e3b7f613";
+    if(!this.userID) {
+      this.router.navigate(["/login"]);
+      return;
+    }
+
     let prd = new UserProductInCartInsert(+id,this.userID,1);
     this.basketService.AddProductInCart(prd).subscribe(
       {
