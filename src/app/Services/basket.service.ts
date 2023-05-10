@@ -44,7 +44,7 @@ export class BasketService {
   }
   UpdateCart(UserId:string,PID:Number,cartUpdate:UserUpdateCart)
   {
-    https://localhost:7004/api/UserProducstInCart/UpdateCard?PID=15&UID=7c1b7ab9-1cbb-4ea7-b7ae-ddff5b5487e3
+    //https://localhost:7004/api/UserProducstInCart/UpdateCard?PID=15&UID=7c1b7ab9-1cbb-4ea7-b7ae-ddff5b5487e3
 
     return this.Client.put(this.URL+"/UserProducstInCart/UpdateCard?PID="+PID+"&UID="+UserId,cartUpdate);
   }

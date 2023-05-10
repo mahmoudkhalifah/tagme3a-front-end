@@ -18,7 +18,7 @@ export class ProductService {
       catchError(this.handleError))
     }
     getAllProductsAdmin(){
-      return this.http.get<Product[]>("https://localhost:7004/api/Product/admin/products").pipe(
+      return this.http.get<Product[]>(Constants.apiBaseUrl+"Product/admin/products").pipe(
         catchError(this.handleError))
       }
 

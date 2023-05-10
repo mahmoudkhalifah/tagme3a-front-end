@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class DashboardService {
 
   constructor(private client : HttpClient) { }
-  URL = "https://localhost:7004/api/Dashboard";
+  URL = Constants.apiBaseUrl+"Dashboard";
 
   getNumOfProducts(){
     return this.client.get(this.URL+"/NumOfProducts");

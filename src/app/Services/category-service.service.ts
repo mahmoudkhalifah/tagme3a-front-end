@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CategoryDTO } from '../Models/CategoryDTO';
 import { CategoryInsert } from '../Models/CategoryInsertDTO';
+import { Constants } from '../constants/constants';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { CategoryInsert } from '../Models/CategoryInsertDTO';
 })
 export class CategoryServiceService {
   constructor(private client:HttpClient) { }
-  private URL = "https://localhost:7004/api/Categories";
+  private URL = Constants.apiBaseUrl+"Categories";
   /*
   getPeople(): Observable<Person[]> {
     console.log('getPeople '+this.baseURL + 'people')

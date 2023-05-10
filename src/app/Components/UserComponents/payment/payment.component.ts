@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Constants } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-payment',
@@ -17,7 +18,7 @@ export class PaymentComponent implements OnInit {
   pay(amount:any) {
 amount = 1000;
 console.log(amount);
-this.http.post<{ clientSecret: string }>('https://localhost:7004/api/Payment/create-payment-intent', amount)
+this.http.post<{ clientSecret: string }>(Constants.apiBaseUrl+'Payment/create-payment-intent', amount)
     .subscribe(data => {
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',
