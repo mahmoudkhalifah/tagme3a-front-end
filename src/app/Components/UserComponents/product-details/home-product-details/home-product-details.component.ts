@@ -38,9 +38,12 @@ export class HomeProductDetailsComponent implements OnInit{
           error:(err)=>{console.log(err)}
         });
   }
-
+  added = false;
+  alreadyAdded = false;
   Insert()
    {
+    this.added=false;
+    this.alreadyAdded=false;
     if(!this.userAuthService.getUserId()) {
       this.router.navigate(["/login"]);
       return;
@@ -49,8 +52,21 @@ export class HomeProductDetailsComponent implements OnInit{
     let prd = new UserProductInCartInsert(+this.id,this.userAuthService.getUserId(),1);
     this.basketService.AddProductInCart(prd).subscribe(
       {
-        error:(err)=>{console.log(err)}
+        next:()=>
+        {
+          this.added = true;
+        },
+        error:(err)=>{
+          console.log(err.status);
+          if(err.status == 400){
+            this.alreadyAdded = true
+        //   alert("Product Already In Cart");
+          }
+        }
       }
     );
    }
 }
+
+
+

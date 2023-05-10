@@ -36,6 +36,12 @@
         <div class="col-sm-4">
           <!-- <img class="card-img-top" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" alt="Card image cap"> -->
           <div class="col-lg-9 card-body">
+            <div *ngIf="added" class="alert alert-success" role="alert">
+              Product Added successfully
+            </div>
+            <div *ngIf="alreadyAdded" class="alert alert-danger" role="alert">
+              Product Already In Cart
+            </div>
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">Price: {{product.price}} $</p>
             <p class="card-text">Description: {{product.description}}</p>
