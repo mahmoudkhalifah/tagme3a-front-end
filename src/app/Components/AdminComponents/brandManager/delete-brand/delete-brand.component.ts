@@ -28,13 +28,19 @@ export class DeleteBrandComponent {
   console.log(this.brand);
 
   }
+
+  canNotDelete = false;
   Delete()
   {
     this.service.deleteBrandById(this.Id).subscribe({
       next:()=>{
         this.router.navigate(["admin/brandManager/view-brands"])
       },
-      error:(err)=>{console.log(err)}
+      error:(err)=>{
+        if(err.status == 400) {
+          this.canNotDelete = true;
+        }
+      }
     });
   }
 

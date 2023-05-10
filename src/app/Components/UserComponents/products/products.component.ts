@@ -145,7 +145,6 @@ export class ProductsComponent {
     //src\app\Components\UserComponents\products\product-details\product-details.component.html
     this.router.navigate(["home-product-details/"+id])
    }
-
    Insert(id:any)
    {
     this.added=false;
