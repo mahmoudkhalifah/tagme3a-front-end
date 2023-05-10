@@ -26,6 +26,12 @@
           <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
           <div  class="card-body">
             <div class="row products-row">
+              <div *ngIf="added" class="alert alert-success" role="alert">
+                Product Added successfully
+              </div>
+              <div *ngIf="alreadyAdded" class="alert alert-danger" role="alert">
+                Product Already In Cart
+              </div>
               <div class="col-md-4" *ngFor="let product of products" >
                 <div   class="card mb-4">
                   <!-- data-bs-ride="true" -->
@@ -85,7 +91,8 @@
                       <div class="col-5 d-grid">
 
                       <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="fas fa-cart-plus"></i></a>
-                        <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
+
+                      <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
                       </div>
 
                       <div class="col-5 d-grid">
@@ -105,5 +112,6 @@
         </div>
 </div>
 </div>
+
 
 
