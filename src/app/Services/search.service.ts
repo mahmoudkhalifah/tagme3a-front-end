@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
-  private ApiUrl = "https://localhost:7004/api/Search/"
+  private ApiUrl = Constants.apiBaseUrl+"Search/"
 
   constructor(private http : HttpClient) {
 

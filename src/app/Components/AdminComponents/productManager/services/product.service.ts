@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { Product } from '../../models/product';
 import { catchError, throwError } from 'rxjs';
+import { Constants } from 'src/app/constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { catchError, throwError } from 'rxjs';
 export class ProductService {
 
 
-  private apiUrl = "https://localhost:7004/api/Product" //Api URL
+  private apiUrl = Constants.apiBaseUrl+"Product" //Api URL
   constructor(private readonly http : HttpClient ) { }
 
   getAllProducts(){

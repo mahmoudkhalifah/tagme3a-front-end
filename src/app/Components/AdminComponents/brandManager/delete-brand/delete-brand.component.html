@@ -4,6 +4,7 @@
 <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this ?</h3>
+<div class="alert alert-danger" *ngIf="canNotDelete">You can't delete this brand becuase it is related to other data</div>
 <div>
     <h4>Brand</h4>
 <hr>

@@ -5,6 +5,7 @@ import { PCInsertDTO } from '../Models/PCInsertDTO';
 import { PrdPCDTO } from '../Models/PrdPcDTO';
 import { PCReadDetailsDTO } from '../Models/PCReadDetailsDTO';
 import { PrdPCUpdateDTO } from '../Models/PrdPCUpdateDTO';
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,16 @@ import { PrdPCUpdateDTO } from '../Models/PrdPCUpdateDTO';
 export class PCServiceService {
 
   constructor(private client :HttpClient) { }
-  private URL = "https://localhost:7004/api/PCs";
+  private URL = Constants.apiBaseUrl+"PCs";
 
 
   getAllPCs(){
       return this.client.get<PCReadDTO[]>(this.URL);
   }
+
+  getAllPCsForAdmin(){
+    return this.client.get<PCReadDTO[]>(this.URL+'/GetForAdmin');
+}
 
   getPCById(id:any){
     return this.client.get<PCReadDetailsDTO>(this.URL+'/'+id);

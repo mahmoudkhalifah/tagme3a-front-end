@@ -33,7 +33,8 @@ export class DeletePCComponent {
         this.service.DeletePCComponent(this.Id).subscribe(
           {
             next:()=>{
-              this.router.navigate(["admin/PCManager/view-pc"])
+              // this.router.navigate(["admin/PCManager/view-pc"])
+              this.router.navigate(["admin/dashboard"]);
             },
             error:(err)=>{console.log(err)}
           }

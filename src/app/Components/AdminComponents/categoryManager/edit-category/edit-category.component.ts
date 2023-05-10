@@ -114,7 +114,8 @@ getValue(){
       this.myService.updateCategoryById(this.Id,this.category).subscribe(
         {
           next:()=>{
-            this.router.navigate(["admin/categoryManager/view-categories"])
+            // this.router.navigate(["admin/categoryManager/view-categories"])
+            this.router.navigate(["admin/dashboard"]);
           },
           error:(err)=>{console.log(err)}
         }

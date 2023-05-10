@@ -15,7 +15,7 @@ export class ViewPCComponent implements OnInit {
       appComponent.showFooter = false;
     }
   ngOnInit(): void {
-    this.myService.getAllPCs().subscribe({
+    this.myService.getAllPCsForAdmin().subscribe({
       next:(data)=>{
         this.PCs = data;
         console.log(this.PCs);

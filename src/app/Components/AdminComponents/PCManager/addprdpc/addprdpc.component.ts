@@ -21,7 +21,7 @@ export class AddprdpcComponent implements OnInit {
     appcomponent.showFooter = false;
   }
   ngOnInit(): void {
-    this.myService.getAllPCs().subscribe({
+    this.myService.getAllPCsForAdmin().subscribe({
       next:(data)=>{
         this.pcs= data;
         console.log(this.pcs);

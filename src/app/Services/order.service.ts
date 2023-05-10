@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import{PostOrder} from '../Models/PostOrderDTO'
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import{PostOrder} from '../Models/PostOrderDTO'
 export class OrderService {
 
   constructor(private Client:HttpClient ) { }
-  private URL="https://localhost:7004/api";
+  private URL=Constants.apiBaseUrl;
 
   getAllOrders()
   {

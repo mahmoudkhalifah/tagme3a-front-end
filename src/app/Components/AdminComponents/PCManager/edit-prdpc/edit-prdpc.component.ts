@@ -46,6 +46,8 @@ export class EditPrdpcComponent implements OnInit {
     this.myService.updateprdpc(this.pc.id , prd).subscribe({
       next:()=>{
         //this.router.navigate(["admin/PCManager/view-pc"]);
+        this.router.navigate(["admin/dashboard"]);
+
 
       },
       error:(err)=>{

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BrandDTO } from '../Models/BrandDTO';
 import { BrandInsert } from '../Models/BrandInsertDTO';
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { BrandInsert } from '../Models/BrandInsertDTO';
 export class BrandService {
 
   constructor(private client:HttpClient) { }
-  private URL = "https://localhost:7004/api/Brands";
+  private URL = Constants.apiBaseUrl+"Brands";
 
   getAllBrands()
   {

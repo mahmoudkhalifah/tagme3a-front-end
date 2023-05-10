@@ -12,6 +12,8 @@ import { ProductService } from '../services/product.service';
 export class DeleteProductComponent {
   Id:any
   product:any
+  canNotDelete=false;
+
   constructor(private appComponent: AppComponent,activate:ActivatedRoute,private service:ProductService,private router: Router)
   {
     appComponent.showFooter = false;
@@ -35,7 +37,11 @@ console.log(this.product);
       next:()=>{
         this.router.navigate(["admin/dashboard"])
       },
-      error:(err)=>{console.log(err)}
+      error:(err)=>{
+        if(err.status==400) {
+          this.canNotDelete = true;
+        }
+      }
     });
   }
 

@@ -89,7 +89,8 @@ getValue(){
     this.myService.addCategory(newCat).subscribe({
       next:()=>{
 
-   this.router.navigate(["admin/categoryManager/view-categories"])
+  //  this.router.navigate(["admin/categoryManager/view-categories"])
+        this.router.navigate(["admin/dashboard"]);
       },
       error:(err:any)=>{console.log(err)}
     });

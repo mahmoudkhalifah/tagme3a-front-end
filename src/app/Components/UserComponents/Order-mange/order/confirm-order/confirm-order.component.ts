@@ -7,6 +7,7 @@ import { CityDTO } from 'src/app/Models/CityDTO';
 import { PostOrder } from 'src/app/Models/PostOrderDTO';
 import { GetUserCartPrdName } from 'src/app/Models/UserPrdCart';
 import { AppComponent } from 'src/app/app.component';
+import { Constants } from 'src/app/constants/constants';
 import { AddressesService } from 'src/app/services/addresses.service';
 import { BasketService } from 'src/app/services/basket.service';
 import { BrandService } from 'src/app/services/brand.service';
@@ -185,7 +186,7 @@ export class ConfirmOrderComponent  implements OnInit{
     pay(amount:any) {
       //amount *= 100;
       console.log(amount);
-      this.http.post<{ clientSecret: string }>('https://localhost:7004/api/Payment/create-payment-intent', amount)
+      this.http.post<{ clientSecret: string }>(Constants.apiBaseUrl+'Payment/create-payment-intent', amount)
           .subscribe(data => {
           var handler = (<any>window).StripeCheckout.configure({
             key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',

@@ -89,7 +89,9 @@ export class AddProductComponent implements OnInit {
     console.log(productData);
     this.productService.AddProduct(productData).subscribe({
       next:()=>{
-        this.router.navigate(["admin/productManager/view-products"])
+        // this.router.navigate(["admin/productManager/view-products"])
+        this.router.navigate(["admin/dashboard"]);
+
       },
       error:(err)=>{console.log(err)}
     });

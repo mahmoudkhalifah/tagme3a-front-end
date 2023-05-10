@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Constants } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class CityService {
 
   constructor(private Client:HttpClient ) { }
-  private URL="https://localhost:7004/api";
+  private URL=Constants.apiBaseUrl;
 
   getAllCities()
   {

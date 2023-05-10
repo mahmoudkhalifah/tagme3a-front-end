@@ -61,8 +61,8 @@ getValue(){
 
     this.myService.addPC(pc).subscribe({
       next:()=>{
-        this.route.navigate(["admin/PCManager/view-pc"]);
-
+        // this.route.navigate(["admin/PCManager/view-pc"]);
+        this.route.navigate(["admin/dashboard"]);
       },
       error:(err)=>{
         console.log(err);

@@ -60,7 +60,8 @@ getValue(){
     let pcUpdated = new PCInsertDTO(this.pc.bundleName ,this.img );
     this.myService.updatePCById(this.id , pcUpdated).subscribe({
       next:()=>{
-        this.router.navigate(["admin/PCManager/view-pc"]);
+        // this.router.navigate(["admin/PCManager/view-pc"]);
+        this.router.navigate(["admin/dashboard"]);
 
       },
       error:(err)=>{

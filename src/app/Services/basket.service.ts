@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import {UserProductInCartInsert } from 'src/app/Models/UserProductInCartInsertDTO';
 import { UserUpdateCart } from '../Models/UserUpdateCart';
 import { uid } from 'chart.js/dist/helpers/helpers.core';
+import { Constants } from '../constants/constants';
 
 
 
@@ -13,7 +14,7 @@ import { uid } from 'chart.js/dist/helpers/helpers.core';
 export class BasketService {
 
   constructor(private Client:HttpClient ) { }
-  private URL="https://localhost:7004/api";
+  private URL=Constants.apiBaseUrl;
 
   GetDetailsOfCartForSpecificUser(UserId:string)
   {
