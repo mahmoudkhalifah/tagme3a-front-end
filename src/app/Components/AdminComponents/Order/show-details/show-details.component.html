@@ -1,7 +1,7 @@
 
 <div class="card" style="width:600px;text-align: center; margin: 10px auto;" *ngIf="orders; else loadingBlock">
   <div class="card-body">
-    <h4 class="card-title" style="color: red;">{{orders.fname}}{{orders.lname}}</h4>
+    <h4 class="card-title" style="color: red;">{{orders.fname}} {{orders.lname}}</h4>
     <p class="card-text">{{orders.cityName}} : {{orders.orderDate}} </p>
     <p class="card-text"> <u style="color: red;">Shipping</u> {{orders.shippingDate}} <u style="color: red;">Arrival</u> {{orders.arrivalDate}} </p>
     <table class="table table-sm">

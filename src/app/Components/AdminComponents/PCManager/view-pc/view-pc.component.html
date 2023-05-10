@@ -1,7 +1,5 @@
-<div class="container">
-    <!-- Add pc -->
 
-        <div class="card text-center mt-3 mb-3">
+        <div *ngIf="PCs; else loadingBlock" class="card text-center mt-3 mb-3">
           <div class="card-body justify-content-start ">
             <a routerLink="../PCManager/add-pc" class="btn btn-success m-2">Add New PC</a>
             <a routerLink="../PCManager/addprdpc" class="btn btn-success">Add new Product PC</a>
@@ -31,6 +29,14 @@
                 </div>
               </div>
     </div>
+    <ng-template #loadingBlock>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
+    
 
 
 

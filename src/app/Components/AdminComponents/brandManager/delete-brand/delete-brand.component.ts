@@ -32,7 +32,7 @@ export class DeleteBrandComponent {
   {
     this.service.deleteBrandById(this.Id).subscribe({
       next:()=>{
-        this.router.navigate(["admin/dashboard"])
+        this.router.navigate(["admin/brandManager/view-brands"])
       },
       error:(err)=>{console.log(err)}
     });

@@ -1,4 +1,4 @@
-<div class="container">
+<div  *ngIf="pcs; else loadingBlock" class="container">
   <div class="form-group">
     <label for="PCName">
       <P class="text-center display-1 mb-2" style="font-size: larger ; font-weight: bolder;">Choose  <span class="text-success">PC Name</span></P>
@@ -11,7 +11,7 @@
   <div class="card text-center mt-3 mb-3">
     <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
 
-    <div class="card-body">
+    <div *ngIf="products; else loadingBlock"  class="card-body">
       <div class="row justify-content-center">
         <div class="col-md-4" *ngFor="let product of products">
           <div class="card mb-4">
@@ -30,5 +30,13 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
+
+</div>
+<ng-template #loadingBlock>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

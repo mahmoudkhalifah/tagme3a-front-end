@@ -1,8 +1,8 @@
 <div class="container">
 <!-- Search Results -->
-<div class="card text-center mt-3 mb-3">
+<div  class="card text-center mt-3 mb-3">
     <h5 class="text-center  display-1 mb-2">Search Results for "<span class="text-success">{{ searchQuery }}</span>"</h5>
-    <div class="card-body">
+    <div *ngIf="searchResults;else loadingBlock" class="card-body">
       <div class="row products-row">
         <div class="col-md-4" *ngFor="let product of searchResults">
           <div class="card mb-4">
@@ -56,5 +56,15 @@
         </div>
       </div>
     </div>
+
+  
+<ng-template #loadingBlock>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
+</ng-template>
+</div>
+
 </div>

@@ -14,8 +14,8 @@ import { UserPCInCartInsertDTO } from 'src/app/Models/UserPCInCartInsertDTO';
 })
 export class DisplayPCComponent implements OnInit{
   PCs:PCReadDTO[]=[];
-  pc:any;
-  product: any = {}; // add product property here
+  // pc:any;
+  // product: any = {}; // add product property here
 
 
   constructor(private appComponent:AppComponent , myactivate:ActivatedRoute 
@@ -36,56 +36,57 @@ ngOnInit(): void {
 
   
 }
-isLoading = false;
-Mylist:Array<UserPCInCartInsertDTO> =[];
-
-id:any = this.auth.getUserId()
-selectedProductId: any;
-
-addToCart(id: any) {
-  this.isLoading = true;
-  this.selectedProductId = id; // set the selected product ID
-  this.myService.getPCById(id).subscribe({
-    next: (data) => {
-      this.pc = data;
-      this.addProductsToCart();
-    },
-    error: (err) => {
-      console.log(err);
-    }
-  });
-
 }
+// isLoading = false;
+// Mylist:Array<UserPCInCartInsertDTO> =[];
 
-addProductsToCart() {
+// id:any = this.auth.getUserId()
+// selectedProductId: any;
 
-  if (this.pc && this.pc.products) {
-    if(this.pc.products.length ==0) console.log("couldn't add");
-    let userPcList: UserPCInCartInsertDTO[] = [];
+// addToCart(id: any) {
+//   this.isLoading = true;
+//   this.selectedProductId = id; // set the selected product ID
+//   this.myService.getPCById(id).subscribe({
+//     next: (data) => {
+//       this.pc = data;
+//       this.addProductsToCart();
+//     },
+//     error: (err) => {
+//       console.log(err);
+//     }
+//   });
 
-    for (let product of this.pc.products) {
-      let userPc: UserPCInCartInsertDTO = {
-        productId: product.productId,
-        quantity: product.quantitiy
-      };
-      userPcList.push(userPc);
-    }
+// }
 
-    console.log(userPcList);
+// addProductsToCart() {
 
-    this.basketService.AddLstProductInCart(userPcList, this.id).subscribe({
-      next: () => {
-        this.isLoading = false;
-        //for (let product of this.pc.products) {
-          this.pc.addedToCart = true;
-        //}
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
+//   if (this.pc && this.pc.products) {
+//     if(this.pc.products.length ==0) console.log("couldn't add");
+//     let userPcList: UserPCInCartInsertDTO[] = [];
 
-  } else {
-    console.log('Unable to add items to cart. Products are undefined.');
-  }
-}}
+//     for (let product of this.pc.products) {
+//       let userPc: UserPCInCartInsertDTO = {
+//         productId: product.productId,
+//         quantity: product.quantitiy
+//       };
+//       userPcList.push(userPc);
+//     }
+
+//     console.log(userPcList);
+
+//     this.basketService.AddLstProductInCart(userPcList, this.id).subscribe({
+//       next: () => {
+//         this.isLoading = false;
+//         //for (let product of this.pc.products) {
+//           this.pc.addedToCart = true;
+//         //}
+//       },
+//       error: (err) => {
+//         console.log(err);
+//       }
+//     });
+
+//   } else {
+//     console.log('Unable to add items to cart. Products are undefined.');
+//   }
+// }}
