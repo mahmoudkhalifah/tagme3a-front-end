@@ -1,13 +1,9 @@
 <div class="container">
     <!-- Add category -->
 
-        <div class="card text-center mt-3 mb-3">
-          <div class="card-header bg-dark " style="color: white;">
-            <h3> Add New category</h3>
-
-          </div>
-          <div class="card-body">
-            <a routerLink="../categoryManager/add-category" class="btn btn-primary">Add</a>
+        <div class="card  mt-3 mb-3">
+          <div class="card-body justify-content-start">
+            <a routerLink="../categoryManager/add-category" class="btn btn-success">Add New Category</a>
           </div>
         </div>
 
@@ -15,10 +11,8 @@
 
 
             <!-- All categorys -->
-            <div class="card text-center mt-3 mb-3">
-              <div class="card-header bg-dark " style="color: white;">
-               <h3> All Categories </h3>
-              </div>
+          <div *ngIf="categories;else loadingBlock" class="card text-center mt-3 mb-3">
+                <h5 class="text-center  display-1 mb-2">All <span class="text-success">Categories</span></h5>
               <div  class="card-body">
           <div  class="row d-flex flex-row  justify-content-center">
                 <!-- Card1 -->
@@ -31,45 +25,23 @@
 
                     <p class="card-text">InJourney Mode: {{c.inJourneyMode}}</p>
                     <p class="card-text">orderForJourneyMode: {{c.orderForJourneyMode}}</p>
-                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
+                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-success m-2">Edit</a>
+                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-danger m-2">Delete</a>
 
 
                   </div>
                 </div>
               </div>
-
-                <!-- Card2 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/GPU.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">GPU</h5>
-                    <p class="card-text">Description : Category Mooot </p>
-                    <a routerLink="../edit-category"  class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div> -->
-
-                <!-- Card3 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/Ram.png" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Ram</h5>
-                    <p class="card-text">Description : Category Ta3baaaaan </p>
-                    <div>
-                    <a routerLink="../edit-category" class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div>
-
-              </div> -->
-            </div>
           </div>
+              </div>
+          </div>
+             
+    
+  <ng-template #loadingBlock>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
-
+  </ng-template>
+</div>

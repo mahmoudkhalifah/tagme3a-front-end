@@ -64,14 +64,14 @@
        <tr *ngFor="let item of data;let i =  index">
         <td colspan="3">{{item.prdName}}</td>
         <td>{{item.quantity}}</td>
-        <td style="color: red;">{{item.price}}</td>
+        <td style="color: red;">{{item.price-item.discount}}</td>
        </tr>
       </tbody>
     </table>
   </div>
   <hr style="width: 600px;margin: 10px;">
   <div >
-    <p  style="margin: 180px; color: red; font-size: 20px;display: inline; ">  <i style="color:gray;">Total Price:</i>{{TotalPrice}}</p>
+    <p  style="margin: 180px; color: red; font-size: 20px;display: inline; ">  <i style="color:gray;">Total Price:</i> {{TotalPrice}}</p>
   </div>
 
 <select class="form-select" aria-label="Default select example" name="PayMethod" id="PayMethod" #PayMethod  >

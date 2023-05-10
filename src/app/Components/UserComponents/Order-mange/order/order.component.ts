@@ -13,9 +13,8 @@ export class OrderComponent implements OnInit {
 
   constructor(private appComponent:AppComponent,  private service:OrderService,router:ActivatedRoute,private userAuth:UserAuthService){
     this.id=userAuth.getUserId()
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
   }
   ngOnInit(): void {
     this.service.getOrderByUserID(this.id).subscribe(

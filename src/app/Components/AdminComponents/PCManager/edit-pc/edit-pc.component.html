@@ -1,7 +1,7 @@
-<div class="container mt-5">
+<div *ngIf="pc;else loadingBlock" class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+        <form  (ngSubmit)="getValue()" [formGroup] = "formValidation">
           <div class="mb-3">
             <label for="PCId" class="form-label">PCID</label>
             <input disabled="true" type="text" class="form-control" id="PCId" name="PCId"  [(ngModel)] = "pc.id" [ngModelOptions]="{standalone: true}">
@@ -13,13 +13,6 @@
               Name Length should be greater than 3
             </div>
           </div>
-          <!-- <div class="mb-3">
-            <label for="Price" class="form-label">TotalPrice</label>
-            <input type="number" formControlName="price" class="form-control" id="Price" name="price"  [(ngModel)] = "pc.totalPrice"/>
-            <div *ngIf="!PriceValid" style="color: red; text-align: center;">
-              Price should be greater than 0
-            </div>
-          </div> -->
           <div class="mb-3">
             <label for="imagePic" class="form-label">PC Image</label>
             <img width="200" height="200" id="imagePic" alt="catPic" class="profile-pictue"  data-src="{{'data:image/jpg;base64,' + pc.image}}" loading="lazy" />
@@ -33,5 +26,11 @@
         </form>
       </div>
     </div>
+</div>
+<ng-template #loadingBlock>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
-
+</ng-template>

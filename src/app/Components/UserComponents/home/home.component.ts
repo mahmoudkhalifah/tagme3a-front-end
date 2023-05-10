@@ -34,7 +34,6 @@ export class HomeComponent  {
   constructor(private appComponent: AppComponent,myActivate:ActivatedRoute,private myService:CategoryServiceService , private router: Router) {
     appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
   }
   ngOnInit(): void {
     this.myService.getAllCategories().subscribe

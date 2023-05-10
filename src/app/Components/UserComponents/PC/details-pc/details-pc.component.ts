@@ -16,10 +16,12 @@ export class DetailsPCComponent implements OnInit{
 
   Id:any;
   pc:any;
-
+  added:boolean = false;
+  alreadyAdded:boolean = false;
 
   constructor(private appComponent:AppComponent ,private basketService:BasketService  , private auth:UserAuthService ,myactivate:ActivatedRoute , private myService :PCServiceService){
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
+    appComponent.showNavbar= true;
     this.Id = myactivate.snapshot.params["id"];
 
   }
@@ -44,16 +46,8 @@ export class DetailsPCComponent implements OnInit{
   addToCart(id: any) {
     this.isLoading = true;
     this.selectedProductId = id; // set the selected product ID
-    this.myService.getPCById(id).subscribe({
-      next: (data) => {
-        this.pc = data;
-        this.addProductsToCart();
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-
+    this.addProductsToCart();
+      
   }
 
   addProductsToCart() {
@@ -77,10 +71,13 @@ export class DetailsPCComponent implements OnInit{
           this.isLoading = false;
           //for (let product of this.pc.products) {
             this.pc.addedToCart = true;
+            this.added= true;
           //}
         },
         error: (err) => {
           console.log(err);
+          if(err.status==500)
+          this.alreadyAdded= true;
         }
       });
 

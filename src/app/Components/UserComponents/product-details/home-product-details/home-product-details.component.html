@@ -1,4 +1,4 @@
-<div class="container" *ngIf="product;">
+<div class="container" *ngIf="product;else loadingBlock">
 <div class="card text-center mt-3 mb-3">
   <h5 class="text-center  display-1 mb-2">Product <span class="text-success">Details</span></h5>
   <div  class="card-body">
@@ -48,20 +48,10 @@
   </div>
 </div>
 </div>
-<!-- <div *ngIf="product;" class="container">
-  <div class="card text-center">
-      <div  class="card-header">
-        {{product.name}}
-      </div>
-      <div class="card-body">
-        <p class="card-text">Name : {{product.name}}</p>
-        <p class="card-text"> Description : {{product.description}}</p>
-        <p class="card-text">Price : {{product.price}}</p>
-        <p class="card-text"> Discount :  {{product.discount}}</p>
-        <p class="card-text"> UnitInStocks : {{product.unitInStocks}}</p>
-        <p class="card-text">Catgory : {{product.categoryID}}</p>
-        <p class="card-text"> Brand: {{product.brandID}}</p>
-        <a routerLink="../../../productManager/view-products" class="btn btn-primary">Back</a>
-      </div>
+<ng-template #loadingBlock>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
-  </div> -->
+  </div>
+</ng-template>
