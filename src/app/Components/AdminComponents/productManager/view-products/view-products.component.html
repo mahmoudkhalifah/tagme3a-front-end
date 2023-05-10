@@ -54,7 +54,9 @@
                     <p class="fw-semibold card-text">Description: {{product.description}}</p>
                     <a routerLink="../productManager/edit-product/{{product.id}}" class="btn btn-primary m-2">Edit</a>
                     <a routerLink="../productManager/product-details/{{product.id}}" class="btn btn-primary m-2">Detials</a>
-                    <button class="btn btn-primary m-2" (click)="deleteProduct(product.id)">Delete</button>
+                    <a routerLink="../productManager/delete-product/{{product.id}}" class="btn btn-primary m-2">Delete</a>
+
+                    <!-- <button class="btn btn-primary m-2" (click)="deleteProduct(product.id)">Delete</button> -->
                   </div>
                 </div>
               </div>

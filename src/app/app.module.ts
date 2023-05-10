@@ -59,6 +59,7 @@ import { ProfileSettingComponent } from './Components/UserComponents/profile/pro
 import { SearchComponent } from './Components/UserComponents/search/search.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
+import { DeleteProductComponent } from './Components/AdminComponents/productManager/delete-product/delete-product.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-p
     ProfileComponent,
     SearchComponent,
     AddtocartPcComponent,
-    ProfileSettingComponent
+    ProfileSettingComponent,
+    DeleteProductComponent
   ],
   imports: [
 

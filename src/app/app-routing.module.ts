@@ -45,6 +45,7 @@ import { ProfileComponent } from './Components/UserComponents/profile/profile.co
 import { ProfileSettingComponent } from './Components/UserComponents/profile/profile-setting/profile-setting.component';
 import { SearchComponent } from './Components/UserComponents/search/search.component';
 import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
+import { DeleteProductComponent } from './Components/AdminComponents/productManager/delete-product/delete-product.component';
 
 
 
@@ -88,6 +89,7 @@ const routes: Routes = [
 
     //Admin Product
     {path:"admin/productManager/view-products",component:ViewProductsComponent,canActivate:[AdminGuard]},
+    {path:"admin/productManager/delete-product/:id",component:DeleteProductComponent,canActivate:[AdminGuard]},
     {path:"admin/productManager/add-product",component:AddProductComponent,canActivate:[AdminGuard]},
     {path:"admin/productManager/edit-product/:id",component:EditProductComponent,canActivate:[AdminGuard]},
     {path:"admin/productManager/product-details/:id",component:ProductDetailsComponent,canActivate:[AdminGuard]},

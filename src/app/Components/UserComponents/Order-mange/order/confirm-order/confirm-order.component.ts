@@ -203,7 +203,8 @@ export class ConfirmOrderComponent  implements OnInit{
           handler.open({
             name: 'Tagme3a Site',
             description: 'PC online shop',
-            amount: amount
+            amount: amount,
+            currency:"EGP"
           });
         });
         }
