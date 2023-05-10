@@ -1,53 +1,52 @@
 <div class="container">
     <!-- Add category -->
 
-        <div class="card text-center mt-3 mb-3">
-          <div class="card-header bg-dark " style="color: white;">
-            <h3> Add New category</h3>
-
-          </div>
-          <div class="card-body">
-            <a routerLink="../categoryManager/add-category" class="btn btn-primary">Add</a>
-          </div>
-        </div>
+    <div class="card text-center mt-3 mb-3">
+      <div class="card-header bg-dark " style="color: white;">
+        <h3> Add New category</h3>
+      </div>
+      <div class="card-body">
+        <a routerLink="../categoryManager/add-category" class="btn btn-primary">Add</a>
+      </div>
+    </div>
 
     <!-- End Add category -->
 
 
-            <!-- All categorys -->
-            <div *ngIf="categories;else loadingBlock" class="card text-center mt-3 mb-3">
-              <div class="card-header bg-dark " style="color: white;">
-               <h3> All Categories </h3>
+        <!-- All categorys -->
+    <div *ngIf="categories;else loadingBlock" class="card text-center mt-3 mb-3">
+          <div class="card-header bg-dark " style="color: white;">
+            <h3> All Categories </h3>
+          </div>
+      <div  class="card-body">
+        <div  class="row d-flex flex-row  justify-content-center">
+            <!-- Card1 -->
+          <div *ngFor="let c of categories" class="col-sm-4 col-lg-4">
+            <div class=" card mb-4">
+              <img class="card-img-top" src="{{'data:image/jpg;base64,' + c.image}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{c.name}}</h5>
+                <p class="card-text">{{c.description}}</p>
+
+                <p class="card-text">InJourney Mode: {{c.inJourneyMode}}</p>
+                <p class="card-text">orderForJourneyMode: {{c.orderForJourneyMode}}</p>
+                <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
+                <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
               </div>
-              <div  class="card-body">
-          <div  class="row d-flex flex-row  justify-content-center">
-                <!-- Card1 -->
-              <div *ngFor="let c of categories" class="col-sm-4 col-lg-4">
-                <div class=" card mb-4">
-                  <img class="card-img-top" src="{{'data:image/jpg;base64,' + c.image}}" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">{{c.name}}</h5>
-                    <p class="card-text">{{c.description}}</p>
-
-                    <p class="card-text">InJourney Mode: {{c.inJourneyMode}}</p>
-                    <p class="card-text">orderForJourneyMode: {{c.orderForJourneyMode}}</p>
-                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
-
-
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
-    </div>
-
-    <ng-template #loadingBlock>
-      <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
         </div>
       </div>
-    </ng-template>
+    </div>
+
+    
+  <ng-template #loadingBlock>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
 

@@ -12,7 +12,7 @@
 
 <!-- End Add Product -->
         <!-- All Products -->
-        <div class="card text-center mt-3 mb-3">
+        <div *ngIf="products;else loadingBlock" class="card text-center mt-3 mb-3">
           <div class="card-header bg-dark" style="color: white;">
             <h3>All Products</h3>
           </div>
@@ -61,5 +61,13 @@
             </div>
           </div>
         </div>
+        
+  <ng-template #loadingBlock>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
 </div>
 

@@ -18,6 +18,7 @@ export class ViewPCComponent implements OnInit {
     this.myService.getAllPCs().subscribe({
       next:(data)=>{
         this.PCs = data;
+        console.log(this.PCs);
         //console.log(data[0].products);
       },
       error:(err)=>{

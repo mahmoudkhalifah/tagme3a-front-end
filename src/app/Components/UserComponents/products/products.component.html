@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mt-3 mb-3 col-sm-12 col-lg-3">
       <h5 class="text-success fw-bold mt-3 mb-3">Brands</h5>
-      <div class="list-group">
+      <div  class="list-group">
         <button
          class="list-group-item list-group-item-action list-group-item-success" *ngFor="let brand of brands"
          [class.active]="brand.brandId===brandIdSelected"
@@ -10,9 +10,10 @@
          (click)="onBrandSelected(brand.brandId)"
          >{{brand.name}}
         </button>
-        </div>
+      </div>
+      
       <h5 class="text-success fw-bold mt-3 mb-3">Categories</h5>
-      <div class="list-group">
+      <div  class="list-group">
         <button class="list-group-item list-group-item-action list-group-item-success" *ngFor="let cat of categories"
         [class.active]="cat.categoryId===categoryIdSelected"
          [value]="cat.categoryId"
@@ -22,7 +23,7 @@
     </div>
 
         <!-- All Products -->
-        <div class="card text-center mt-3 mb-3 col-lg-9">
+        <div *ngIf="products;else loadingBlock" class="card text-center mt-3 mb-3 col-lg-9">
           <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
           <div  class="card-body">
             <div class="row products-row">
@@ -114,6 +115,14 @@
             </div>
           </div>
         </div>
+        <ng-template #loadingBlock>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </ng-template>
+        
 </div>
 </div>
 
