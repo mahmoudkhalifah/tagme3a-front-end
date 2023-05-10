@@ -23,7 +23,6 @@ export class EditPCComponent {
 
   constructor(private appComponent:AppComponent , private myService:PCServiceService , private router:Router , activate:ActivatedRoute){
       appComponent.showFooter = false;
-      appComponent.adminNavbar = false;
       this.id = activate.snapshot.params["id"];
       this.pc = myService.getPCById(this.id).subscribe({
         next:(data)=>{

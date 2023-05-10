@@ -1,13 +1,9 @@
 <div class="container">
     <!-- Add category -->
 
-        <div class="card text-center mt-3 mb-3">
-          <div class="card-header bg-dark " style="color: white;">
-            <h3> Add New category</h3>
-
-          </div>
-          <div class="card-body">
-            <a routerLink="../categoryManager/add-category" class="btn btn-primary">Add</a>
+        <div class="card  mt-3 mb-3">
+          <div class="card-body justify-content-start">
+            <a routerLink="../categoryManager/add-category" class="btn btn-success">Add New Category</a>
           </div>
         </div>
 
@@ -16,9 +12,7 @@
 
             <!-- All categorys -->
             <div class="card text-center mt-3 mb-3">
-              <div class="card-header bg-dark " style="color: white;">
-               <h3> All Categories </h3>
-              </div>
+                <h5 class="text-center  display-1 mb-2">All <span class="text-success">Categories</span></h5>
               <div  class="card-body">
           <div  class="row d-flex flex-row  justify-content-center">
                 <!-- Card1 -->
@@ -31,8 +25,8 @@
 
                     <p class="card-text">InJourney Mode: {{c.inJourneyMode}}</p>
                     <p class="card-text">orderForJourneyMode: {{c.orderForJourneyMode}}</p>
-                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-primary m-2">Delete</a>
+                    <a routerLink="../categoryManager/edit-category/{{c.categoryId}}"  class="btn btn-success m-2">Edit</a>
+                    <a routerLink="../categoryManager/delete-category/{{c.categoryId}}" class="btn btn-danger m-2">Delete</a>
 
 
                   </div>

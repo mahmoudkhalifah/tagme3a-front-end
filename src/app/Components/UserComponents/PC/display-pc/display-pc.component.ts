@@ -20,7 +20,8 @@ export class DisplayPCComponent implements OnInit{
 
   constructor(private appComponent:AppComponent , myactivate:ActivatedRoute 
     , private myService :PCServiceService ,private basketService:BasketService , private auth:UserAuthService){
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
+    appComponent.showNavbar=true;
   }
 ngOnInit(): void {
   this.myService.getAllPCs().subscribe({

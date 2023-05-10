@@ -10,7 +10,6 @@ import { UserAuthService } from 'src/app/services/user-auth.service';
 })
 export class AdminDashboardComponent {
   constructor(private appComponent : AppComponent , private userAuthService:UserAuthService , private router:Router) {
-    appComponent.adminNavbar = false;
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
   }

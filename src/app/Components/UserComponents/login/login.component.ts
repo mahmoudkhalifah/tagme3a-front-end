@@ -18,7 +18,6 @@ export class LoginComponent {
     private router:Router) {
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
-    appComponent.adminNavbar = false;
   }
 
   formValidation = new FormGroup({

@@ -1,14 +1,11 @@
 <div class="container">
   <!-- Add Brand -->
 
-      <div class="card text-center mt-3 mb-3">
-        <div class="card-header bg-dark " style="color: white;">
-          <h3> Add New Brand</h3>
+      <div class="card mt-3 mb-3">
+        <div class="card-body justify-content-start">
+          <a routerLink=".../brandManager/add-brand" class="btn btn-success">Add New Brand</a>
+        </div>
 
-        </div>
-        <div class="card-body">
-          <a routerLink="../brandManager/add-brand" class="btn btn-primary">Add</a>
-        </div>
       </div>
 
   <!-- End Add Brand -->
@@ -16,9 +13,8 @@
 
           <!-- All Brands -->
           <div class="card text-center mt-3 mb-3">
-            <div class="card-header bg-dark " style="color: white;">
-             <h3> All Brands </h3>
-            </div>
+            <h5 class="text-center  display-1 mb-2">All <span class="text-success">Brands</span></h5>
+
             <div  class="card-body">
         <div class="row d-flex flex-row  justify-content-center">
               <!-- Card1 -->
@@ -28,8 +24,8 @@
                 <div class="card-body">
                   <h5 class="card-title">{{c.name}}</h5>
                   <p class="card-text">{{c.description}}</p>
-                  <a routerLink="../brandManager/edit-brand/{{c.brandId}}"  class="btn btn-primary m-2">Edit</a>
-                  <a routerLink="../brandManager/delete-brand/{{c.brandId}}" class="btn btn-primary m-2">Delete</a>
+                  <a routerLink="../brandManager/edit-brand/{{c.brandId}}"  class="btn btn-success m-2">Edit</a>
+                  <a routerLink="../brandManager/delete-brand/{{c.brandId}}" class="btn btn-danger m-2">Delete</a>
                 </div>
               </div>
             </div>

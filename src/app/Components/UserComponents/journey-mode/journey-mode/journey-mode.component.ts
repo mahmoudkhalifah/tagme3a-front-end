@@ -17,8 +17,8 @@ import { Router } from '@angular/router';
 export class JourneyModeComponent implements OnInit {
 
   constructor(appcomponent:AppComponent,private route:Router ,private journeyModeService:JourneyModeService ,  private auth:UserAuthService, private cartService:BasketService) {
-    appcomponent.showFooter = false;
-    
+    appcomponent.showFooter = true;
+    appcomponent.showNavbar = true;    
 
   }
   myModal?:Modal;

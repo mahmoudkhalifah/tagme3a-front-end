@@ -29,9 +29,8 @@ export class AddADRESSComponent {
 
   constructor(private router:Router, private City:CityService ,private appComponent: AppComponent,private addressService:AddressesService,private auth:UserAuthService)
   {
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
 
   }
   ngOnInit(): void {

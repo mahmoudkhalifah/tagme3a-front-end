@@ -17,7 +17,6 @@ export class SearchComponent {
   constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private SearchService:SearchService) {
     appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
   }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
