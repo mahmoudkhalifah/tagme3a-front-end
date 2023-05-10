@@ -12,8 +12,8 @@ export class DashboardService {
   getNumOfProducts(){
     return this.client.get(this.URL+"/NumOfProducts");
   }
-  getNumOfOrders(){
-    return this.client.get(this.URL+"/NumOfOrders");
+  getOrderStats(){
+    return this.client.get(this.URL+"/OrderStats");
   }
 
   getNumOfCategories(){

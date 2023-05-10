@@ -20,7 +20,8 @@ export class DetailsPCComponent implements OnInit{
   alreadyAdded:boolean = false;
 
   constructor(private appComponent:AppComponent ,private basketService:BasketService  , private auth:UserAuthService ,myactivate:ActivatedRoute , private myService :PCServiceService){
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
+    appComponent.showNavbar= true;
     this.Id = myactivate.snapshot.params["id"];
 
   }
