@@ -29,10 +29,9 @@ export class ProductsComponent {
   alreadyAdded:boolean=false;
   constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
   // constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
-  //   appComponent.showFooter = true;
-  //   appComponent.showNavbar = true;
-  //   appComponent.adminNavbar = false;
-  // }
+    appComponent.showFooter = true;
+    appComponent.showNavbar = true;
+        // }
   }
   ngOnInit(): void {
     this.getInitialPrds();

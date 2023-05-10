@@ -17,7 +17,6 @@ export class HomeProductDetailsComponent implements OnInit{
   {
     appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
   }
   ngOnInit(): void {
    this.getProduct();

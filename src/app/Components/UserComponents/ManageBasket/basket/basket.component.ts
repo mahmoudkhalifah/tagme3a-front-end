@@ -11,9 +11,8 @@ import { Router } from '@angular/router';
 })
 export class BasketComponent {
   constructor(private router:Router,private appComponent: AppComponent,private basket:BasketService,private auth:UserAuthService){
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
   }
   data:any
   Total:number=0
