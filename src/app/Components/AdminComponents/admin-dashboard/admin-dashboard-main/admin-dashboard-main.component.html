@@ -14,8 +14,8 @@
         <div class="main">
             <div class="cards">
                 <div class="card">
-                    <div class="card-content">
-                        <div class="number">{{numOfOrders}}</div>
+                    <div class="card-content" *ngIf="numOfOrders">
+                        <div class="number">{{numOfOrders.totalOrders}}</div>
                         <div class="card-name">Orders</div>
                     </div>
                     <div class="icon-box">
@@ -51,13 +51,7 @@
                 </div>
             </div>
 
-			<div class="charts">
-				<div class="chart">
-					<h2>Users</h2>
-					<div>
-					  <canvas id="lineChart"></canvas>
-					</div>
-				  </div>
+			<div class="charts w-50"  >
 				  
 				  <div class="chart doughnut-chart">
 					<h2>Orders</h2>

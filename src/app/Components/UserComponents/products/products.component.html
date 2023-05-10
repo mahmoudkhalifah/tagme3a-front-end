@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mt-3 mb-3 col-sm-12 col-lg-3">
       <h5 class="text-success fw-bold mt-3 mb-3">Brands</h5>
-      <div class="list-group">
+      <div  class="list-group">
         <button
          class="list-group-item list-group-item-action list-group-item-success" *ngFor="let brand of brands"
          [class.active]="brand.brandId===brandIdSelected"
@@ -10,9 +10,10 @@
          (click)="onBrandSelected(brand.brandId)"
          >{{brand.name}}
         </button>
-        </div>
+      </div>
+      
       <h5 class="text-success fw-bold mt-3 mb-3">Categories</h5>
-      <div class="list-group">
+      <div  class="list-group">
         <button class="list-group-item list-group-item-action list-group-item-success" *ngFor="let cat of categories"
         [class.active]="cat.categoryId===categoryIdSelected"
          [value]="cat.categoryId"
@@ -22,7 +23,7 @@
     </div>
 
         <!-- All Products -->
-        <div class="card text-center mt-3 mb-3 col-lg-9">
+        <div *ngIf="products;else loadingBlock" class="card text-center mt-3 mb-3 col-lg-9">
           <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
           <div  class="card-body">
             <div class="row products-row">
@@ -85,13 +86,18 @@
                     <input #id  value="{{product.id}} "  hidden  class="form-control" >
                     <!-- <p #id>{{product.id}}</p> -->
                     <h5 class="card-title">{{product.name}}</h5>
-                    <p class="card-text">Price: {{product.price}} $</p>
+                    <p class="card-text" *ngIf="product.discount == 0 else sale">Price: {{product.price}} $</p>
+                    <ng-template #sale>
+                      <p class="card-text" style="display: inline-block;font-size: x-large;margin-right: 20px;">    {{product.price - product.discount}}$</p>
+                      <p class="card-text" style="text-decoration: line-through ; display: inline-block;  color: red;">{{product.price}}$</p>
+                    </ng-template>
                     <p class="card-text">Description: {{product.description}}</p>
                     <div class="row pb-3">
                       <div class="col-5 d-grid">
 
                       <a class="btn btn-success text-white mt-2" (click)="Insert(id.value)"><i class="fas fa-cart-plus"></i></a>
-                        <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
+
+                      <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
                       </div>
 
                       <div class="col-5 d-grid">
@@ -109,7 +115,16 @@
             </div>
           </div>
         </div>
+        <ng-template #loadingBlock>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </ng-template>
+        
 </div>
 </div>
+
 
 

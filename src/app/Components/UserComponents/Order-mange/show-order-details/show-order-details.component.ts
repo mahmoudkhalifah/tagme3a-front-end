@@ -12,9 +12,8 @@ export class ShowOrderDetailsComponent  implements OnInit {
   data:any
 constructor( private appComponent:AppComponent,  private  OrderService:OrderService,myActivated:ActivatedRoute)
     {
-      appComponent.showFooter = false;
+      appComponent.showFooter = true;
       appComponent.showNavbar = true;
-      appComponent.adminNavbar = false;
       this.id=myActivated.snapshot.params["id"];
     }
 ngOnInit(): void

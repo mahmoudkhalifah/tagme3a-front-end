@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2">
-      <nav class="sidebar bg-dark">
+  <div class="row ">
+    <div class="col-md-2 bg-dark">
+      <nav class="col-md-2 sidebar-container bg-dark ">
         <ul class="sidebar-nav">
 
-
+          <div class="container">
           <li class="sidebar-item" routerLinkActive="active">
             <a class="sidebar-link" routerLink="/admin/dashboard" 
              (click)="showDashboardComponent = true; 
@@ -17,10 +17,7 @@
               <span class="sidebar-text">Main</span>
             </a>
           </li>
-
-
-
-
+        </div>
           <li class="sidebar-item" routerLinkActive="active" >
             <a class="sidebar-link"
             (click)="showDashboardComponent = false; 
@@ -104,28 +101,28 @@
       </nav>
     </div>
     <div class="col-md-10">
-      <div class="row">
+      <div class="dashboard-container">
 
-        <div class="col-md-12" *ngIf="showDashboardComponent">
+        <div class="Main-container" *ngIf="showDashboardComponent">
           <app-admin-dashboard-main></app-admin-dashboard-main>
         </div>
 
-        <div class="col-md-12" *ngIf="showProductComponent">
+        <div class="Product-container" *ngIf="showProductComponent">
           <app-view-products></app-view-products>
         </div>
 
-        <div class="col-md-12" *ngIf="showbrandComponent">
+        <div class="Brand-container" *ngIf="showbrandComponent">
           <app-view-brands></app-view-brands>
         </div>
 
-        <div class="col-md-12" *ngIf="showCategoryComponent">
+        <div class="Cat-container" *ngIf="showCategoryComponent">
           <app-view-categories></app-view-categories>
         </div>
-        <div class="col-md-12" *ngIf="showOrderComponent">
+        <div class="Order-container"  *ngIf="showOrderComponent">
           <app-order-manager></app-order-manager>
         </div>
 
-        <div class="col-md-12" *ngIf="showPcComponent">
+        <div class="Pc-container" *ngIf="showPcComponent">
           <app-view-pc></app-view-pc>
         </div>
 

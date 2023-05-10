@@ -1,29 +1,3 @@
-<!-- 
-<div class="card text-center mt-3 mb-3">
-    <div class="card-header bg-dark " style="color: white;">
-      <h3> Ready Tagme3a </h3>
-    </div>
-    <div  class="card-body">
-<div  class="row d-flex flex-row  justify-content-center">
-
-    <div *ngFor="let p of PCs" class="col-sm-4 col-lg-4">
-      <div class=" card mb-4">
-        <img class="card-img-top" src="{{'data:image/jpg;base64,' + p.image}}" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{p.bundleName}}</h5>
-        <p class="card-text">TotalPrice : {{p.totalPrice}}</p>
-        <div  *ngFor="let prd of p.products">
-        <p class="card-text">Name : {{prd.name}}</p>
-        <p class="card-text">quantity : {{prd.quantitiy}}</p>
-  </div>
-      <a routerLink="../details-pc/{{p.id}}" class="btn btn-primary">Details</a>
-    </div>
-  </div>
-</div> -->
-
-
-
-
 <section class="bg-light">
   <div class="container py-5">
       <div class="row text-center py-3">
@@ -35,7 +9,7 @@
               </p>
           </div>
       </div>
-      <div class="row">
+      <div *ngIf="PCs; else loadingBlock" class="row">
           <div *ngFor="let p of PCs"  class="col-12 col-md-4 mb-4">
               <div class="card h-100" >
                   <a routerLink="../details-pc/{{p.id}}" >
@@ -51,5 +25,14 @@
               </div>
           </div>
       </div>
+
+      <ng-template #loadingBlock>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+  
   </div>
 </section>

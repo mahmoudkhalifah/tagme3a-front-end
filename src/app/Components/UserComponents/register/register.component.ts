@@ -14,7 +14,6 @@ export class RegisterComponent {
     private router:Router) {
     appComponent.showFooter = false;
     appComponent.showNavbar = false;
-    appComponent.adminNavbar = false;
   }
 
   matchValues(matchTo: string) {

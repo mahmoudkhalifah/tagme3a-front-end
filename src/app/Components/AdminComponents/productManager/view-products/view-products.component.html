@@ -1,21 +1,18 @@
 <div class="container">
 <!-- Add Product -->
 
-    <div class="card text-center mt-3 mb-3">
-      <div class="card-header bg-dark " style="color: white;">
-        <h3> Add New Product</h3>
-      </div>
-      <div class="card-body">
-        <a routerLink="../productManager/add-product" class="btn btn-primary">Add</a>
-      </div>
-    </div>
+<div class="card  mt-3 mb-3">
+  <div class="card-body justify-content-start">
+    <a routerLink="../productManager/add-product" class="btn btn-success">Add New Product</a>
+  </div>
+</div>
+
 
 <!-- End Add Product -->
         <!-- All Products -->
-        <div class="card text-center mt-3 mb-3">
-          <div class="card-header bg-dark" style="color: white;">
-            <h3>All Products</h3>
-          </div>
+        <div *ngIf="products;else loadingBlock" class="card text-center mt-3 mb-3">
+          <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
+
           <div  class="card-body">
             <div class="row justify-content-center">
               <div class="col-md-4" *ngFor="let product of products">
@@ -50,16 +47,26 @@
                   <!-- <img class="card-img-top" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" alt="Card image cap"> -->
                   <div class="card-body">
                     <h5 class="card-title">{{product.name}}</h5>
-                    <p class="fw-semibold card-text">Price: {{product.price}} جنيه</p>
+                    <p class="fw-semibold card-text">Price: {{product.price}} EGP</p>
                     <p class="fw-semibold card-text">Description: {{product.description}}</p>
-                    <a routerLink="../productManager/edit-product/{{product.id}}" class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../productManager/product-details/{{product.id}}" class="btn btn-primary m-2">Detials</a>
-                    <button class="btn btn-primary m-2" (click)="deleteProduct(product.id)">Delete</button>
+                    <a routerLink="../productManager/edit-product/{{product.id}}" class="btn btn-success m-2">Edit</a>
+                    <a routerLink="../productManager/product-details/{{product.id}}" class="btn btn-success m-2">Detials</a>
+                    <a routerLink="../productManager/delete-product/{{product.id}}" class="btn btn-danger m-2">Delete</a>
+
+                    <!-- <button class="btn btn-danger m-2" (click)="deleteProduct(product.id)">Delete</button> -->
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+  <ng-template #loadingBlock>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
 </div>
 

@@ -22,56 +22,31 @@ export class AdminDashboardMainComponent implements OnInit {
 
     this.dashboardService.getNumOfProducts().subscribe(result => this.numOfProducts = result);
     this.dashboardService.getNumOfCategories().subscribe(result => this.numOfCategories = result);
-    this.dashboardService.getNumOfOrders().subscribe(result => this.numOfOrders = result);
+    this.dashboardService.getOrderStats().subscribe(result => this.numOfOrders = result);
     this.dashboardService.getTotalEarnings().subscribe(result => this.totalEarnings = result);
 
 
-    this.dashboardService.getNumOfOrders().subscribe((count) => {
+    this.dashboardService.getOrderStats().subscribe((count) => {
       this.numOfOrders = count;
+      this.initChart();
+      
       this.updateChart();
     });
-    this.initChart();
-
-    // Chart for Users
-    this.lineChart = new Chart('lineChart', {
-      type: 'line',
-      data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-          label: 'Users',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-
-        }
-      }
-    });
-
-    // Chart for Orderس
-
   }
 
   initChart() {
     this.doughnutChart = new Chart('doughnut', {
       type: 'doughnut',
       data: {
-        labels: ['New', 'In progress', 'Completed'],
+        labels: ['Processing', 'Delivered'],
         datasets: [{
           label: 'Orders',
-          data: [0, this.numOfOrders, 0],
+          data:  [this.numOfOrders.processingOrders, this.numOfOrders.deliveredOrders],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
             'rgba(255, 206, 86, 0.2)'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
             'rgba(255, 206, 86, 1)'
           ],
@@ -82,7 +57,9 @@ export class AdminDashboardMainComponent implements OnInit {
   }
 
   updateChart() {
-    this.doughnutChart.data.datasets[0].data[1] = this.numOfOrders;
+    this.doughnutChart.data.datasets[0].data[0] = this.numOfOrders.processingOrders;
+    this.doughnutChart.data.datasets[0].data[1] = this.numOfOrders.deliveredOrders;
+
     this.doughnutChart.update();
   }
 }

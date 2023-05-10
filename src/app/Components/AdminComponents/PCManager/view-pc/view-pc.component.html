@@ -1,78 +1,43 @@
-<div class="container">
-    <!-- Add pc -->
 
-        <div class="card text-center mt-3 mb-3">
-          <div class="card-header bg-dark " style="color: white;">
-            <h3> Add New PC</h3>
-
-          </div>
-          <div class="card-body">
-            <a routerLink="../PCManager/add-pc" class="btn btn-primary" style="margin: 4px;">Add PC</a>
-            <a routerLink="../PCManager/addprdpc" class="btn btn-primary">Add Product PC</a>
+        <div *ngIf="PCs; else loadingBlock" class="card text-center mt-3 mb-3">
+          <div class="card-body justify-content-start ">
+            <a routerLink="../PCManager/add-pc" class="btn btn-success m-2">Add New PC</a>
+            <a routerLink="../PCManager/addprdpc" class="btn btn-success">Add new Product PC</a>
           </div>
         </div>
-
     <!-- End Add pc -->
-
-
             <!-- All pcs -->
             <div class="card text-center mt-3 mb-3">
-              <div class="card-header bg-dark " style="color: white;">
-               <h3> All PCs </h3>
-              </div>
-              <div  class="card-body">
-          <div  class="row d-flex flex-row  justify-content-center">
-                <!-- Card1 -->
-              <div *ngFor="let p of PCs" class="col-sm-4 col-lg-4">
-                <div class=" card mb-4">
-                  <img class="card-img-top" src="{{'data:image/jpg;base64,' + p.image}}" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">{{p.bundleName}}</h5>
-                    <p class="card-text">TotalPrice : {{p.totalPrice}}</p>
-                    <div *ngFor="let prd of p.products">
-                    <p class="card-text">Name : {{prd.name}}</p>
-                    <p class="card-text">Description : {{prd.description}}</p>
-                    <p class="card-text">quantity : {{prd.quantitiy}}</p>
-                </div>
-                    <a routerLink="../PCManager/edit-pc/{{p.id}}"  class="btn btn-primary m-2">Edit</a>
-                    <a routerLink="../PCManager/edit-prdpc/{{p.id}}"  class="btn btn-primary m-2">Edit Product In Pc</a>
-                    <a routerLink="../PCManager/delete-pc/{{p.id}}" class="btn btn-primary m-2">Delete</a>
+              <h5 class="text-center  display-1 mb-2">All <span class="text-success">PCs</span></h5>
+
+              <div class="card-deck">
+                <div *ngFor="let p of PCs" class="col-sm-4 col-lg-4">
+                  <div class="card mb-4">
+                    <img class="card-img-top" src="{{'data:image/jpg;base64,' + p.image}}" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">{{p.bundleName}}</h5>
+                      <p class="card-text">TotalPrice: {{p.totalPrice}}</p>
+                      <div *ngFor="let prd of p.products">
+                        <p class="card-text">Name: {{prd.name}}</p>
+                        <p class="card-text">Description: {{prd.description}}</p>
+                        <p class="card-text">Quantity: {{prd.quantitiy}}</p>
+                      </div>
+                        <a routerLink="../PCManager/edit-pc/{{p.id}}" class="btn btn-success m-2">Edit</a>
+                        <a routerLink="../PCManager/delete-pc/{{p.id}}" class="btn btn-danger m-2">Delete</a>
+                    </div>
                   </div>
                 </div>
               </div>
-
-                <!-- Card2 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/GPU.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">GPU</h5>
-                    <p class="card-text">Description : Category Mooot </p>
-                    <a routerLink="../edit-category"  class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div> -->
-
-                <!-- Card3 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/Ram.png" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Ram</h5>
-                    <p class="card-text">Description : Category Ta3baaaaan </p>
-                    <div>
-                    <a routerLink="../edit-category" class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div>
-
-              </div> -->
-            </div>
-          </div>
     </div>
+    <ng-template #loadingBlock>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
+    
 
 
+
+    

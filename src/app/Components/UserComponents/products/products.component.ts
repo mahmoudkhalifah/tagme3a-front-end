@@ -24,15 +24,14 @@ export class ProductsComponent {
   brandIdSelected=0;
   categoryIdSelected=0;
   userID:any;
-  id:any;
-  added=false;
-  alreadyAdded=false;
+  id:any
+  added:boolean=false;
+  alreadyAdded:boolean=false;
   constructor(private route: ActivatedRoute, private router: Router,  private auth:UserAuthService,private appComponent: AppComponent,myActivate:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService,private basketService:BasketService) {
   // constructor(private appComponent: AppComponent,private router:Router,private route:ActivatedRoute,private brandService:BrandService,private catgeoryService:CategoryServiceService,private productServcie:ProductService) {
-  //   appComponent.showFooter = true;
-  //   appComponent.showNavbar = true;
-  //   appComponent.adminNavbar = false;
-  // }
+    appComponent.showFooter = true;
+    appComponent.showNavbar = true;
+        // }
   }
   ngOnInit(): void {
     this.getInitialPrds();

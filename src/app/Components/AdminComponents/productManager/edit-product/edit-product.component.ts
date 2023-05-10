@@ -170,12 +170,12 @@ for(var i = 0;i<productImages.length;i++)
 
     console.log("final final final")
     console.log(this.product);
-   /* this.productService.EditProduct(this.id, this.product).subscribe(
+    this.productService.EditProduct(this.id, this.product).subscribe(
       data => {
         this.router.navigate(['admin/productManager/view-products']);
       },
       error => console.log(error)
-    );*/
+    );
   }
   }
 

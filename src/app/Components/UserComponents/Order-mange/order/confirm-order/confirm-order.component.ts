@@ -41,9 +41,8 @@ export class ConfirmOrderComponent  implements OnInit{
 
   constructor(private http: HttpClient,private router:Router,private OPService:POserviceService,private basketSrvice:BasketService,  private orderService:OrderService,private addressService:AddressesService,   private City:CityService ,private appComponent: AppComponent,public basketService:BasketService,private auth:UserAuthService)
   {
-    appComponent.showFooter = false;
+    appComponent.showFooter = true;
     appComponent.showNavbar = true;
-    appComponent.adminNavbar = false;
 
   }
   ngOnInit(): void {
@@ -203,7 +202,8 @@ export class ConfirmOrderComponent  implements OnInit{
           handler.open({
             name: 'Tagme3a Site',
             description: 'PC online shop',
-            amount: amount
+            amount: amount,
+            currency:"EGP"
           });
         });
         }

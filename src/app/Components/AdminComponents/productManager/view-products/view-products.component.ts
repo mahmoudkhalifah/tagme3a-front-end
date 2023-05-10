@@ -17,7 +17,7 @@ export class ViewProductsComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(
+    this.productService.getAllProductsAdmin().subscribe(
       {
         next:(data)=>{
           console.log(data)
