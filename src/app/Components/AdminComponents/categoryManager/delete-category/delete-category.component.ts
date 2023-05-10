@@ -12,8 +12,7 @@ import { CategoryServiceService } from 'src/app/services/category-service.servic
 export class DeleteCategoryComponent {
   Id:any
   category:any
-  canNotDelete=false;
-
+  canNotDelete = false;
   constructor(private appComponent: AppComponent,activate:ActivatedRoute,private service:CategoryServiceService,private router: Router)
   {
     appComponent.showFooter = false;
@@ -25,7 +24,7 @@ export class DeleteCategoryComponent {
 
       },
       error:(error)=>{
-    console.log(error)
+        console.log(error)
       }
     });
   console.log(this.category);
@@ -40,9 +39,8 @@ export class DeleteCategoryComponent {
               this.router.navigate(["admin/dashboard"]);
             },
             error:(err)=>{
-              if(err.status==400) {
+              if(err.status == 400)
                 this.canNotDelete = true;
-              }
             }
           }
         );

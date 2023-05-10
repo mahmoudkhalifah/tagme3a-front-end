@@ -30,6 +30,7 @@ export class DeleteBrandComponent {
   console.log(this.brand);
 
   }
+
   Delete()
   {
     this.service.deleteBrandById(this.Id).subscribe({
@@ -37,7 +38,7 @@ export class DeleteBrandComponent {
         // this.router.navigate(["admin/brandManager/view-brands"])
       },
       error:(err)=>{
-        if(err.status==400) {
+        if(err.status == 400) {
           this.canNotDelete = true;
         }
       }
