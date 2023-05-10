@@ -14,11 +14,11 @@
   <tr *ngFor="let item of data;let i = index" >
     <input value="{{item.pid}}" hidden #pid/>
     <td colspan="3">{{item.prdName}} </td>
-    <td>{{item.price |currency:"EGP":"symbol"}}</td>
+    <td>{{item.price -item.discount |currency:"EGP":"symbol"}}</td>
     <td colspan="3">
       <input   [(ngModel)]="item.quantity" style="text-align: center;" type="number" value="{{item.quantity}}" #quantity/>
     </td>
-    <td >   {{ item.price*item.quantity |currency:"EGP":"symbol"}}</td>
+    <td >   {{ (item.price-item.discount)*item.quantity |currency:"EGP":"symbol"}}</td>
     <td>
       <button type="button" (click)="Save(+quantity.value,+pid.value,+item.unitInStocks,item.prdName)"
       class="btn btn-success">Edit </button>

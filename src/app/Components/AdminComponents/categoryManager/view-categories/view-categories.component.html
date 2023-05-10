@@ -15,7 +15,7 @@
 
 
             <!-- All categorys -->
-            <div class="card text-center mt-3 mb-3">
+            <div *ngIf="categories;else loadingBlock" class="card text-center mt-3 mb-3">
               <div class="card-header bg-dark " style="color: white;">
                <h3> All Categories </h3>
               </div>
@@ -39,37 +39,15 @@
                 </div>
               </div>
 
-                <!-- Card2 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/GPU.jpg" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">GPU</h5>
-                    <p class="card-text">Description : Category Mooot </p>
-                    <a routerLink="../edit-category"  class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div> -->
-
-                <!-- Card3 -->
-
-              <!-- <div class="col-md-4">
-                <div class="card mb-4">
-                  <img class="card-img-top" src="assets/Images/Ram.png" alt="Card image cap">
-                  <div class="card-body">
-                    <h5 class="card-title">Ram</h5>
-                    <p class="card-text">Description : Category Ta3baaaaan </p>
-                    <div>
-                    <a routerLink="../edit-category" class="btn btn-primary m-2">Edit</a>
-                    <a href="#" class="btn btn-primary m-2">Delete</a>
-                  </div>
-                </div>
-              </div>
-
-              </div> -->
             </div>
           </div>
     </div>
+
+    <ng-template #loadingBlock>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </ng-template>
 

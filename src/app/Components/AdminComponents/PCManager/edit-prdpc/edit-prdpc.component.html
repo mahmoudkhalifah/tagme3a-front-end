@@ -1,11 +1,10 @@
-<p>edit-prdpc works!</p>
-<div class="container" *ngIf="pc;">
+<div class="container" *ngIf="pc;else loadingBlock">
 
-<div class="card text-center mt-3 mb-3">
-              <div class="card-header bg-dark " style="color: white;">
-              <h3> Product for {{pc.bundleName}} </h3>
-              </div>
-              <div  class="card-body">
+  <div class="card text-center mt-3 mb-3">
+      <div class="card-header bg-dark " style="color: white;">
+        <h3> Product for {{pc.bundleName}} </h3>
+      </div>
+      <div  class="card-body">
           <div  class="row d-flex flex-row  justify-content-center">
             <div *ngFor="let prd of pc.products;let i = index;">
                 <div class=" card mb-4">
@@ -20,11 +19,19 @@
                     <button class="btn btn-primary m-2" (click)="EditProduct(prd.productId)">Edit Product</button>
                     <button class="btn btn-primary m-2" (click)="DeleteProduct(prd.productId , i)">Delete Product</button>
 
-                    <a routerLink="../delete-pc/{{prd.productId}}" class="btn btn-primary m-2">Delete</a>
-
                   </div>
                 </div>
             </div>
           </div>
+        </div>
+  </div>
 </div>
-</div>
+
+<ng-template #loadingBlock>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+

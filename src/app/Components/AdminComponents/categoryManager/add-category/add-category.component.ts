@@ -18,7 +18,7 @@ export class AddCategoryComponent {
     name:new FormControl("",[Validators.required,Validators.minLength(3)]),
     description:new FormControl("",[Validators.minLength(3),Validators.required]),
     image:new FormControl("",[Validators.required]),
-    orderinjourneymode:new FormControl(0,[Validators.required,Validators.min(1)]),
+    orderinjourneymode:new FormControl(0,[Validators.min(1)]),
     injourneymode:new FormControl(0,[Validators.required])
   })
   constructor(private appComponent: AppComponent,private router:Router, private myService:CategoryServiceService) {
@@ -89,7 +89,7 @@ getValue(){
     this.myService.addCategory(newCat).subscribe({
       next:()=>{
 
-   this.router.navigate(["admin/dashboard"])
+   this.router.navigate(["admin/categoryManager/view-categories"])
       },
       error:(err:any)=>{console.log(err)}
     });

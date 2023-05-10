@@ -79,7 +79,11 @@
                     <input #id  value="{{product.id}} "  hidden  class="form-control" >
                     <!-- <p #id>{{product.id}}</p> -->
                     <h5 class="card-title">{{product.name}}</h5>
-                    <p class="card-text">Price: {{product.price}} $</p>
+                    <p class="card-text" *ngIf="product.discount == 0 else sale">Price: {{product.price}} $</p>
+                    <ng-template #sale>
+                      <p class="card-text" style="display: inline-block;font-size: x-large;margin-right: 20px;">    {{product.price - product.discount}}$</p>
+                      <p class="card-text" style="text-decoration: line-through ; display: inline-block;  color: red;">{{product.price}}$</p>
+                    </ng-template>
                     <p class="card-text">Description: {{product.description}}</p>
                     <div class="row pb-3">
                       <div class="col-5 d-grid">

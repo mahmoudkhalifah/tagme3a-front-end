@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form (ngSubmit)="getValue()" [formGroup] = "formValidation">
+        <form *ngIf="pc; else loadingBlock" (ngSubmit)="getValue()" [formGroup] = "formValidation">
           <div class="mb-3">
             <label for="PCId" class="form-label">PCID</label>
             <input disabled="true" type="text" class="form-control" id="PCId" name="PCId"  [(ngModel)] = "pc.id" [ngModelOptions]="{standalone: true}">
@@ -31,6 +31,13 @@
           <input  type="submit"  value="Submit" class="btn btn-outline-success d-block mx-auto"/>
 
         </form>
+        <ng-template #loadingBlock>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>

@@ -14,7 +14,7 @@
             <label for="orderinjourneymode" class="form-label">Order in Journey Mode</label>
             <input formControlName="orderinjourneymode" #orderinjourneymode type="number" class="form-control" id="orderinjourneymode" name="orderinjourneymode">
             <div *ngIf="!OrderInJourneyModeValid" style="color: red; text-align: center;">
-              Order In Journey should Not Be Null
+              Order In Journey should Not Be less than 1
             </div>
           </div>
 
