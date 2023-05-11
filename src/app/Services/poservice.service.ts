@@ -12,7 +12,7 @@ export class POserviceService {
 
   AddProductOrder(UserId:string)
   {
-    return  this.Client.post(this.URL+'/ProductOrder/AddProductOrder?UID='+UserId,null);
+    return  this.Client.post(this.URL+'ProductOrder/AddProductOrder?UID='+UserId,null);
   }
 
 }
