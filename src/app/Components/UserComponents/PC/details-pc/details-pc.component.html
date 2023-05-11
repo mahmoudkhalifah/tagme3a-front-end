@@ -46,13 +46,13 @@
               <a class="btn btn-success text-white mt-2" href=""><i class="far fa-eye"></i></a>
                 <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
               </div>
-          
+
               <div class="col-5 d-grid">
               <a class="btn btn-success text-white mt-2" (click)="addToCart(pc.id)"><i class="fas fa-cart-plus"></i></a>
 
                 <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button> -->
               </div>
-              
+
               <div *ngIf="added" class="alert alert-success" role="alert">
                 PC Added successfully
               </div>
@@ -66,7 +66,7 @@
             <div class="card">
               <div class="row">
                 <div class="col-lg-4">
-                  <img class="card-img img-fluid"src="{{'data:image/jpg;base64,' + pc.image}}" alt="Card image cap" id="product-detail">
+                  <img class="card-img img-fluid"src="{{'data:image/jpg;base64,' + prd.image}}" alt="Card image cap" id="product-detail">
                 </div>
                 <div class="col-lg-8">
                   <div class="card-body">
@@ -78,7 +78,7 @@
                         <p class="text-muted"><strong>{{prd.brandName}}</strong></p>
                       </li>
                     </ul>
-    
+
                     <!-- <h6>Description:</h6>
                     <p>{{prd.description}}</p> -->
                     <h6>Name:</h6>
@@ -105,7 +105,7 @@
                         <!-- <a class="btn btn-success text-white mt-2" href=""><i class="far fa-eye"></i></a> -->
                           <!-- <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Details</button> -->
                         </div>
-                    
+
                         <div class="col-12 d-grid">
                         <a class="btn btn-success text-white mt-2" *ngIf="!pc.addedToCart" (click)="addToCart(pc.id)"><i class="fas fa-cart-plus"></i></a>
 
@@ -129,4 +129,4 @@
         </div>
       </div>
     </ng-template>
-    
+
