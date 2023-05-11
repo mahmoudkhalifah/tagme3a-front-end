@@ -27,7 +27,7 @@
             <label for="injourneymode" class="form-label">In Journey Mode</label>
             <select  formControlName="injourneymode" class="form-control" name="injourneymode" id="injourneymode" #injourneymode   >
               <option [selected]="category.inJourneyMode == true" value="1">True</option>
-              <option [selected]="category.inJourneyMode == false" value="0">False</option>
+              <option [selected]="category.inJourneyMode != true" value="0">False</option>
             </select>
             <div *ngIf="!InJourneyModeValid" style="color: red; text-align: center;">
               Order In Journey should Not Be Null

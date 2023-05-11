@@ -14,7 +14,7 @@ export class AddBrandComponent {
   logoPic:any
   message1:any
   formValidation = new FormGroup({
-    name:new FormControl("",[Validators.required,Validators.minLength(3)]),
+    name:new FormControl("",[Validators.required,Validators.minLength(2)]),
     description:new FormControl("",[Validators.minLength(3),Validators.required]),
     logo:new FormControl("",[Validators.required])
   })

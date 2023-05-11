@@ -21,7 +21,7 @@ export class EditCategoryComponent {
     name:new FormControl("",[Validators.required,Validators.minLength(2)]),
     description:new FormControl("",[Validators.minLength(3),Validators.required]),
     orderinjourneymode:new FormControl(0,[Validators.required,Validators.min(1)]),
-    injourneymode:new FormControl(0,[Validators.required])
+    injourneymode:new FormControl([Validators.required])
   });
   constructor(private appComponent: AppComponent,private router:Router, myActivate:ActivatedRoute,private myService:CategoryServiceService) {
     appComponent.showFooter = false;
@@ -84,8 +84,11 @@ getValue(){
     if(this.image == undefined){
       console.log("Ana gowa elundefined");
    //   BI = new CategoryInsert(this.category.name,this.category.description);
-   if(inJourney == 1){this.in = true}
-      else{this.in = false;}
+   if(+inJourney === 1){this.in = true}
+   else if(+inJourney === 0) {this.in = false}
+      // else{this.in = false;}
+      console.log(inJourney);
+      console.log(typeof inJourney);
      // this.category.image = this.image.toString().split(",")[1];
       this.category.orderForJourneyMode =+order
       this.category.inJourneyMode = this.in
@@ -97,7 +100,7 @@ getValue(){
 
     {
       //var cat = new
-      if(inJourney == 1){this.in = true}
+      if(+inJourney == 1){this.in = true}
       else{this.in = false;}
       this.category.image = this.image.toString().split(",")[1];
       this.category.orderForJourneyMode =+order
