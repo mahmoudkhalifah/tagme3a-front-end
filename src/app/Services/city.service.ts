@@ -15,7 +15,7 @@ export class CityService {
 
   getAllCities()
   {
-    return this.Client.get(this.URL+'/Cities');
+    return this.Client.get(this.URL+'Cities');
   }
 
 }

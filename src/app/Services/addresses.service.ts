@@ -17,13 +17,13 @@ export class AddressesService {
 
   getaddressIDByUID(UID:string)
   {
-    return this.Client.get(this.URL+"/getAddressID?UID="+UID);
+    return this.Client.get(this.URL+"getAddressID?UID="+UID);
   }
   // https://localhost:7004/api/Addresses/GetAddressesByUID?ID=7c1b7ab9-1cbb-4ea7-b7ae-ddff5b5487e3
 
   getAddressesbyUID(UID:string)
   {
-    return this.Client.get(this.URL+"/GetAddressesByUID?ID="+UID);
+    return this.Client.get(this.URL+"GetAddressesByUID?ID="+UID);
 
   }
 
