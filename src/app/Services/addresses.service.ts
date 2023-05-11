@@ -8,7 +8,7 @@ import { Constants } from '../constants/constants';
 export class AddressesService {
 
   constructor(private Client:HttpClient ) { }
-  private URL=Constants.apiBaseUrl+"Addresses";
+  private URL=Constants.apiBaseUrl+"Addresses/";
 
   PostAddress<AddressInsertDTO>(Address:AddressInsertDTO)
   {

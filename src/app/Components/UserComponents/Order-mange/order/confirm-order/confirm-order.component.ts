@@ -187,26 +187,29 @@ export class ConfirmOrderComponent  implements OnInit{
       //amount *= 100;
       console.log(amount);
       this.http.post<{ clientSecret: string }>(Constants.apiBaseUrl+'Payment/create-payment-intent', amount)
-          .subscribe(data => {
-          var handler = (<any>window).StripeCheckout.configure({
-            key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',
-            locale: 'auto',
-            token: function (token: any) {
-              // You can access the token ID with `token.id`.
-              // Get the token ID to your server-side code for use.
-              console.log(token);
-              this.AddProductOrder();
-              // alert('Token Created!!');
-            }
-          });
+          .subscribe(
+            {
+              next:(data)=> {
+                var handler = (<any>window).StripeCheckout.configure({
+                  key: 'pk_test_51N2nJ5BnjdE1DOem7oq1cMTAsCvVVZvzpb1xL8ArfZv2wGUZUDfx8JVbhHzi2NXFNvsfNwS7wp0CGQaNaKPISGkp00rgpk5zE7',
+                  locale: 'auto',
+                  token: function (token: any) {
+                    // You can access the token ID with `token.id`.
+                    // Get the token ID to your server-side code for use.
+                    console.log(token);
+                    // alert('Token Created!!');
+                  }
+                });
 
-          handler.open({
-            name: 'Tagme3a Site',
-            description: 'PC online shop',
-            amount: amount,
-            currency:"EGP"
-          });
-        });
+                handler.open({
+                  name: 'Tagme3a Site',
+                  description: 'PC online shop',
+                  amount: amount,
+                  currency:"EGP"
+                });
+                this.AddProductOrder();
+              }
+            })
         }
 
         loadStripe() {
