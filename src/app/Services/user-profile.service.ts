@@ -6,7 +6,7 @@ import { Constants } from '../constants/constants';
   providedIn: 'root'
 })
 export class UserProfileService {
-   apiUrl = Constants.apiBaseUrl;
+   apiUrl = Constants.apiBaseUrl+"UserProfile/";
   constructor(private http : HttpClient) { }
 
   getUser(userId  : string){
