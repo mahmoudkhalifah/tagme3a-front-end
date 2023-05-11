@@ -26,13 +26,13 @@
                     </div>
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img width="250" height="300" src="{{'data:image/jpg;base64,' + product.productImages[0]}}" class="d-block w-100" alt="...">
-                      </div>
-                       <div class="carousel-item">
-                        <img width="250" height="300" src="{{'data:image/jpg;base64,' + product.productImages[1]}}" class="d-block w-100" alt="...">
+                        <img width="250" height="300" [lazyLoad]="'data:image/jpg;base64,' + product.productImages[0]"  class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img width="250" height="300" src="{{'data:image/jpg;base64,' + product.productImages[2]}}" class="d-block w-100" alt="...">
+                        <img width="250" height="300" [lazyLoad]="'data:image/jpg;base64,' + product.productImages[1]" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img width="250" height="300" [lazyLoad]="'data:image/jpg;base64,' + product.productImages[2]" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExampleIndicators' + product.id" data-bs-slide="prev">

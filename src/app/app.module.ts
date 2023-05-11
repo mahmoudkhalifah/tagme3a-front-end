@@ -59,6 +59,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AddtocartPcComponent } from './Components/UserComponents/PC/addtocart-pc/addtocart-pc.component';
 import { DeleteProductComponent } from './Components/AdminComponents/productManager/delete-product/delete-product.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     CarouselModule,
     BrowserAnimationsModule,
     ModalModule,
+    LazyLoadImageModule
   ],
   providers: [
     {
