@@ -19,7 +19,6 @@
                       <p class="card-text">TotalPrice: {{p.totalPrice}}</p>
                       <div *ngFor="let prd of p.products">
                         <p class="card-text">Name: {{prd.name}}</p>
-                        <p class="card-text">Description: {{prd.description}}</p>
                         <p class="card-text">Quantity: {{prd.quantitiy}}</p>
                       </div>
                         <a routerLink="../PCManager/edit-pc/{{p.id}}" class="btn btn-success m-2">Edit</a>
@@ -37,8 +36,7 @@
         </div>
       </div>
     </ng-template>
-    
 
 
 
-    
+

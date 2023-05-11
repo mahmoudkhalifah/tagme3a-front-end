@@ -37,7 +37,9 @@ export class EditPrdpcComponent implements OnInit {
     })
   }
     prd:any;
+    productEdited = false;
   EditProduct(id:any){
+    this.productEdited = false;
     var  quantitiy = document.getElementById(`qty-${id}`) as HTMLInputElement;
     console.log(quantitiy.value);
     let prd = new PrdPCUpdateDTO(id , +quantitiy.value);
@@ -46,8 +48,7 @@ export class EditPrdpcComponent implements OnInit {
     this.myService.updateprdpc(this.pc.id , prd).subscribe({
       next:()=>{
         //this.router.navigate(["admin/PCManager/view-pc"]);
-        this.router.navigate(["admin/dashboard"]);
-
+        this.productEdited = true;
 
       },
       error:(err)=>{

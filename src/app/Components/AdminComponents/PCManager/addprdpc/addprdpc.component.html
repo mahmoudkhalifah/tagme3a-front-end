@@ -10,7 +10,7 @@
 
   <div class="card text-center mt-3 mb-3">
     <h5 class="text-center  display-1 mb-2">All <span class="text-success">Products</span></h5>
-
+    <div *ngIf="productAdded" class="alert alert-success">ِAdded successfully</div>
     <div *ngIf="products; else loadingBlock"  class="card-body">
       <div class="row justify-content-center">
         <div class="col-md-4" *ngFor="let product of products">

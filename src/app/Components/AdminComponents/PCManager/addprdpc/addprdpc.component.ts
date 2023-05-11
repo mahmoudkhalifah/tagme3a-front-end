@@ -41,7 +41,9 @@ export class AddprdpcComponent implements OnInit {
       }
     })
   }
+  productAdded = false;
  AddProduct(id:any){
+    this.productAdded = false;
     let quantity = document.getElementById(`qty-${id}`) as HTMLInputElement;
     console.log(quantity.value);
     let newprd = new PrdPCDTO(id
@@ -50,6 +52,7 @@ export class AddprdpcComponent implements OnInit {
     this.myService.addPrdPc(newprd).subscribe({
       next:()=>{
         console.log(newprd);
+        this.productAdded = true;
       },
       error:(err)=>{
         console.log(err);

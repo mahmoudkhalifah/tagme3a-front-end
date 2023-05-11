@@ -5,6 +5,8 @@
 
   <div class="card text-center mt-3 mb-3">
       <div  class="card-body">
+      <div *ngIf="productEdited" class="alert alert-success">Edited successfully</div>
+
           <div  class="row d-flex flex-row  justify-content-center">
             <div *ngFor="let prd of pc.products;let i = index;">
                 <div class=" card mb-4">
