@@ -29,7 +29,6 @@ export class BasketService {
 
   AddLstProductInCart(prd:any , UId :any)
   {
-
     return this.Client.post(this.URL+'UserProducstInCart/'+UId,prd);
   }
 

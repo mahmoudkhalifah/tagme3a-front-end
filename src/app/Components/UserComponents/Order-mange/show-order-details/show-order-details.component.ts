@@ -23,6 +23,7 @@ ngOnInit(): void
 
       next:(items)=>{
         this.data=items
+        console.log(this.data)
       },
       error:(err)=>{console.log(err)}
 

@@ -30,6 +30,7 @@ export class DetailsPCComponent implements OnInit{
     this.myService.getPCById(this.Id) .subscribe({
       next:(data)=>{
         this.pc = data;
+        console.log(this.pc);
       },
       error:(err)=>{
         console.log(err);
@@ -47,7 +48,7 @@ export class DetailsPCComponent implements OnInit{
     this.isLoading = true;
     this.selectedProductId = id; // set the selected product ID
     this.addProductsToCart();
-      
+
   }
 
   addProductsToCart() {
